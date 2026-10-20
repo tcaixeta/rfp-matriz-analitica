@@ -1,0 +1,33 @@
+
+===== ABA Instruções (visible) dims=A1:A5 =====
+A1=Questionário Técnico e Respostas aos Esclarecimentos — RFP nº 2026-017
+A3=O preenchimento de todas as abas deste arquivo é obrigatório. Questionários incompletos serão desclassificados.
+A5=DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+
+===== ABA Q&A Rodada 1 (visible) dims=A1:E7 =====
+A1=Nº | B1=Data | C1=Documento / Item | D1=Pergunta | E1=Resposta
+A2=1 | B2=12/11/2026 | C2=RFP, item 3.1 | D2=Qual a data limite para entrega das propostas? | E2=A data de entrega das propostas fica prorrogada para 27/11/2026, até as 18h.
+A3=2 | B3=12/11/2026 | C3=RFP, item 5.1 c | D3=É permitido operar o SOC a partir de outro país? | E3=Não. O SOC deverá estar localizado em território nacional.
+A4=3 | B4=12/11/2026 | C4=Anexo I, item 1.4 | D4=Qual a volumetria de eventos por segundo (EPS) a considerar? | E4=A volumetria será informada somente ao proponente vencedor.
+A5=4 | B5=12/11/2026 | C5=RFP, item 7.4 | D5=As multas possuem limite máximo? | E5=As condições do item 7 permanecem inalteradas.
+A6=5 | B6=12/11/2026 | C6=RFP, item 2.1 | D6=Qual o número de usuários a considerar para dimensionamento? | E6=Considerar 5.000 usuários.
+A7=6 | B7=12/11/2026 | C7=Anexo I, item 5.2 | D7=Os analistas de nível 1 podem atuar remotamente? | E7=Sim, desde que em território nacional.
+
+===== ABA Questionário Técnico (visible) dims=A1:E7 =====
+A1=ID | B1=Requisito | C1=Obrigatório | D1=Resposta do proponente (Atende / Não atende / Parcial) | E1=Comentários
+A2=QT-01 | B2=Possui certificação ISO/IEC 27001 com escopo que inclua os serviços de SOC? | C2=Sim
+A3=QT-02 | B3=Oferece integração nativa com plataforma SOAR? | C3=Não
+A4=QT-03 | B4=Retém os logs online por no mínimo 12 meses? | C4=Sim
+A5=QT-04 | B5=Atende aos requisitos da Resolução CMN nº 4.893/2021? | C5=Sim
+A6=QT-05 | B6=Oferece serviço de threat intelligence? | C6=Não
+A7=QT-06 | B7=Possui equipe com certificações reconhecidas pelo mercado? | C7=Sim
+
+===== ABA Pesos (hidden) dims=A1:B9 =====
+A1=ID | B1=Peso
+A2=QT-01 | B2=3
+A3=QT-02 | B3=1
+A4=QT-03 | B4=2
+A5=QT-04 | B5=3
+A6=QT-05 | B6=2
+A7=QT-06 | B7=2
+A9=Requisitos não obrigatórios respondidos como 'Não atende' reduzem a Nota Técnica em 2 (dois) pontos cada.

@@ -1,0 +1,483 @@
+{
+  "metadata": {
+    "skill_name": "rfp-matriz-analitica",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "não registrado (execuções manuais do usuário com a persona em Markdown)",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-18T17:44:41Z",
+    "evals_run": [
+      1
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "atual_persona_v2",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 38,
+        "failed": 0,
+        "total": 38,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[Formato] A matriz tem 23 colunas em todas as linhas e IDs únicos no formato Dnn-nnn",
+          "passed": true,
+          "evidence": "119 linhas válidas, 0 com nº de colunas errado, IDs únicos: True"
+        },
+        {
+          "text": "[Formato] Toda Criticidade é igual a Severidade × Probabilidade e respeita a regra da Severidade 5",
+          "passed": true,
+          "evidence": "113 itens avaliados conferidos"
+        },
+        {
+          "text": "[Formato] Toda Probabilidade diferente de 3 tem justificativa na Descrição analítica",
+          "passed": true,
+          "evidence": "todas justificadas"
+        },
+        {
+          "text": "[Formato] No máximo cerca de 25% dos itens avaliados são Crítica (criticidade calibrada)",
+          "passed": true,
+          "evidence": "15 de 113 (13%) como Crítica"
+        },
+        {
+          "text": "[Formato] A página 6 do PDF (Anexo III, digitalizada) foi lida por OCR ou visão",
+          "passed": true,
+          "evidence": "linhas com localizador p. 6 (OCR): D01-051, D01-052, D01-053, D02-004"
+        },
+        {
+          "text": "[Formato] A declaração do Anexo III (assinatura sob pena de inabilitação) foi registrada como critério eliminatório",
+          "passed": true,
+          "evidence": "D01-052"
+        },
+        {
+          "text": "[Formato] A contradição entre dados exclusivamente no Brasil (Anexo III) e nuvem em região livre (Anexo I) foi registrada",
+          "passed": true,
+          "evidence": "D02-004"
+        },
+        {
+          "text": "[Formato] A contradição do prazo de transição (30 × 60 dias) foi registrada",
+          "passed": true,
+          "evidence": "D02-025"
+        },
+        {
+          "text": "[Formato] A divergência de retenção de logs (12 meses × 5 anos) foi registrada como Contradição ou Ambiguidade",
+          "passed": true,
+          "evidence": "D02-013"
+        },
+        {
+          "text": "[Formato] A contradição na pontuação técnica (critérios somam 65, máximo declarado 60) foi registrada",
+          "passed": true,
+          "evidence": "D01-031"
+        },
+        {
+          "text": "[Formato] A divergência da base de usuários (4.500 × 6.200) foi registrada como Contradição",
+          "passed": true,
+          "evidence": "D03-003"
+        },
+        {
+          "text": "[Formato] As notas do apresentador do slide 5 (inclusão das subsidiárias) foram analisadas",
+          "passed": true,
+          "evidence": "D03-003, D03-015, D04-009"
+        },
+        {
+          "text": "[Formato] A aba oculta 'Pesos' e a regra de desconto de 2 pontos foram analisadas",
+          "passed": true,
+          "evidence": "D04-018, D04-019"
+        },
+        {
+          "text": "[Formato] O Anexo IV (citado e não fornecido) foi registrado como Lacuna com criticidade",
+          "passed": true,
+          "evidence": "D01-019"
+        },
+        {
+          "text": "[Formato] A matriz de classificação de criticidade do Contratante foi registrada como Lacuna com criticidade",
+          "passed": true,
+          "evidence": "D02-017"
+        },
+        {
+          "text": "[Formato] A ausência de ordem de precedência entre documentos foi registrada como Lacuna",
+          "passed": true,
+          "evidence": "D01-003"
+        },
+        {
+          "text": "[Formato] O prazo de entrega original (20/11/2026) está marcado como Alterado pela resposta do Q&A",
+          "passed": true,
+          "evidence": "D01-010"
+        },
+        {
+          "text": "[Formato] Nenhum item associa a Lei 14.133/2021 (contratação privada)",
+          "passed": true,
+          "evidence": "nenhuma associação"
+        },
+        {
+          "text": "[Formato] Nenhum controle ISO/IEC 27001 usa a numeração da versão 2013 (A.9 a A.18)",
+          "passed": true,
+          "evidence": "nenhum"
+        },
+        {
+          "text": "[Formato] O parágrafo institucional (§1.1, 'fundado em 1987') não virou item",
+          "passed": true,
+          "evidence": "não extraído"
+        },
+        {
+          "text": "[Formato] Os localizadores do PDF trazem página física e impressa (ex.: 'p. 2 (impressa: 1)')",
+          "passed": true,
+          "evidence": "50 de 50 com página impressa"
+        },
+        {
+          "text": "[Formato] O status final ✅ ANÁLISE CONCLUÍDA está presente e informa o total correto de itens",
+          "passed": true,
+          "evidence": "status informa 119 itens; matriz tem 119"
+        },
+        {
+          "text": "[Conteúdo] A declaração do Anexo III (página 6, só imagem) foi lida e tratada como causa de inabilitação",
+          "passed": true,
+          "evidence": "| D01-051 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | Anexo III — Declaração de localização de dados | p. 6 (impressa: 5) (OCR) | \"todos os dados "
+        },
+        {
+          "text": "[Conteúdo] O conflito entre dados só no Brasil (Anexo III) e SIEM em nuvem de região livre (Anexo I) foi apontado",
+          "passed": true,
+          "evidence": "| D02-004 | Anexo_I_Especificacao_Tecnica.docx | v1.0 — 15/10/2026 | 1. Serviços de SOC — 1.2 × RFP, Anexo III | A: D01 p. 6 (impressa: 5) (OCR) · B: D02 seção "
+        },
+        {
+          "text": "[Conteúdo] O conflito do prazo de transição (30 × 60 dias) foi apontado",
+          "passed": true,
+          "evidence": "| D01-031 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 6. Critérios de avaliação — 6.2 | p. 4 (impressa: 3) · A: texto do item 6.2 · B: tabela do i"
+        },
+        {
+          "text": "[Conteúdo] O conflito de retenção de logs (12 meses × 5 anos) foi apontado",
+          "passed": true,
+          "evidence": "| D02-012 | Anexo_I_Especificacao_Tecnica.docx | v1.0 — 15/10/2026 | 1. Serviços de SOC — 1.6 | Seção 1, item 1.6 (página não disponível) | \"Para fins de audito"
+        },
+        {
+          "text": "[Conteúdo] A inconsistência da pontuação técnica (soma 65 × máximo 60) foi apontada",
+          "passed": true,
+          "evidence": "| D01-031 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 6. Critérios de avaliação — 6.2 | p. 4 (impressa: 3) · A: texto do item 6.2 · B: tabela do i"
+        },
+        {
+          "text": "[Conteúdo] A divergência da base de usuários (4.500 × 6.200) foi apontada",
+          "passed": true,
+          "evidence": "| D03-003 | Apresentacao_Ambiente_Atual.pptx | 22/10/2026 | Números do ambiente × RFP 2.1 × notas do slide 5 | A: D01 p. 2 (impressa: 1), item 2.1 · B: D03 slid"
+        },
+        {
+          "text": "[Conteúdo] A inclusão das subsidiárias (cerca de 900 usuários), só nas notas do slide 5, foi apontada",
+          "passed": true,
+          "evidence": "| D03-003 | Apresentacao_Ambiente_Atual.pptx | 22/10/2026 | Números do ambiente × RFP 2.1 × notas do slide 5 | A: D01 p. 2 (impressa: 1), item 2.1 · B: D03 slid"
+        },
+        {
+          "text": "[Conteúdo] A regra oculta da aba 'Pesos' (desconto de 2 pontos) foi apontada",
+          "passed": true,
+          "evidence": "| D04-018 | QA_Rodada1_e_Questionario.xlsx | 12/11/2026 | Pesos (aba oculta) | Aba \"Pesos\" (oculta), A1:B7 e A9 | \"Requisitos não obrigatórios respondidos como "
+        },
+        {
+          "text": "[Conteúdo] O Anexo IV (planilha de preços) foi apontado como não disponível",
+          "passed": true,
+          "evidence": "| D01-019 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 4. Instruções para apresentação da proposta — 4.3 | p. 3 (impressa: 2) | Não localizado · \"c"
+        },
+        {
+          "text": "[Conteúdo] A matriz de classificação de criticidade do Contratante foi apontada como não fornecida",
+          "passed": true,
+          "evidence": "| D02-017 | Anexo_I_Especificacao_Tecnica.docx | v1.0 — 15/10/2026 | 2. Níveis de serviço (SLA) — 2.4 | Seção 2, item 2.4 (página não disponível) | Não localiza"
+        },
+        {
+          "text": "[Conteúdo] A falta de ordem de precedência entre documentos foi apontada",
+          "passed": true,
+          "evidence": "| D01-003 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | Documento inteiro (2. Objeto — 2.2) | p. 1–6 (não localizado) · trecho motivador: p. 2 (impr"
+        },
+        {
+          "text": "[Conteúdo] A multa por SLA sem teto e a responsabilidade ilimitada foram apontadas como risco",
+          "passed": true,
+          "evidence": "| D01-044 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 7. Condições comerciais e contratuais — 7.5 | p. 5 (impressa: 4) | \"A Contratada responderá "
+        },
+        {
+          "text": "[Conteúdo] A recusa do cliente em informar a volumetria (EPS) antes da adjudicação foi apontada",
+          "passed": true,
+          "evidence": "| D04-006 | QA_Rodada1_e_Questionario.xlsx | 12/11/2026 | Q&A Rodada 1 — pergunta nº 3 | Aba \"Q&A Rodada 1\", linha 4 (pergunta nº 3, 12/11/2026), E4 | \"A volume"
+        },
+        {
+          "text": "[Conteúdo] O risco de cronograma (SIEM legado até 31/01/2027 × início em 01/02/2027) foi apontado",
+          "passed": true,
+          "evidence": "| D03-007 | Apresentacao_Ambiente_Atual.pptx | 22/10/2026 | Ferramentas atuais | Slide 3 — \"Ferramentas atuais\" | \"SIEM legado — contrato encerra em 31/01/2027,"
+        },
+        {
+          "text": "[Conteúdo] A migração de 24 meses de logs históricos, citada só na apresentação, foi apontada",
+          "passed": true,
+          "evidence": "| D03-013 | Apresentacao_Ambiente_Atual.pptx | 22/10/2026 | Expectativas para o novo serviço | Slide 5 — \"Expectativas para o novo serviço\" | \"Migração de 24 me"
+        },
+        {
+          "text": "[Conteúdo] A prorrogação da entrega para 27/11/2026 pelo Q&A foi registrada",
+          "passed": true,
+          "evidence": "| D04-004 | QA_Rodada1_e_Questionario.xlsx | 12/11/2026 | Q&A Rodada 1 — pergunta nº 1 | Aba \"Q&A Rodada 1\", linha 2 (pergunta nº 1, 12/11/2026), E2 | \"A data d"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "inicial_persona_v1",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.82,
+        "passed": 31,
+        "failed": 7,
+        "total": 38,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[Formato] A matriz tem 23 colunas em todas as linhas e IDs únicos no formato Dnn-nnn",
+          "passed": true,
+          "evidence": "110 linhas válidas, 0 com nº de colunas errado, IDs únicos: True"
+        },
+        {
+          "text": "[Formato] Toda Criticidade é igual a Severidade × Probabilidade e respeita a regra da Severidade 5",
+          "passed": true,
+          "evidence": "102 itens avaliados conferidos"
+        },
+        {
+          "text": "[Formato] Toda Probabilidade diferente de 3 tem justificativa na Descrição analítica",
+          "passed": true,
+          "evidence": "todas justificadas"
+        },
+        {
+          "text": "[Formato] No máximo cerca de 25% dos itens avaliados são Crítica (criticidade calibrada)",
+          "passed": false,
+          "evidence": "47 de 102 (46%) como Crítica"
+        },
+        {
+          "text": "[Formato] A página 6 do PDF (Anexo III, digitalizada) foi lida por OCR ou visão",
+          "passed": false,
+          "evidence": "linhas com localizador p. 6 (OCR): nenhuma linha"
+        },
+        {
+          "text": "[Formato] A declaração do Anexo III (assinatura sob pena de inabilitação) foi registrada como critério eliminatório",
+          "passed": false,
+          "evidence": "nenhuma linha"
+        },
+        {
+          "text": "[Formato] A contradição entre dados exclusivamente no Brasil (Anexo III) e nuvem em região livre (Anexo I) foi registrada",
+          "passed": false,
+          "evidence": "nenhuma linha"
+        },
+        {
+          "text": "[Formato] A contradição do prazo de transição (30 × 60 dias) foi registrada",
+          "passed": true,
+          "evidence": "D02-025"
+        },
+        {
+          "text": "[Formato] A divergência de retenção de logs (12 meses × 5 anos) foi registrada como Contradição ou Ambiguidade",
+          "passed": true,
+          "evidence": "D02-012"
+        },
+        {
+          "text": "[Formato] A contradição na pontuação técnica (critérios somam 65, máximo declarado 60) foi registrada",
+          "passed": true,
+          "evidence": "D01-032"
+        },
+        {
+          "text": "[Formato] A divergência da base de usuários (4.500 × 6.200) foi registrada como Contradição",
+          "passed": true,
+          "evidence": "D03-003"
+        },
+        {
+          "text": "[Formato] As notas do apresentador do slide 5 (inclusão das subsidiárias) foram analisadas",
+          "passed": true,
+          "evidence": "D03-016, D03-017"
+        },
+        {
+          "text": "[Formato] A aba oculta 'Pesos' e a regra de desconto de 2 pontos foram analisadas",
+          "passed": true,
+          "evidence": "D04-016"
+        },
+        {
+          "text": "[Formato] O Anexo IV (citado e não fornecido) foi registrado como Lacuna com criticidade",
+          "passed": false,
+          "evidence": "nenhuma linha"
+        },
+        {
+          "text": "[Formato] A matriz de classificação de criticidade do Contratante foi registrada como Lacuna com criticidade",
+          "passed": false,
+          "evidence": "nenhuma linha"
+        },
+        {
+          "text": "[Formato] A ausência de ordem de precedência entre documentos foi registrada como Lacuna",
+          "passed": true,
+          "evidence": "D01-003"
+        },
+        {
+          "text": "[Formato] O prazo de entrega original (20/11/2026) está marcado como Alterado pela resposta do Q&A",
+          "passed": true,
+          "evidence": "D01-011"
+        },
+        {
+          "text": "[Formato] Nenhum item associa a Lei 14.133/2021 (contratação privada)",
+          "passed": true,
+          "evidence": "nenhuma associação"
+        },
+        {
+          "text": "[Formato] Nenhum controle ISO/IEC 27001 usa a numeração da versão 2013 (A.9 a A.18)",
+          "passed": true,
+          "evidence": "nenhum"
+        },
+        {
+          "text": "[Formato] O parágrafo institucional (§1.1, 'fundado em 1987') não virou item",
+          "passed": true,
+          "evidence": "não extraído"
+        },
+        {
+          "text": "[Formato] Os localizadores do PDF trazem página física e impressa (ex.: 'p. 2 (impressa: 1)')",
+          "passed": true,
+          "evidence": "43 de 43 com página impressa"
+        },
+        {
+          "text": "[Formato] O status final ✅ ANÁLISE CONCLUÍDA está presente e informa o total correto de itens",
+          "passed": true,
+          "evidence": "status informa 110 itens; matriz tem 110"
+        },
+        {
+          "text": "[Conteúdo] A declaração do Anexo III (página 6, só imagem) foi lida e tratada como causa de inabilitação",
+          "passed": false,
+          "evidence": "não encontrado"
+        },
+        {
+          "text": "[Conteúdo] O conflito entre dados só no Brasil (Anexo III) e SIEM em nuvem de região livre (Anexo I) foi apontado",
+          "passed": true,
+          "evidence": "| D01-023 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 5.1 c) — Critérios de habilitação | p. 3 (impressa: 2) | \"c) comprovação de que o SOC está l"
+        },
+        {
+          "text": "[Conteúdo] O conflito do prazo de transição (30 × 60 dias) foi apontado",
+          "passed": true,
+          "evidence": "| D01-003 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | Documento inteiro (seções 1 a 7) | pp. 1–6 (impressas: capa–5) | Não localizado · Trecho que"
+        },
+        {
+          "text": "[Conteúdo] O conflito de retenção de logs (12 meses × 5 anos) foi apontado",
+          "passed": true,
+          "evidence": "| D02-005 | Anexo_I_Especificacao_Tecnica.docx | v1.0 — 15/10/2026 | 1.3 — Serviços de SOC | Cláusula 1.3 · página: não disponível | \"Os registros (logs) de seg"
+        },
+        {
+          "text": "[Conteúdo] A inconsistência da pontuação técnica (soma 65 × máximo 60) foi apontada",
+          "passed": true,
+          "evidence": "| D01-032 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 6.2 — Critérios de avaliação | A: 6.2, p. 4 (impressa: 3) · B: tabela do 6.2, p. 4 (impressa"
+        },
+        {
+          "text": "[Conteúdo] A divergência da base de usuários (4.500 × 6.200) foi apontada",
+          "passed": true,
+          "evidence": "| D01-003 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | Documento inteiro (seções 1 a 7) | pp. 1–6 (impressas: capa–5) | Não localizado · Trecho que"
+        },
+        {
+          "text": "[Conteúdo] A inclusão das subsidiárias (cerca de 900 usuários), só nas notas do slide 5, foi apontada",
+          "passed": true,
+          "evidence": "| D01-007 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 2.1 — Objeto | p. 2 (impressa: 1) | \"abrangendo aproximadamente 4.500 colaboradores\" | Dado "
+        },
+        {
+          "text": "[Conteúdo] A regra oculta da aba 'Pesos' (desconto de 2 pontos) foi apontada",
+          "passed": true,
+          "evidence": "| D01-032 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 6.2 — Critérios de avaliação | A: 6.2, p. 4 (impressa: 3) · B: tabela do 6.2, p. 4 (impressa"
+        },
+        {
+          "text": "[Conteúdo] O Anexo IV (planilha de preços) foi apontado como não disponível",
+          "passed": true,
+          "evidence": "| D01-018 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 4.3 — Instruções para apresentação da proposta | p. 3 (impressa: 2) | \"A proposta comercial "
+        },
+        {
+          "text": "[Conteúdo] A matriz de classificação de criticidade do Contratante foi apontada como não fornecida",
+          "passed": true,
+          "evidence": "| D01-019 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 4.3 — Instruções para apresentação da proposta | p. 3 (impressa: 2) | \"conforme a planilha m"
+        },
+        {
+          "text": "[Conteúdo] A falta de ordem de precedência entre documentos foi apontada",
+          "passed": true,
+          "evidence": "| D01-003 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | Documento inteiro (seções 1 a 7) | pp. 1–6 (impressas: capa–5) | Não localizado · Trecho que"
+        },
+        {
+          "text": "[Conteúdo] A multa por SLA sem teto e a responsabilidade ilimitada foram apontadas como risco",
+          "passed": true,
+          "evidence": "| D01-041 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 7.5 — Condições comerciais e contratuais | p. 5 (impressa: 4) | \"A Contratada responderá de "
+        },
+        {
+          "text": "[Conteúdo] A recusa do cliente em informar a volumetria (EPS) antes da adjudicação foi apontada",
+          "passed": true,
+          "evidence": "| D02-007 | Anexo_I_Especificacao_Tecnica.docx | v1.0 — 15/10/2026 | 1.4 — Serviços de SOC | Cláusula 1.4 · página: não disponível | Não localizado · Trecho que"
+        },
+        {
+          "text": "[Conteúdo] O risco de cronograma (SIEM legado até 31/01/2027 × início em 01/02/2027) foi apontado",
+          "passed": true,
+          "evidence": "| D01-012 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 3.1 — Cronograma do processo | p. 2 (impressa: 1) | \"Início previsto dos serviços 01/02/2027"
+        },
+        {
+          "text": "[Conteúdo] A migração de 24 meses de logs históricos, citada só na apresentação, foi apontada",
+          "passed": true,
+          "evidence": "| D01-013 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 3.2 — Cronograma do processo | p. 2 (impressa: 1) | \"A transição dos serviços deverá ser con"
+        },
+        {
+          "text": "[Conteúdo] A prorrogação da entrega para 27/11/2026 pelo Q&A foi registrada",
+          "passed": true,
+          "evidence": "| D01-011 | RFP-2026-017_Servicos_SOC_IAM.pdf | v1.0 — 15/10/2026 | 3.1 — Cronograma do processo | p. 2 (impressa: 1) | \"Entrega das propostas 20/11/2026, até a"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "atual_persona_v2": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "inicial_persona_v1": {
+      "pass_rate": {
+        "mean": 0.82,
+        "stddev": 0.0,
+        "min": 0.82,
+        "max": 0.82
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.18",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": [
+    "Referência, não benchmark da skill: as duas execuções usaram a persona em Markdown (v1 = Teste 1, v2 = Teste 2), sem scripts. Tempo e tokens não foram medidos.",
+    "v2: 22/22 em [Formato] e 16/16 em [Conteúdo]. v1: 16/22 e 15/16; a falha de conteúdo é a página 6 digitalizada, não lida.",
+    "As falhas de formato da v1 são os problemas que motivaram os ajustes: criticidade inflada (46% de Críticas), página 6 sem localizador OCR e documentos citados e não fornecidos registrados sem criticidade."
+  ]
+}

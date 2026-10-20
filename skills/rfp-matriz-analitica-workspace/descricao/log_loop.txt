@@ -1,0 +1,203 @@
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/5
+Description: Analisa documentos de concorrência (RFP, RFI, RFQ, edital, termo de referência, anexos, minuta, Q&A/esclarecimentos, adendos, questionários, apresentações; em PDF, Word, PowerPoint ou Excel) do ponto de vista do proponente e gera uma matriz analítica rastreável de 23 colunas: requisitos, critérios eliminatórios, prazos, SLAs, multas, premissas, contradições, ambiguidades, lacunas e riscos, cada um com citação literal, documento, seção e página/slide/célula, criticidade Severidade × Probabilidade, framework (ISO 27001, NIST CSF, ITIL, LGPD...) e pergunta de esclarecimento. Use sempre que o usuário enviar documentos de licitação, concorrência ou bid e pedir para analisar, extrair requisitos, montar matriz de conformidade, levantar riscos e contradições, preparar o Q&A ou apoiar Go/No-Go — mesmo sem dizer "RFP" ou "matriz". Use também em rodadas incrementais (novo Q&A, adendo, errata).
+============================================================
+Train: 20/36 correct, precision=100% recall=11% accuracy=56% (91.8s)
+  [FAIL] rate=1/3 expected=True: Preciso preparar as perguntas de esclarecimento para a conco
+  [FAIL] rate=0/3 expected=True: matriz de conformidade da RFP de DPO as a service da Rede Fa
+  [FAIL] rate=0/3 expected=True: chegou o adendo 02 da RFP 2026-031 (pdf). compara com a anál
+  [FAIL] rate=0/3 expected=True: o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arqu
+  [FAIL] rate=1/3 expected=True: tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 3
+  [FAIL] rate=0/3 expected=True: Segue em anexo o edital e o termo de referência da Prefeitur
+  [PASS] rate=0/3 expected=False: Traduz para inglês o questionário de segurança que o cliente
+  [PASS] rate=0/3 expected=False: Vamos contratar um fornecedor de cloud e eu preciso escrever
+  [PASS] rate=0/3 expected=False: preciso de um checklist genérico de go/no-go para o time com
+  [PASS] rate=0/3 expected=False: Me ajuda a escrever a seção de metodologia da nossa proposta
+  [PASS] rate=0/3 expected=False: Extrai as tabelas do relatório anual em PDF da nossa holding
+  [PASS] rate=0/3 expected=False: como funcionam as fases do pregão eletrônico na Lei 14.133? 
+Test : 13/24 correct, precision=100% recall=8% accuracy=54% (0.0s)
+  [FAIL] rate=0/3 expected=True: analisa o caderno técnico desse edital (pdf, algumas páginas
+  [FAIL] rate=0/3 expected=True: Can you go through this RFI from Meridian Insurance (attache
+  [FAIL] rate=1/3 expected=True: saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa 
+  [FAIL] rate=0/3 expected=True: We lost the last tender partly because we missed a hidden sc
+  [PASS] rate=0/3 expected=False: Recebemos as propostas de 3 fornecedores para o nosso RFP de
+  [PASS] rate=0/3 expected=False: Faz um gap analysis da nossa empresa contra o Anexo A da ISO
+  [PASS] rate=0/3 expected=False: resume esse contrato de limpeza predial que assinamos ano pa
+  [PASS] rate=0/3 expected=False: converte o arquivo matriz_requisitos.md (é uma tabela markdo
+
+Improving description...
+Proposed (7.9s): Use esta skill sempre que o usuário estiver do lado do fornecedor/proponente num processo de compra (RFP, RFI, RFQ, edital, licitação, pregão, cotação, bid) e quiser destrinchar os documentos recebidos do cliente, em qualquer formato (PDF, Word, PPT, Excel) ou pasta. Prefira-a aos skills genéricos de PDF/Word/Excel/PowerPoint quando o arquivo for de concorrência. Exemplos de pedido: listar requisitos ou critérios de habilitação/eliminatórios; matriz de conformidade ou de requisitos; mapear prazos, SLAs, multas e penalidades; levantar riscos contratuais para o jurídico; achar contradições entre edital, TR, anexos e minuta; redigir perguntas de esclarecimento ligadas ao trecho de origem; classificar itens e associar a frameworks (ISO, LGPD, NIST); preparar a reunião de Go/No-Go; comparar adendo, errata ou novo Q&A com uma análise já feita. Entrega uma matriz rastreável com citação e página. Não use para escrever a proposta, criar um RFP próprio, traduzir ou tirar dúvidas teóricas sobre a lei.
+
+============================================================
+Iteration 2/5
+Description: Use esta skill sempre que o usuário estiver do lado do fornecedor/proponente num processo de compra (RFP, RFI, RFQ, edital, licitação, pregão, cotação, bid) e quiser destrinchar os documentos recebidos do cliente, em qualquer formato (PDF, Word, PPT, Excel) ou pasta. Prefira-a aos skills genéricos de PDF/Word/Excel/PowerPoint quando o arquivo for de concorrência. Exemplos de pedido: listar requisitos ou critérios de habilitação/eliminatórios; matriz de conformidade ou de requisitos; mapear prazos, SLAs, multas e penalidades; levantar riscos contratuais para o jurídico; achar contradições entre edital, TR, anexos e minuta; redigir perguntas de esclarecimento ligadas ao trecho de origem; classificar itens e associar a frameworks (ISO, LGPD, NIST); preparar a reunião de Go/No-Go; comparar adendo, errata ou novo Q&A com uma análise já feita. Entrega uma matriz rastreável com citação e página. Não use para escrever a proposta, criar um RFP próprio, traduzir ou tirar dúvidas teóricas sobre a lei.
+============================================================
+Train: 22/36 correct, precision=100% recall=22% accuracy=61% (94.5s)
+  [FAIL] rate=1/3 expected=True: Preciso preparar as perguntas de esclarecimento para a conco
+  [FAIL] rate=0/3 expected=True: matriz de conformidade da RFP de DPO as a service da Rede Fa
+  [FAIL] rate=1/3 expected=True: chegou o adendo 02 da RFP 2026-031 (pdf). compara com a anál
+  [FAIL] rate=1/3 expected=True: o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arqu
+  [FAIL] rate=1/3 expected=True: tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 3
+  [FAIL] rate=0/3 expected=True: Segue em anexo o edital e o termo de referência da Prefeitur
+  [PASS] rate=0/3 expected=False: Traduz para inglês o questionário de segurança que o cliente
+  [PASS] rate=0/3 expected=False: Vamos contratar um fornecedor de cloud e eu preciso escrever
+  [PASS] rate=0/3 expected=False: Me ajuda a escrever a seção de metodologia da nossa proposta
+  [PASS] rate=0/3 expected=False: preciso de um checklist genérico de go/no-go para o time com
+  [PASS] rate=0/3 expected=False: Extrai as tabelas do relatório anual em PDF da nossa holding
+  [PASS] rate=0/3 expected=False: como funcionam as fases do pregão eletrônico na Lei 14.133? 
+Test : 17/24 correct, precision=100% recall=42% accuracy=71% (0.0s)
+  [PASS] rate=2/3 expected=True: analisa o caderno técnico desse edital (pdf, algumas páginas
+  [FAIL] rate=1/3 expected=True: Can you go through this RFI from Meridian Insurance (attache
+  [FAIL] rate=1/3 expected=True: saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa 
+  [FAIL] rate=1/3 expected=True: We lost the last tender partly because we missed a hidden sc
+  [PASS] rate=0/3 expected=False: Recebemos as propostas de 3 fornecedores para o nosso RFP de
+  [PASS] rate=0/3 expected=False: Faz um gap analysis da nossa empresa contra o Anexo A da ISO
+  [PASS] rate=0/3 expected=False: resume esse contrato de limpeza predial que assinamos ano pa
+  [PASS] rate=0/3 expected=False: converte o arquivo matriz_requisitos.md (é uma tabela markdo
+
+Improving description...
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/private/tmp/claude-501/-Users-tfgcaixeta-Library-Application-Support-Claude-scratch-workspaces-3d6c3529-b878-4c64-a5d2-9aebd2f46221-e9920352-825f-4023-a292-91ef7c26e07d-scratch-2026-10-17-46e619/a169dcfb-5479-433a-86a0-f61944b34bb4/scratchpad/sc/scripts/run_loop.py", line 329, in <module>
+    main()
+  File "/private/tmp/claude-501/-Users-tfgcaixeta-Library-Application-Support-Claude-scratch-workspaces-3d6c3529-b878-4c64-a5d2-9aebd2f46221-e9920352-825f-4023-a292-91ef7c26e07d-scratch-2026-10-17-46e619/a169dcfb-5479-433a-86a0-f61944b34bb4/scratchpad/sc/scripts/run_loop.py", line 294, in main
+    output = run_loop(
+  File "/private/tmp/claude-501/-Users-tfgcaixeta-Library-Application-Support-Claude-scratch-workspaces-3d6c3529-b878-4c64-a5d2-9aebd2f46221-e9920352-825f-4023-a292-91ef7c26e07d-scratch-2026-10-17-46e619/a169dcfb-5479-433a-86a0-f61944b34bb4/scratchpad/sc/scripts/run_loop.py", line 200, in run_loop
+    new_description = improve_description(
+  File "/private/tmp/claude-501/-Users-tfgcaixeta-Library-Application-Support-Claude-scratch-workspaces-3d6c3529-b878-4c64-a5d2-9aebd2f46221-e9920352-825f-4023-a292-91ef7c26e07d-scratch-2026-10-17-46e619/a169dcfb-5479-433a-86a0-f61944b34bb4/scratchpad/sc/scripts/improve_description.py", line 145, in improve_description
+    text = _call_claude(prompt, model)
+  File "/private/tmp/claude-501/-Users-tfgcaixeta-Library-Application-Support-Claude-scratch-workspaces-3d6c3529-b878-4c64-a5d2-9aebd2f46221-e9920352-825f-4023-a292-91ef7c26e07d-scratch-2026-10-17-46e619/a169dcfb-5479-433a-86a0-f61944b34bb4/scratchpad/sc/scripts/improve_description.py", line 45, in _call_claude
+    raise RuntimeError(
+RuntimeError: claude -p exited 1
+stderr: 
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/4
+Description: Use esta skill sempre que o usuário estiver do lado do fornecedor/proponente num processo de compra (RFP, RFI, RFQ, edital, licitação, pregão, cotação, bid) e quiser destrinchar os documentos recebidos do cliente, em qualquer formato (PDF, Word, PPT, Excel) ou pasta. Prefira-a aos skills genéricos de PDF/Word/Excel/PowerPoint quando o arquivo for de concorrência. Exemplos de pedido: listar requisitos ou critérios de habilitação/eliminatórios; matriz de conformidade ou de requisitos; mapear prazos, SLAs, multas e penalidades; levantar riscos contratuais para o jurídico; achar contradições entre edital, TR, anexos e minuta; redigir perguntas de esclarecimento ligadas ao trecho de origem; classificar itens e associar a frameworks (ISO, LGPD, NIST); preparar a reunião de Go/No-Go; comparar adendo, errata ou novo Q&A com uma análise já feita. Entrega uma matriz rastreável com citação e página. Não use para escrever a proposta, criar um RFP próprio, traduzir ou tirar dúvidas teóricas sobre a lei.
+============================================================
+Train: 20/36 correct, precision=100% recall=11% accuracy=56% (91.1s)
+  [FAIL] rate=0/3 expected=True: Preciso preparar as perguntas de esclarecimento para a conco
+  [FAIL] rate=1/3 expected=True: matriz de conformidade da RFP de DPO as a service da Rede Fa
+  [FAIL] rate=0/3 expected=True: chegou o adendo 02 da RFP 2026-031 (pdf). compara com a anál
+  [FAIL] rate=1/3 expected=True: o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arqu
+  [FAIL] rate=0/3 expected=True: tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 3
+  [FAIL] rate=0/3 expected=True: Segue em anexo o edital e o termo de referência da Prefeitur
+  [PASS] rate=0/3 expected=False: Traduz para inglês o questionário de segurança que o cliente
+  [PASS] rate=0/3 expected=False: preciso de um checklist genérico de go/no-go para o time com
+  [PASS] rate=0/3 expected=False: Vamos contratar um fornecedor de cloud e eu preciso escrever
+  [PASS] rate=0/3 expected=False: Me ajuda a escrever a seção de metodologia da nossa proposta
+  [PASS] rate=0/3 expected=False: Extrai as tabelas do relatório anual em PDF da nossa holding
+  [PASS] rate=0/3 expected=False: como funcionam as fases do pregão eletrônico na Lei 14.133? 
+Test : 12/24 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/3 expected=True: analisa o caderno técnico desse edital (pdf, algumas páginas
+  [FAIL] rate=0/3 expected=True: Can you go through this RFI from Meridian Insurance (attache
+  [FAIL] rate=0/3 expected=True: saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa 
+  [FAIL] rate=0/3 expected=True: We lost the last tender partly because we missed a hidden sc
+  [PASS] rate=0/3 expected=False: Recebemos as propostas de 3 fornecedores para o nosso RFP de
+  [PASS] rate=0/3 expected=False: Faz um gap analysis da nossa empresa contra o Anexo A da ISO
+  [PASS] rate=0/3 expected=False: resume esse contrato de limpeza predial que assinamos ano pa
+  [PASS] rate=0/3 expected=False: converte o arquivo matriz_requisitos.md (é uma tabela markdo
+
+Improving description...
+Proposed (9.1s): Analista de bid do lado do proponente. Use esta skill SEMPRE que o usuário receber documentos de uma concorrência (RFP/RFI/RFQ, edital, termo de referência, anexos, minuta de contrato, SLA, planilha de preço, Q&A, adendo, errata), em arquivos ou pasta, e pedir qualquer extração ou análise deles. Isso inclui requisitos, habilitação/eliminatórios, prazos, multas, riscos contratuais, contradições entre documentos, perguntas de esclarecimento, conformidade com ISO/LGPD, insumos para Go/No-Go ou o diff de um adendo contra a análise anterior. Mesmo que a tarefa pareça simples, a skill traz scripts que leem PDF/Word/PPT/Excel (inclusive abas, slides e páginas ocultos ou escaneados) e geram uma matriz com citação literal e página/cláusula/célula de cada ponto. Por isso tem prioridade sobre os skills genéricos de PDF/docx/xlsx/pptx. Não use para redigir a proposta, criar o próprio RFP, traduzir, montar checklist genérico ou responder dúvidas teóricas sobre licitação.
+
+============================================================
+Iteration 2/4
+Description: Analista de bid do lado do proponente. Use esta skill SEMPRE que o usuário receber documentos de uma concorrência (RFP/RFI/RFQ, edital, termo de referência, anexos, minuta de contrato, SLA, planilha de preço, Q&A, adendo, errata), em arquivos ou pasta, e pedir qualquer extração ou análise deles. Isso inclui requisitos, habilitação/eliminatórios, prazos, multas, riscos contratuais, contradições entre documentos, perguntas de esclarecimento, conformidade com ISO/LGPD, insumos para Go/No-Go ou o diff de um adendo contra a análise anterior. Mesmo que a tarefa pareça simples, a skill traz scripts que leem PDF/Word/PPT/Excel (inclusive abas, slides e páginas ocultos ou escaneados) e geram uma matriz com citação literal e página/cláusula/célula de cada ponto. Por isso tem prioridade sobre os skills genéricos de PDF/docx/xlsx/pptx. Não use para redigir a proposta, criar o próprio RFP, traduzir, montar checklist genérico ou responder dúvidas teóricas sobre licitação.
+============================================================
+Train: 23/36 correct, precision=100% recall=28% accuracy=64% (92.1s)
+  [FAIL] rate=1/3 expected=True: matriz de conformidade da RFP de DPO as a service da Rede Fa
+  [FAIL] rate=1/3 expected=True: Preciso preparar as perguntas de esclarecimento para a conco
+  [FAIL] rate=0/3 expected=True: chegou o adendo 02 da RFP 2026-031 (pdf). compara com a anál
+  [PASS] rate=2/3 expected=True: o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arqu
+  [FAIL] rate=1/3 expected=True: tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 3
+  [FAIL] rate=0/3 expected=True: Segue em anexo o edital e o termo de referência da Prefeitur
+  [PASS] rate=0/3 expected=False: Traduz para inglês o questionário de segurança que o cliente
+  [PASS] rate=0/3 expected=False: preciso de um checklist genérico de go/no-go para o time com
+  [PASS] rate=0/3 expected=False: Vamos contratar um fornecedor de cloud e eu preciso escrever
+  [PASS] rate=0/3 expected=False: Me ajuda a escrever a seção de metodologia da nossa proposta
+  [PASS] rate=0/3 expected=False: Extrai as tabelas do relatório anual em PDF da nossa holding
+  [PASS] rate=0/3 expected=False: como funcionam as fases do pregão eletrônico na Lei 14.133? 
+Test : 12/24 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/3 expected=True: analisa o caderno técnico desse edital (pdf, algumas páginas
+  [FAIL] rate=0/3 expected=True: Can you go through this RFI from Meridian Insurance (attache
+  [FAIL] rate=0/3 expected=True: saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa 
+  [FAIL] rate=0/3 expected=True: We lost the last tender partly because we missed a hidden sc
+  [PASS] rate=0/3 expected=False: Recebemos as propostas de 3 fornecedores para o nosso RFP de
+  [PASS] rate=0/3 expected=False: Faz um gap analysis da nossa empresa contra o Anexo A da ISO
+  [PASS] rate=0/3 expected=False: resume esse contrato de limpeza predial que assinamos ano pa
+  [PASS] rate=0/3 expected=False: converte o arquivo matriz_requisitos.md (é uma tabela markdo
+
+Improving description...
+Proposed (7.7s): Matriz analítica de concorrência para quem vai disputar a vaga (lado do fornecedor). Acione esta skill quando o usuário tiver em mãos documentos de um processo de compra de um cliente (RFP, RFI, RFQ, edital, pregão, TR, anexos, minuta, planilhas, apresentações, Q&A, adendo, errata) e quiser entender o que eles exigem: requisitos, critérios de habilitação ou eliminatórios, prazos, SLAs, multas, riscos, contradições entre documentos, perguntas de esclarecimento com o trecho de origem, classificação por área e por framework (ISO, LGPD), material para Go/No-Go ou o que um adendo mudou em relação à análise anterior. Vale para um ou vários arquivos, uma pasta ou anexos, mesmo em pedidos curtos ou informais. Use antes das skills genéricas de PDF, Word, Excel e PowerPoint, porque a entrega é rastreável, com citação literal e página. Não use para escrever a proposta, elaborar o próprio RFP, traduzir, fazer checklist genérico ou explicar a legislação.
+
+============================================================
+Iteration 3/4
+Description: Matriz analítica de concorrência para quem vai disputar a vaga (lado do fornecedor). Acione esta skill quando o usuário tiver em mãos documentos de um processo de compra de um cliente (RFP, RFI, RFQ, edital, pregão, TR, anexos, minuta, planilhas, apresentações, Q&A, adendo, errata) e quiser entender o que eles exigem: requisitos, critérios de habilitação ou eliminatórios, prazos, SLAs, multas, riscos, contradições entre documentos, perguntas de esclarecimento com o trecho de origem, classificação por área e por framework (ISO, LGPD), material para Go/No-Go ou o que um adendo mudou em relação à análise anterior. Vale para um ou vários arquivos, uma pasta ou anexos, mesmo em pedidos curtos ou informais. Use antes das skills genéricas de PDF, Word, Excel e PowerPoint, porque a entrega é rastreável, com citação literal e página. Não use para escrever a proposta, elaborar o próprio RFP, traduzir, fazer checklist genérico ou explicar a legislação.
+============================================================
+Train: 21/36 correct, precision=100% recall=17% accuracy=58% (89.4s)
+  [PASS] rate=2/3 expected=True: matriz de conformidade da RFP de DPO as a service da Rede Fa
+  [FAIL] rate=0/3 expected=True: Preciso preparar as perguntas de esclarecimento para a conco
+  [FAIL] rate=0/3 expected=True: chegou o adendo 02 da RFP 2026-031 (pdf). compara com a anál
+  [FAIL] rate=1/3 expected=True: o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arqu
+  [FAIL] rate=0/3 expected=True: tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 3
+  [FAIL] rate=0/3 expected=True: Segue em anexo o edital e o termo de referência da Prefeitur
+  [PASS] rate=0/3 expected=False: Traduz para inglês o questionário de segurança que o cliente
+  [PASS] rate=0/3 expected=False: preciso de um checklist genérico de go/no-go para o time com
+  [PASS] rate=0/3 expected=False: Vamos contratar um fornecedor de cloud e eu preciso escrever
+  [PASS] rate=0/3 expected=False: Me ajuda a escrever a seção de metodologia da nossa proposta
+  [PASS] rate=0/3 expected=False: Extrai as tabelas do relatório anual em PDF da nossa holding
+  [PASS] rate=0/3 expected=False: como funcionam as fases do pregão eletrônico na Lei 14.133? 
+Test : 16/24 correct, precision=100% recall=33% accuracy=67% (0.0s)
+  [FAIL] rate=1/3 expected=True: analisa o caderno técnico desse edital (pdf, algumas páginas
+  [PASS] rate=2/3 expected=True: Can you go through this RFI from Meridian Insurance (attache
+  [FAIL] rate=1/3 expected=True: saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa 
+  [FAIL] rate=0/3 expected=True: We lost the last tender partly because we missed a hidden sc
+  [PASS] rate=0/3 expected=False: Recebemos as propostas de 3 fornecedores para o nosso RFP de
+  [PASS] rate=0/3 expected=False: Faz um gap analysis da nossa empresa contra o Anexo A da ISO
+  [PASS] rate=0/3 expected=False: resume esse contrato de limpeza predial que assinamos ano pa
+  [PASS] rate=0/3 expected=False: converte o arquivo matriz_requisitos.md (é uma tabela markdo
+
+Improving description...
+Proposed (9.5s): Leitura crítica de documentos de concorrência recebidos de um cliente, do lado de quem vai participar da disputa. Se o usuário apontar arquivos, anexos ou uma pasta de uma RFP, RFQ, RFI, edital ou pregão (inclusive TR, minuta, SLA, planilha, slides, Q&A, adendo ou errata) e pedir para tirar algo deles, use esta skill em vez de ler os arquivos por conta própria ou com as skills de PDF, Word, Excel ou PowerPoint. Exemplos: matriz de requisitos ou de conformidade, habilitação e eliminatórios, prazos, multas, riscos contratuais ou de SLA para o jurídico, contradições entre documentos, perguntas de esclarecimento ligadas ao trecho de origem, insumos para Go/No-Go, ou o que um adendo mudou em relação à análise anterior. Cada ponto sai com citação literal, página e cláusula. Não use para escrever a proposta, criar o seu próprio RFP, traduzir, montar checklist genérico ou explicar a lei de licitações em abstrato.
+
+============================================================
+Iteration 4/4
+Description: Leitura crítica de documentos de concorrência recebidos de um cliente, do lado de quem vai participar da disputa. Se o usuário apontar arquivos, anexos ou uma pasta de uma RFP, RFQ, RFI, edital ou pregão (inclusive TR, minuta, SLA, planilha, slides, Q&A, adendo ou errata) e pedir para tirar algo deles, use esta skill em vez de ler os arquivos por conta própria ou com as skills de PDF, Word, Excel ou PowerPoint. Exemplos: matriz de requisitos ou de conformidade, habilitação e eliminatórios, prazos, multas, riscos contratuais ou de SLA para o jurídico, contradições entre documentos, perguntas de esclarecimento ligadas ao trecho de origem, insumos para Go/No-Go, ou o que um adendo mudou em relação à análise anterior. Cada ponto sai com citação literal, página e cláusula. Não use para escrever a proposta, criar o seu próprio RFP, traduzir, montar checklist genérico ou explicar a lei de licitações em abstrato.
+============================================================
+Train: 19/36 correct, precision=100% recall=6% accuracy=53% (15.6s)
+  [FAIL] rate=0/3 expected=True: Preciso preparar as perguntas de esclarecimento para a conco
+  [FAIL] rate=0/3 expected=True: matriz de conformidade da RFP de DPO as a service da Rede Fa
+  [FAIL] rate=1/3 expected=True: chegou o adendo 02 da RFP 2026-031 (pdf). compara com a anál
+  [FAIL] rate=0/3 expected=True: o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arqu
+  [FAIL] rate=0/3 expected=True: tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 3
+  [FAIL] rate=0/3 expected=True: Segue em anexo o edital e o termo de referência da Prefeitur
+  [PASS] rate=0/3 expected=False: Vamos contratar um fornecedor de cloud e eu preciso escrever
+  [PASS] rate=0/3 expected=False: Traduz para inglês o questionário de segurança que o cliente
+  [PASS] rate=0/3 expected=False: preciso de um checklist genérico de go/no-go para o time com
+  [PASS] rate=0/3 expected=False: Me ajuda a escrever a seção de metodologia da nossa proposta
+  [PASS] rate=0/3 expected=False: como funcionam as fases do pregão eletrônico na Lei 14.133? 
+  [PASS] rate=0/3 expected=False: Extrai as tabelas do relatório anual em PDF da nossa holding
+Test : 12/24 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/3 expected=True: analisa o caderno técnico desse edital (pdf, algumas páginas
+  [FAIL] rate=0/3 expected=True: Can you go through this RFI from Meridian Insurance (attache
+  [FAIL] rate=0/3 expected=True: saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa 
+  [FAIL] rate=0/3 expected=True: We lost the last tender partly because we missed a hidden sc
+  [PASS] rate=0/3 expected=False: Recebemos as propostas de 3 fornecedores para o nosso RFP de
+  [PASS] rate=0/3 expected=False: Faz um gap analysis da nossa empresa contra o Anexo A da ISO
+  [PASS] rate=0/3 expected=False: resume esse contrato de limpeza predial que assinamos ano pa
+  [PASS] rate=0/3 expected=False: converte o arquivo matriz_requisitos.md (é uma tabela markdo
+
+Max iterations reached (4).
+
+Exit reason: max_iterations (4)
+Best score: 5/8 (iteration 3)
+
+Report: /var/folders/6h/mc5_c5y97k96x1s1mxwcdxkw0000gn/T/skill_description_report_rfp-matriz-analitica_20261019_155359.html
+Results saved to: /Users/tfgcaixeta/Library/Application Support/Claude/scratch-workspaces/3d6c3529-b878-4c64-a5d2-9aebd2f46221/e9920352-825f-4023-a292-91ef7c26e07d/scratch-2026-10-17-46e619/skills/rfp-matriz-analitica-workspace/descricao/resultados/2026-10-19_155359

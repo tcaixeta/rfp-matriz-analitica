@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Set Review - rfp-matriz-analitica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lora', Georgia, serif; background: #faf9f5; padding: 2rem; color: #141413; }
+    h1 { font-family: 'Poppins', sans-serif; margin-bottom: 0.5rem; font-size: 1.5rem; }
+    .description { color: #b0aea5; margin-bottom: 1.5rem; font-style: italic; max-width: 900px; }
+    .controls { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
+    .btn { font-family: 'Poppins', sans-serif; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem; font-weight: 500; }
+    .btn-add { background: #6a9bcc; color: white; }
+    .btn-add:hover { background: #5889b8; }
+    .btn-export { background: #d97757; color: white; }
+    .btn-export:hover { background: #c4613f; }
+    table { width: 100%; max-width: 1100px; border-collapse: collapse; background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th { font-family: 'Poppins', sans-serif; background: #141413; color: #faf9f5; padding: 0.75rem 1rem; text-align: left; font-size: 0.875rem; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid #e8e6dc; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf9f5; }
+    tr:hover td { background: #f3f1ea; }
+    .section-header td { background: #e8e6dc; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.8rem; color: #141413; text-transform: uppercase; letter-spacing: 0.05em; }
+    .query-input { width: 100%; padding: 0.4rem; border: 1px solid #e8e6dc; border-radius: 4px; font-size: 0.875rem; font-family: 'Lora', Georgia, serif; resize: vertical; min-height: 60px; }
+    .query-input:focus { outline: none; border-color: #d97757; box-shadow: 0 0 0 2px rgba(217,119,87,0.15); }
+    .toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle .slider { position: absolute; inset: 0; background: #b0aea5; border-radius: 24px; cursor: pointer; transition: 0.2s; }
+    .toggle .slider::before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.2s; }
+    .toggle input:checked + .slider { background: #d97757; }
+    .toggle input:checked + .slider::before { transform: translateX(20px); }
+    .btn-delete { background: #c44; color: white; padding: 0.3rem 0.6rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-family: 'Poppins', sans-serif; }
+    .btn-delete:hover { background: #a33; }
+    .summary { margin-top: 1rem; color: #b0aea5; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <h1>Eval Set Review: <span id="skill-name">rfp-matriz-analitica</span></h1>
+  <p class="description">Current description: <span id="skill-desc">Analisa documentos de concorrência (RFP, RFI, RFQ, edital, termo de referência, anexos, minuta, Q&amp;A/esclarecimentos, adendos, questionários, apresentações; em PDF, Word, PowerPoint ou Excel) do ponto de vista do proponente e gera uma matriz analítica rastreável de 23 colunas: requisitos, critérios eliminatórios, prazos, SLAs, multas, premissas, contradições, ambiguidades, lacunas e riscos, cada um com citação literal, documento, seção e página/slide/célula, criticidade Severidade × Probabilidade, framework (ISO 27001, NIST CSF, ITIL, LGPD...) e pergunta de esclarecimento. Use sempre que o usuário enviar documentos de licitação, concorrência ou bid e pedir para analisar, extrair requisitos, montar matriz de conformidade, levantar riscos e contradições, preparar o Q&amp;A ou apoiar Go/No-Go — mesmo sem dizer &quot;RFP&quot; ou &quot;matriz&quot;. Use também em rodadas incrementais (novo Q&amp;A, adendo, errata).</span></p>
+
+  <div class="controls">
+    <button class="btn btn-add" onclick="addRow()">+ Add Query</button>
+    <button class="btn btn-export" onclick="exportEvalSet()">Export Eval Set</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:65%">Query</th>
+        <th style="width:18%">Should Trigger</th>
+        <th style="width:10%">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="eval-body"></tbody>
+  </table>
+
+  <p class="summary" id="summary"></p>
+
+  <script>
+    const EVAL_DATA = [{"query": "tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 38 pág + anexo técnico em word + planilha de perguntas em excel). preciso montar a matriz de requisitos pra reunião de go/no-go de quinta, com o que é eliminatório, prazos, multas e o que tá contraditório entre os docs. consegue?", "should_trigger": true}, {"query": "Segue em anexo o edital e o termo de referência da Prefeitura de Campo Verde para outsourcing de impressão. Quero todos os critérios de habilitação, as penalidades e os pontos em que o TR contradiz o edital, com a página de cada um.", "should_trigger": true}, {"query": "saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa Clara (QA_rodada2.xlsx). já tenho a matriz da rodada 1 em ~/bids/santa-clara/matriz_v1.md. atualiza só o que mudou e marca o que foi alterado", "should_trigger": true}, {"query": "Can you go through this RFI from Meridian Insurance (attached PDF + the vendor questionnaire xlsx) and pull out every requirement, the scoring criteria and anything ambiguous we should raise in the Q&A? We're bidding for a managed SOC.", "should_trigger": true}, {"query": "o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arquivos (pptx do kickoff, minuta de contrato, anexo de SLA, planilha de preço...). preciso de um levantamento de riscos contratuais e de SLA pra mandar pro jurídico, rastreando cláusula por cláusula de onde saiu cada ponto", "should_trigger": true}, {"query": "Preciso preparar as perguntas de esclarecimento para a concorrência do Banco Litoral — o prazo de perguntas fecha sexta. Os documentos estão em /Users/ana/Downloads/concorrencia_litoral/. Quero cada pergunta amarrada ao trecho exato do documento que gerou a dúvida.", "should_trigger": true}, {"query": "matriz de conformidade da RFP de DPO as a service da Rede Farmacêutica Viva, são 3 pdfs. classifica cada item (técnico, comercial, jurídico...) e associa a framework quando fizer sentido (iso 27701, lgpd)", "should_trigger": true}, {"query": "analisa o caderno técnico desse edital (pdf, algumas páginas são escaneadas) e me diz o que é obrigatório x desejável, o que pesa na nota técnica, os prazos e o que pode desclassificar a gente", "should_trigger": true}, {"query": "We lost the last tender partly because we missed a hidden scoring tab in the client's spreadsheet. For the attached Northwind Logistics RFP package, do a full decomposition with traceability (doc, section, page/cell) so nothing slips through.", "should_trigger": true}, {"query": "chegou o adendo 02 da RFP 2026-031 (pdf). compara com a análise que já fizemos dos documentos originais e me mostra o que foi alterado, substituído ou ficou contraditório", "should_trigger": true}, {"query": "Me ajuda a escrever a seção de metodologia da nossa proposta técnica para o RFP de SOC da Transportadora Rota Norte? Máximo de 5 páginas, tom formal, destacando nossa certificação ISO 27001.", "should_trigger": false}, {"query": "Vamos contratar um fornecedor de cloud e eu preciso escrever o nosso próprio RFP. Quais seções um bom RFP deve ter e que critérios de avaliação você sugere?", "should_trigger": false}, {"query": "resume esse contrato de limpeza predial que assinamos ano passado com a Brilho Serviços: quais são as multas, o prazo de rescisão e o reajuste?", "should_trigger": false}, {"query": "Recebemos as propostas de 3 fornecedores para o nosso RFP de ERP. Monta uma tabela comparando preço, prazo de implantação e aderência aos requisitos para eu levar ao comitê.", "should_trigger": false}, {"query": "converte o arquivo matriz_requisitos.md (é uma tabela markdown grande) em uma planilha excel com filtro e cor por coluna de prioridade", "should_trigger": false}, {"query": "Faz um gap analysis da nossa empresa contra o Anexo A da ISO 27001:2022 usando a política de segurança e o inventário de controles que estão anexos.", "should_trigger": false}, {"query": "como funcionam as fases do pregão eletrônico na Lei 14.133? quando abre o prazo para impugnação do edital?", "should_trigger": false}, {"query": "preciso de um checklist genérico de go/no-go para o time comercial decidir se entra ou não em uma licitação. algo de uma página", "should_trigger": false}, {"query": "Traduz para inglês o questionário de segurança que o cliente mandou (security_questionnaire.xlsx), mantendo as fórmulas e a formatação das abas.", "should_trigger": false}, {"query": "Extrai as tabelas do relatório anual em PDF da nossa holding (páginas 40 a 55, demonstrativos financeiros) e coloca em uma planilha.", "should_trigger": false}];
+
+    let evalItems = [...EVAL_DATA];
+
+    function render() {
+      const tbody = document.getElementById('eval-body');
+      tbody.innerHTML = '';
+
+      // Sort: should-trigger first, then should-not-trigger
+      const sorted = evalItems
+        .map((item, origIdx) => ({ ...item, origIdx }))
+        .sort((a, b) => (b.should_trigger ? 1 : 0) - (a.should_trigger ? 1 : 0));
+
+      let lastGroup = null;
+      sorted.forEach(item => {
+        const group = item.should_trigger ? 'trigger' : 'no-trigger';
+        if (group !== lastGroup) {
+          const headerRow = document.createElement('tr');
+          headerRow.className = 'section-header';
+          headerRow.innerHTML = `<td colspan="3">${item.should_trigger ? 'Should Trigger' : 'Should NOT Trigger'}</td>`;
+          tbody.appendChild(headerRow);
+          lastGroup = group;
+        }
+
+        const idx = item.origIdx;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><textarea class="query-input" onchange="updateQuery(${idx}, this.value)">${escapeHtml(item.query)}</textarea></td>
+          <td>
+            <label class="toggle">
+              <input type="checkbox" ${item.should_trigger ? 'checked' : ''} onchange="updateTrigger(${idx}, this.checked)">
+              <span class="slider"></span>
+            </label>
+            <span style="margin-left:8px;font-size:0.8rem;color:#b0aea5">${item.should_trigger ? 'Yes' : 'No'}</span>
+          </td>
+          <td><button class="btn-delete" onclick="deleteRow(${idx})">Delete</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateSummary();
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function updateQuery(idx, value) { evalItems[idx].query = value; updateSummary(); }
+    function updateTrigger(idx, value) { evalItems[idx].should_trigger = value; render(); }
+    function deleteRow(idx) { evalItems.splice(idx, 1); render(); }
+
+    function addRow() {
+      evalItems.push({ query: '', should_trigger: true });
+      render();
+      const inputs = document.querySelectorAll('.query-input');
+      inputs[inputs.length - 1].focus();
+    }
+
+    function updateSummary() {
+      const trigger = evalItems.filter(i => i.should_trigger).length;
+      const noTrigger = evalItems.filter(i => !i.should_trigger).length;
+      document.getElementById('summary').textContent =
+        `${evalItems.length} queries total: ${trigger} should trigger, ${noTrigger} should not trigger`;
+    }
+
+    function exportEvalSet() {
+      const valid = evalItems.filter(i => i.query.trim() !== '');
+      const data = valid.map(i => ({ query: i.query.trim(), should_trigger: i.should_trigger }));
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'eval_set.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    render();
+  </script>
+</body>
+</html>

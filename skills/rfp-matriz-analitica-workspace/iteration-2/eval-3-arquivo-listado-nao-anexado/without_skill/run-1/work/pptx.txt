@@ -1,0 +1,26 @@
+=== SLIDE 1 ===
+Apresentação do Ambiente Atual
+Workshop com proponentes — RFP nº 2026-017 — 22/10/2026
+Banco Horizonte Fictício S.A.
+DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+=== SLIDE 2 ===
+Números do ambiente
+6.200 usuários ativos
+850 servidores (70% Windows, 30% Linux)
+2 data centers próprios (São Paulo e Campinas)
+Workloads em 2 nuvens públicas
+=== SLIDE 3 ===
+Ferramentas atuais
+SIEM legado — contrato encerra em 31/01/2027, sem possibilidade de prorrogação
+IAM: Active Directory + scripts internos
+Não há solução de PAM
+=== SLIDE 4 ===
+Desafios
+Cerca de 1.200 alertas por dia
+70% de falsos positivos
+Meta: reduzir os falsos positivos para 10% no primeiro trimestre de operação
+=== SLIDE 5 ===
+Expectativas para o novo serviço
+Migração de 24 meses de logs históricos do SIEM legado para a nova plataforma
+Visão unificada de riscos para a diretoria
+[NOTAS] Lembrar os proponentes: as subsidiárias Horizonte Seguros e Horizonte Investimentos (cerca de 900 usuários adicionais) também deverão ser incluídas no escopo.

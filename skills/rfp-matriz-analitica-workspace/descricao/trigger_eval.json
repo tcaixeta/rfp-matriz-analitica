@@ -1,0 +1,82 @@
+[
+  {
+    "query": "tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 38 pág + anexo técnico em word + planilha de perguntas em excel). preciso montar a matriz de requisitos pra reunião de go/no-go de quinta, com o que é eliminatório, prazos, multas e o que tá contraditório entre os docs. consegue?",
+    "should_trigger": true
+  },
+  {
+    "query": "Segue em anexo o edital e o termo de referência da Prefeitura de Campo Verde para outsourcing de impressão. Quero todos os critérios de habilitação, as penalidades e os pontos em que o TR contradiz o edital, com a página de cada um.",
+    "should_trigger": true
+  },
+  {
+    "query": "saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa Clara (QA_rodada2.xlsx). já tenho a matriz da rodada 1 em ~/bids/santa-clara/matriz_v1.md. atualiza só o que mudou e marca o que foi alterado",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you go through this RFI from Meridian Insurance (attached PDF + the vendor questionnaire xlsx) and pull out every requirement, the scoring criteria and anything ambiguous we should raise in the Q&A? We're bidding for a managed SOC.",
+    "should_trigger": true
+  },
+  {
+    "query": "o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arquivos (pptx do kickoff, minuta de contrato, anexo de SLA, planilha de preço...). preciso de um levantamento de riscos contratuais e de SLA pra mandar pro jurídico, rastreando cláusula por cláusula de onde saiu cada ponto",
+    "should_trigger": true
+  },
+  {
+    "query": "Preciso preparar as perguntas de esclarecimento para a concorrência do Banco Litoral — o prazo de perguntas fecha sexta. Os documentos estão em /Users/ana/Downloads/concorrencia_litoral/. Quero cada pergunta amarrada ao trecho exato do documento que gerou a dúvida.",
+    "should_trigger": true
+  },
+  {
+    "query": "matriz de conformidade da RFP de DPO as a service da Rede Farmacêutica Viva, são 3 pdfs. classifica cada item (técnico, comercial, jurídico...) e associa a framework quando fizer sentido (iso 27701, lgpd)",
+    "should_trigger": true
+  },
+  {
+    "query": "analisa o caderno técnico desse edital (pdf, algumas páginas são escaneadas) e me diz o que é obrigatório x desejável, o que pesa na nota técnica, os prazos e o que pode desclassificar a gente",
+    "should_trigger": true
+  },
+  {
+    "query": "We lost the last tender partly because we missed a hidden scoring tab in the client's spreadsheet. For the attached Northwind Logistics RFP package, do a full decomposition with traceability (doc, section, page/cell) so nothing slips through.",
+    "should_trigger": true
+  },
+  {
+    "query": "chegou o adendo 02 da RFP 2026-031 (pdf). compara com a análise que já fizemos dos documentos originais e me mostra o que foi alterado, substituído ou ficou contraditório",
+    "should_trigger": true
+  },
+  {
+    "query": "Me ajuda a escrever a seção de metodologia da nossa proposta técnica para o RFP de SOC da Transportadora Rota Norte? Máximo de 5 páginas, tom formal, destacando nossa certificação ISO 27001.",
+    "should_trigger": false
+  },
+  {
+    "query": "Vamos contratar um fornecedor de cloud e eu preciso escrever o nosso próprio RFP. Quais seções um bom RFP deve ter e que critérios de avaliação você sugere?",
+    "should_trigger": false
+  },
+  {
+    "query": "resume esse contrato de limpeza predial que assinamos ano passado com a Brilho Serviços: quais são as multas, o prazo de rescisão e o reajuste?",
+    "should_trigger": false
+  },
+  {
+    "query": "Recebemos as propostas de 3 fornecedores para o nosso RFP de ERP. Monta uma tabela comparando preço, prazo de implantação e aderência aos requisitos para eu levar ao comitê.",
+    "should_trigger": false
+  },
+  {
+    "query": "converte o arquivo matriz_requisitos.md (é uma tabela markdown grande) em uma planilha excel com filtro e cor por coluna de prioridade",
+    "should_trigger": false
+  },
+  {
+    "query": "Faz um gap analysis da nossa empresa contra o Anexo A da ISO 27001:2022 usando a política de segurança e o inventário de controles que estão anexos.",
+    "should_trigger": false
+  },
+  {
+    "query": "como funcionam as fases do pregão eletrônico na Lei 14.133? quando abre o prazo para impugnação do edital?",
+    "should_trigger": false
+  },
+  {
+    "query": "preciso de um checklist genérico de go/no-go para o time comercial decidir se entra ou não em uma licitação. algo de uma página",
+    "should_trigger": false
+  },
+  {
+    "query": "Traduz para inglês o questionário de segurança que o cliente mandou (security_questionnaire.xlsx), mantendo as fórmulas e a formatação das abas.",
+    "should_trigger": false
+  },
+  {
+    "query": "Extrai as tabelas do relatório anual em PDF da nossa holding (páginas 40 a 55, demonstrativos financeiros) e coloca em uma planilha.",
+    "should_trigger": false
+  }
+]

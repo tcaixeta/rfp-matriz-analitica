@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>rfp-matriz-analitica — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>rfp-matriz-analitica — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> Analisa documentos de concorrência (RFP, RFI, RFQ, edital, termo de referência, anexos, minuta, Q&amp;A/esclarecimentos, adendos, questionários, apresentações; em PDF, Word, PowerPoint ou Excel) do ponto de vista do proponente e gera uma matriz analítica rastreável de 23 colunas: requisitos, critérios eliminatórios, prazos, SLAs, multas, premissas, contradições, ambiguidades, lacunas e riscos, cada um com citação literal, documento, seção e página/slide/célula, criticidade Severidade × Probabilidade, framework (ISO 27001, NIST CSF, ITIL, LGPD...) e pergunta de esclarecimento. Use sempre que o usuário enviar documentos de licitação, concorrência ou bid e pedir para analisar, extrair requisitos, montar matriz de conformidade, levantar riscos e contradições, preparar o Q&amp;A ou apoiar Go/No-Go — mesmo sem dizer &quot;RFP&quot; ou &quot;matriz&quot;. Use também em rodadas incrementais (novo Q&amp;A, adendo, errata).</p>
+        <p class="best"><strong>Best:</strong> Matriz analítica de concorrência para quem vai disputar a vaga (lado do fornecedor). Acione esta skill quando o usuário tiver em mãos documentos de um processo de compra de um cliente (RFP, RFI, RFQ, edital, pregão, TR, anexos, minuta, planilhas, apresentações, Q&amp;A, adendo, errata) e quiser entender o que eles exigem: requisitos, critérios de habilitação ou eliminatórios, prazos, SLAs, multas, riscos, contradições entre documentos, perguntas de esclarecimento com o trecho de origem, classificação por área e por framework (ISO, LGPD), material para Go/No-Go ou o que um adendo mudou em relação à análise anterior. Vale para um ou vários arquivos, uma pasta ou anexos, mesmo em pedidos curtos ou informais. Use antes das skills genéricas de PDF, Word, Excel e PowerPoint, porque a entrega é rastreável, com citação literal e página. Não use para escrever a proposta, elaborar o próprio RFP, traduzir, fazer checklist genérico ou explicar a legislação.</p>
+        <p><strong>Best Score:</strong> 5/8 (test)</p>
+        <p><strong>Iterations:</strong> 4 | <strong>Train:</strong> 12 | <strong>Test:</strong> 8</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">Preciso preparar as perguntas de esclarecimento para a concorrência do Banco Litoral — o prazo de perguntas fecha sexta. Os documentos estão em /Users/ana/Downloads/concorrencia_litoral/. Quero cada pergunta amarrada ao trecho exato do documento que gerou a dúvida.</th>
+                <th class="positive-col">matriz de conformidade da RFP de DPO as a service da Rede Farmacêutica Viva, são 3 pdfs. classifica cada item (técnico, comercial, jurídico...) e associa a framework quando fizer sentido (iso 27701, lgpd)</th>
+                <th class="positive-col">chegou o adendo 02 da RFP 2026-031 (pdf). compara com a análise que já fizemos dos documentos originais e me mostra o que foi alterado, substituído ou ficou contraditório</th>
+                <th class="positive-col">o comercial me mandou a pasta RFQ_Datacenter_Colo com 6 arquivos (pptx do kickoff, minuta de contrato, anexo de SLA, planilha de preço...). preciso de um levantamento de riscos contratuais e de SLA pra mandar pro jurídico, rastreando cláusula por cláusula de onde saiu cada ponto</th>
+                <th class="positive-col">tô com o RFP 045/2026 da Transportadora Rota Norte (pdf de 38 pág + anexo técnico em word + planilha de perguntas em excel). preciso montar a matriz de requisitos pra reunião de go/no-go de quinta, com o que é eliminatório, prazos, multas e o que tá contraditório entre os docs. consegue?</th>
+                <th class="positive-col">Segue em anexo o edital e o termo de referência da Prefeitura de Campo Verde para outsourcing de impressão. Quero todos os critérios de habilitação, as penalidades e os pontos em que o TR contradiz o edital, com a página de cada um.</th>
+                <th class="negative-col">Traduz para inglês o questionário de segurança que o cliente mandou (security_questionnaire.xlsx), mantendo as fórmulas e a formatação das abas.</th>
+                <th class="negative-col">preciso de um checklist genérico de go/no-go para o time comercial decidir se entra ou não em uma licitação. algo de uma página</th>
+                <th class="negative-col">Vamos contratar um fornecedor de cloud e eu preciso escrever o nosso próprio RFP. Quais seções um bom RFP deve ter e que critérios de avaliação você sugere?</th>
+                <th class="negative-col">Me ajuda a escrever a seção de metodologia da nossa proposta técnica para o RFP de SOC da Transportadora Rota Norte? Máximo de 5 páginas, tom formal, destacando nossa certificação ISO 27001.</th>
+                <th class="negative-col">Extrai as tabelas do relatório anual em PDF da nossa holding (páginas 40 a 55, demonstrativos financeiros) e coloca em uma planilha.</th>
+                <th class="negative-col">como funcionam as fases do pregão eletrônico na Lei 14.133? quando abre o prazo para impugnação do edital?</th>
+                <th class="test-col positive-col">analisa o caderno técnico desse edital (pdf, algumas páginas são escaneadas) e me diz o que é obrigatório x desejável, o que pesa na nota técnica, os prazos e o que pode desclassificar a gente</th>
+                <th class="test-col positive-col">Can you go through this RFI from Meridian Insurance (attached PDF + the vendor questionnaire xlsx) and pull out every requirement, the scoring criteria and anything ambiguous we should raise in the Q&amp;A? We&#x27;re bidding for a managed SOC.</th>
+                <th class="test-col positive-col">saiu a rodada 2 de esclarecimentos da RFP do Hospital Santa Clara (QA_rodada2.xlsx). já tenho a matriz da rodada 1 em ~/bids/santa-clara/matriz_v1.md. atualiza só o que mudou e marca o que foi alterado</th>
+                <th class="test-col positive-col">We lost the last tender partly because we missed a hidden scoring tab in the client&#x27;s spreadsheet. For the attached Northwind Logistics RFP package, do a full decomposition with traceability (doc, section, page/cell) so nothing slips through.</th>
+                <th class="test-col negative-col">Recebemos as propostas de 3 fornecedores para o nosso RFP de ERP. Monta uma tabela comparando preço, prazo de implantação e aderência aos requisitos para eu levar ao comitê.</th>
+                <th class="test-col negative-col">Faz um gap analysis da nossa empresa contra o Anexo A da ISO 27001:2022 usando a política de segurança e o inventário de controles que estão anexos.</th>
+                <th class="test-col negative-col">resume esse contrato de limpeza predial que assinamos ano passado com a Brilho Serviços: quais são as multas, o prazo de rescisão e o reajuste?</th>
+                <th class="test-col negative-col">converte o arquivo matriz_requisitos.md (é uma tabela markdown grande) em uma planilha excel com filtro e cor por coluna de prioridade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="">
+                <td>1</td>
+                <td><span class="score score-ok">20/36</span></td>
+                <td><span class="score score-ok">12/24</span></td>
+                <td class="description">Use esta skill sempre que o usuário estiver do lado do fornecedor/proponente num processo de compra (RFP, RFI, RFQ, edital, licitação, pregão, cotação, bid) e quiser destrinchar os documentos recebidos do cliente, em qualquer formato (PDF, Word, PPT, Excel) ou pasta. Prefira-a aos skills genéricos de PDF/Word/Excel/PowerPoint quando o arquivo for de concorrência. Exemplos de pedido: listar requisitos ou critérios de habilitação/eliminatórios; matriz de conformidade ou de requisitos; mapear prazos, SLAs, multas e penalidades; levantar riscos contratuais para o jurídico; achar contradições entre edital, TR, anexos e minuta; redigir perguntas de esclarecimento ligadas ao trecho de origem; classificar itens e associar a frameworks (ISO, LGPD, NIST); preparar a reunião de Go/No-Go; comparar adendo, errata ou novo Q&amp;A com uma análise já feita. Entrega uma matriz rastreável com citação e página. Não use para escrever a proposta, criar um RFP próprio, traduzir ou tirar dúvidas teóricas sobre a lei.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>2</td>
+                <td><span class="score score-ok">23/36</span></td>
+                <td><span class="score score-ok">12/24</span></td>
+                <td class="description">Analista de bid do lado do proponente. Use esta skill SEMPRE que o usuário receber documentos de uma concorrência (RFP/RFI/RFQ, edital, termo de referência, anexos, minuta de contrato, SLA, planilha de preço, Q&amp;A, adendo, errata), em arquivos ou pasta, e pedir qualquer extração ou análise deles. Isso inclui requisitos, habilitação/eliminatórios, prazos, multas, riscos contratuais, contradições entre documentos, perguntas de esclarecimento, conformidade com ISO/LGPD, insumos para Go/No-Go ou o diff de um adendo contra a análise anterior. Mesmo que a tarefa pareça simples, a skill traz scripts que leem PDF/Word/PPT/Excel (inclusive abas, slides e páginas ocultos ou escaneados) e geram uma matriz com citação literal e página/cláusula/célula de cada ponto. Por isso tem prioridade sobre os skills genéricos de PDF/docx/xlsx/pptx. Não use para redigir a proposta, criar o próprio RFP, traduzir, montar checklist genérico ou responder dúvidas teóricas sobre licitação.</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">2/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="best-row">
+                <td>3</td>
+                <td><span class="score score-ok">21/36</span></td>
+                <td><span class="score score-ok">16/24</span></td>
+                <td class="description">Matriz analítica de concorrência para quem vai disputar a vaga (lado do fornecedor). Acione esta skill quando o usuário tiver em mãos documentos de um processo de compra de um cliente (RFP, RFI, RFQ, edital, pregão, TR, anexos, minuta, planilhas, apresentações, Q&amp;A, adendo, errata) e quiser entender o que eles exigem: requisitos, critérios de habilitação ou eliminatórios, prazos, SLAs, multas, riscos, contradições entre documentos, perguntas de esclarecimento com o trecho de origem, classificação por área e por framework (ISO, LGPD), material para Go/No-Go ou o que um adendo mudou em relação à análise anterior. Vale para um ou vários arquivos, uma pasta ou anexos, mesmo em pedidos curtos ou informais. Use antes das skills genéricas de PDF, Word, Excel e PowerPoint, porque a entrega é rastreável, com citação literal e página. Não use para escrever a proposta, elaborar o próprio RFP, traduzir, fazer checklist genérico ou explicar a legislação.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">2/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">2/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>4</td>
+                <td><span class="score score-ok">19/36</span></td>
+                <td><span class="score score-ok">12/24</span></td>
+                <td class="description">Leitura crítica de documentos de concorrência recebidos de um cliente, do lado de quem vai participar da disputa. Se o usuário apontar arquivos, anexos ou uma pasta de uma RFP, RFQ, RFI, edital ou pregão (inclusive TR, minuta, SLA, planilha, slides, Q&amp;A, adendo ou errata) e pedir para tirar algo deles, use esta skill em vez de ler os arquivos por conta própria ou com as skills de PDF, Word, Excel ou PowerPoint. Exemplos: matriz de requisitos ou de conformidade, habilitação e eliminatórios, prazos, multas, riscos contratuais ou de SLA para o jurídico, contradições entre documentos, perguntas de esclarecimento ligadas ao trecho de origem, insumos para Go/No-Go, ou o que um adendo mudou em relação à análise anterior. Cada ponto sai com citação literal, página e cláusula. Não use para escrever a proposta, criar o seu próprio RFP, traduzir, montar checklist genérico ou explicar a lei de licitações em abstrato.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>

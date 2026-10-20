@@ -1,0 +1,33 @@
+
+===== ABA Instruções (visible) =====
+Questionário Técnico e Respostas aos Esclarecimentos — RFP nº 2026-017
+O preenchimento de todas as abas deste arquivo é obrigatório. Questionários incompletos serão desclassificados.
+DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+
+===== ABA Q&A Rodada 1 (visible) =====
+Nº | Data | Documento / Item | Pergunta | Resposta
+1 | 12/11/2026 | RFP, item 3.1 | Qual a data limite para entrega das propostas? | A data de entrega das propostas fica prorrogada para 27/11/2026, até as 18h.
+2 | 12/11/2026 | RFP, item 5.1 c | É permitido operar o SOC a partir de outro país? | Não. O SOC deverá estar localizado em território nacional.
+3 | 12/11/2026 | Anexo I, item 1.4 | Qual a volumetria de eventos por segundo (EPS) a considerar? | A volumetria será informada somente ao proponente vencedor.
+4 | 12/11/2026 | RFP, item 7.4 | As multas possuem limite máximo? | As condições do item 7 permanecem inalteradas.
+5 | 12/11/2026 | RFP, item 2.1 | Qual o número de usuários a considerar para dimensionamento? | Considerar 5.000 usuários.
+6 | 12/11/2026 | Anexo I, item 5.2 | Os analistas de nível 1 podem atuar remotamente? | Sim, desde que em território nacional.
+
+===== ABA Questionário Técnico (visible) =====
+ID | Requisito | Obrigatório | Resposta do proponente (Atende / Não atende / Parcial) | Comentários
+QT-01 | Possui certificação ISO/IEC 27001 com escopo que inclua os serviços de SOC? | Sim |  | 
+QT-02 | Oferece integração nativa com plataforma SOAR? | Não |  | 
+QT-03 | Retém os logs online por no mínimo 12 meses? | Sim |  | 
+QT-04 | Atende aos requisitos da Resolução CMN nº 4.893/2021? | Sim |  | 
+QT-05 | Oferece serviço de threat intelligence? | Não |  | 
+QT-06 | Possui equipe com certificações reconhecidas pelo mercado? | Sim |  | 
+
+===== ABA Pesos (hidden) =====
+ID | Peso
+QT-01 | 3
+QT-02 | 1
+QT-03 | 2
+QT-04 | 3
+QT-05 | 2
+QT-06 | 2
+Requisitos não obrigatórios respondidos como 'Não atende' reduzem a Nota Técnica em 2 (dois) pontos cada. | 

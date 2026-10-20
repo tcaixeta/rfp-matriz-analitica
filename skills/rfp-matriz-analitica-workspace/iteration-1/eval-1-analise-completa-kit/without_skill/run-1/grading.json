@@ -1,0 +1,200 @@
+{
+  "expectations": [
+    {
+      "text": "[Formato] A matriz tem 23 colunas em todas as linhas e IDs únicos no formato Dnn-nnn",
+      "passed": false,
+      "evidence": "0 linhas válidas, 0 com nº de colunas errado, IDs únicos: True"
+    },
+    {
+      "text": "[Formato] Toda Criticidade é igual a Severidade × Probabilidade e respeita a regra da Severidade 5",
+      "passed": true,
+      "evidence": "0 itens avaliados conferidos"
+    },
+    {
+      "text": "[Formato] Toda Probabilidade diferente de 3 tem justificativa na Descrição analítica",
+      "passed": true,
+      "evidence": "todas justificadas"
+    },
+    {
+      "text": "[Formato] No máximo cerca de 25% dos itens avaliados são Crítica (criticidade calibrada)",
+      "passed": false,
+      "evidence": "0 de 0 (100%) como Crítica"
+    },
+    {
+      "text": "[Formato] A página 6 do PDF (Anexo III, digitalizada) foi lida por OCR ou visão",
+      "passed": false,
+      "evidence": "linhas com localizador p. 6 (OCR): nenhuma linha"
+    },
+    {
+      "text": "[Formato] A declaração do Anexo III (assinatura sob pena de inabilitação) foi registrada como critério eliminatório",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A contradição entre dados exclusivamente no Brasil (Anexo III) e nuvem em região livre (Anexo I) foi registrada",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A contradição do prazo de transição (30 × 60 dias) foi registrada",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A divergência de retenção de logs (12 meses × 5 anos) foi registrada como Contradição ou Ambiguidade",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A contradição na pontuação técnica (critérios somam 65, máximo declarado 60) foi registrada",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A divergência da base de usuários (4.500 × 6.200) foi registrada como Contradição",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] As notas do apresentador do slide 5 (inclusão das subsidiárias) foram analisadas",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A aba oculta 'Pesos' e a regra de desconto de 2 pontos foram analisadas",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] O Anexo IV (citado e não fornecido) foi registrado como Lacuna com criticidade",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A matriz de classificação de criticidade do Contratante foi registrada como Lacuna com criticidade",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] A ausência de ordem de precedência entre documentos foi registrada como Lacuna",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] O prazo de entrega original (20/11/2026) está marcado como Alterado pela resposta do Q&A",
+      "passed": false,
+      "evidence": "nenhuma linha"
+    },
+    {
+      "text": "[Formato] Nenhum item associa a Lei 14.133/2021 (contratação privada)",
+      "passed": true,
+      "evidence": "nenhuma associação"
+    },
+    {
+      "text": "[Formato] Nenhum controle ISO/IEC 27001 usa a numeração da versão 2013 (A.9 a A.18)",
+      "passed": true,
+      "evidence": "nenhum"
+    },
+    {
+      "text": "[Formato] O parágrafo institucional (§1.1, 'fundado em 1987') não virou item",
+      "passed": true,
+      "evidence": "não extraído"
+    },
+    {
+      "text": "[Formato] Os localizadores do PDF trazem página física e impressa (ex.: 'p. 2 (impressa: 1)')",
+      "passed": false,
+      "evidence": "0 de 0 com página impressa"
+    },
+    {
+      "text": "[Formato] O status final ✅ ANÁLISE CONCLUÍDA está presente e informa o total correto de itens",
+      "passed": false,
+      "evidence": "status final ausente"
+    },
+    {
+      "text": "[Conteúdo] A declaração do Anexo III (página 6, só imagem) foi lida e tratada como causa de inabilitação",
+      "passed": true,
+      "evidence": "| Anexo III — Declaração de Localização de Dados | Não é citado no corpo da RFP. Aparece apenas como imagem na pág. 6 do PDF. | Recebido só em imagem digitaliza"
+    },
+    {
+      "text": "[Conteúdo] O conflito entre dados só no Brasil (Anexo III) e SIEM em nuvem de região livre (Anexo I) foi apontado",
+      "passed": true,
+      "evidence": "| **C-04** | **Localização dos dados / SIEM em nuvem** | AT 1.2: SIEM em nuvem pública \"em **região de livre escolha** do proponente\". Anexo III (imagem, pág. 6"
+    },
+    {
+      "text": "[Conteúdo] O conflito do prazo de transição (30 × 60 dias) foi apontado",
+      "passed": true,
+      "evidence": "| Conclusão da transição | 30 dias **ou** 60 dias após a assinatura | [RFP, 3.2] x [AT, 4.1] | **Conflito** (ver C-03). A data de assinatura não foi informada. "
+    },
+    {
+      "text": "[Conteúdo] O conflito de retenção de logs (12 meses × 5 anos) foi apontado",
+      "passed": true,
+      "evidence": "| **C-05** | **Retenção de logs** | AT 1.3: no mínimo 12 meses. QT-03: 12 meses \"online\". AT 1.6: **5 anos** para auditoria. APR 5: migrar **24 meses** de histó"
+    },
+    {
+      "text": "[Conteúdo] A inconsistência da pontuação técnica (soma 65 × máximo 60) foi apontada",
+      "passed": true,
+      "evidence": "| R-38 | Nota técnica máxima de 60 pontos, mas os critérios somam 65 | [RFP, 6.2] | — | — | **A** | Inconsistência aritmética (ver C-07). |"
+    },
+    {
+      "text": "[Conteúdo] A divergência da base de usuários (4.500 × 6.200) foi apontada",
+      "passed": true,
+      "evidence": "| **C-01** | **Número de usuários** | RFP 2.1: cerca de 4.500 colaboradores. APR slide 2: **6.200 usuários ativos**. APR, nota do slide 5: **mais cerca de 900**"
+    },
+    {
+      "text": "[Conteúdo] A inclusão das subsidiárias (cerca de 900 usuários), só nas notas do slide 5, foi apontada",
+      "passed": true,
+      "evidence": "| 3 | Apresentacao_Ambiente_Atual.pptx | Apresentação (workshop) | 22/10/2026 | 5 slides, nenhum oculto | **Há uma nota do apresentador no slide 5 que amplia o "
+    },
+    {
+      "text": "[Conteúdo] A regra oculta da aba 'Pesos' (desconto de 2 pontos) foi apontada",
+      "passed": true,
+      "evidence": "| R-19 | Integração nativa com SOAR | [QA, QT-02] | TEC | D | M | Não obrigatório, mas a aba oculta \"Pesos\" penaliza \"Não atende\" em 2 pontos (ver C-08). |"
+    },
+    {
+      "text": "[Conteúdo] O Anexo IV (planilha de preços) foi apontado como não disponível",
+      "passed": true,
+      "evidence": "| Anexo IV — Planilha de Preços | [RFP, 4.3] | **Ausente.** Sem ele não é possível montar a proposta comercial. |"
+    },
+    {
+      "text": "[Conteúdo] A matriz de classificação de criticidade do Contratante foi apontada como não fornecida",
+      "passed": true,
+      "evidence": "| Matriz de classificação de criticidade do Contratante | [AT, 2.4] | **Ausente.** O SLA de 15 minutos depende dessa matriz. |"
+    },
+    {
+      "text": "[Conteúdo] A falta de ordem de precedência entre documentos foi apontada",
+      "passed": true,
+      "evidence": "Nenhum documento define qual prevalece em caso de conflito. Esta análise adota a seguinte hierarquia, que deve ser confirmada com o cliente:"
+    },
+    {
+      "text": "[Conteúdo] A multa por SLA sem teto e a responsabilidade ilimitada foram apontadas como risco",
+      "passed": true,
+      "evidence": "| R-45 | Responsabilidade integral e ilimitada por danos de incidentes \"ocorridos no ambiente do Contratante\" | [RFP, 7.5] | COM | — | **Crítico** | Não exige q"
+    },
+    {
+      "text": "[Conteúdo] A recusa do cliente em informar a volumetria (EPS) antes da adjudicação foi apontada",
+      "passed": true,
+      "evidence": "| R-13 | SIEM integrado a \"todos os ativos relevantes\" | [AT, 1.4] | TEC | O | **A** | O escopo não está definido. Ambiente: 850 servidores, 2 data centers e 2 "
+    },
+    {
+      "text": "[Conteúdo] O risco de cronograma (SIEM legado até 31/01/2027 × início em 01/02/2027) foi apontado",
+      "passed": true,
+      "evidence": "**Leitura do cronograma.** Para o serviço começar em 01/02/2027, a assinatura teria de ocorrer até cerca de 02/01/2027 (transição de 30 dias) ou até cerca de 03"
+    },
+    {
+      "text": "[Conteúdo] A migração de 24 meses de logs históricos, citada só na apresentação, foi apontada",
+      "passed": true,
+      "evidence": "| R-16 | Migração de 24 meses de logs históricos do SIEM legado | [APR, slide 5] | TEC | ? | **A** | **Não consta da RFP nem do AT.** O volume é desconhecido e "
+    },
+    {
+      "text": "[Conteúdo] A prorrogação da entrega para 27/11/2026 pelo Q&A foi registrada",
+      "passed": true,
+      "evidence": "| **Entrega das propostas** | ~~20/11/2026~~ → **27/11/2026 (sex), até 18h** | [RFP, 3.1] alterado por [QA, nº 1] | A prorrogação consta só da planilha de Q&A. "
+    }
+  ],
+  "summary": {
+    "passed": 21,
+    "failed": 17,
+    "total": 38,
+    "pass_rate": 0.55
+  }
+}

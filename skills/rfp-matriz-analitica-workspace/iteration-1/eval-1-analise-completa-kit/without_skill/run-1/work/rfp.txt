@@ -1,0 +1,109 @@
+META: {'Author': 'Banco Horizonte Fictício S.A.', 'CreationDate': "D:20261017213304-03'00'", 'Creator': '(unspecified)', 'Keywords': '', 'ModDate': "D:20261017213304-03'00'", 'Producer': 'ReportLab PDF Library - (opensource)', 'Subject': '(unspecified)', 'Title': 'RFP 2026-017 (fictício)', 'Trapped': 'False'}
+PAGES: 6
+
+===== PAGINA 1 =====
+Banco Horizonte Fictício S.A.
+Solicitação de Proposta (RFP) nº 2026-017
+Serviços Gerenciados de Centro de Operações de Segurança (SOC) e de Gestão de
+Identidades e Acessos (IAM)
+Versão 1.0 — 15/10/2026
+DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações
+reais é coincidência.
+
+===== PAGINA 2 =====
+RFP nº 2026-017 — Versão 1.0 — DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+1. APRESENTAÇÃO
+1.1 O Banco Horizonte Fictício S.A., fundado em 1987, é uma instituição comprometida com a
+excelência no atendimento, a inovação e a valorização de seus colaboradores, com presença em
+diversas regiões do país.
+1.2 O Banco é instituição financeira autorizada a funcionar pelo Banco Central do Brasil e está sujeito à
+Resolução CMN nº 4.893/2021, que dispõe sobre a política de segurança cibernética e sobre os
+requisitos para a contratação de serviços de processamento e armazenamento de dados e de
+computação em nuvem.
+2. OBJETO
+2.1 Contratação de empresa especializada para a prestação de serviços gerenciados de Centro de
+Operações de Segurança (SOC), em regime 24x7x365, e de gestão de identidades e acessos (IAM),
+abrangendo aproximadamente 4.500 colaboradores.
+2.2 As especificações técnicas detalhadas constam do Anexo I — Especificação Técnica.
+3. CRONOGRAMA DO PROCESSO
+3.1 O processo observará o seguinte cronograma:
+Etapa Data
+Publicação da RFP 15/10/2026
+Workshop de apresentação do ambiente 22/10/2026
+Prazo final para envio de perguntas 05/11/2026
+Divulgação das respostas 12/11/2026
+Entrega das propostas 20/11/2026, até as 18h
+Início previsto dos serviços 01/02/2027
+3.2 A transição dos serviços deverá ser concluída em até 30 (trinta) dias corridos a partir da assinatura
+do contrato.
+Página 1
+--TABELA--
+Etapa | Data
+Publicação da RFP | 15/10/2026
+Workshop de apresentação do ambiente | 22/10/2026
+Prazo final para envio de perguntas | 05/11/2026
+Divulgação das respostas | 12/11/2026
+Entrega das propostas | 20/11/2026, até as 18h
+Início previsto dos serviços | 01/02/2027
+
+===== PAGINA 3 =====
+RFP nº 2026-017 — Versão 1.0 — DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+4. INSTRUÇÕES PARA APRESENTAÇÃO DA PROPOSTA
+4.1 A proposta deverá ser redigida em língua portuguesa e enviada exclusivamente pelo portal de
+fornecedores do Banco.
+4.2 A proposta técnica deverá ter no máximo 40 (quarenta) páginas, excluídos os anexos.
+4.3 A proposta comercial deverá ser apresentada conforme a planilha modelo do Anexo IV — Planilha
+de Preços.
+4.4 O questionário técnico (planilha anexa) deverá ser integralmente preenchido.
+5. CRITÉRIOS DE HABILITAÇÃO
+5.1 Serão inabilitados os proponentes que não apresentarem:
+a) certificado ISO/IEC 27001 vigente, emitido por organismo acreditado, cujo escopo inclua os serviços
+de SOC;
+b) no mínimo 3 (três) atestados de capacidade técnica de prestação de serviços de SOC para
+instituições financeiras, com ambiente de no mínimo 2.000 usuários;
+c) comprovação de que o SOC está localizado em território nacional.
+5.2 O proponente deverá possuir equipe técnica devidamente certificada.
+Página 2
+
+===== PAGINA 4 =====
+RFP nº 2026-017 — Versão 1.0 — DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+6. CRITÉRIOS DE AVALIAÇÃO
+6.1 A nota final será composta pela Nota Técnica (peso de 60%) e pela Nota de Preço (peso de 40%).
+6.2 A Nota Técnica, de no máximo 60 (sessenta) pontos, será atribuída conforme os critérios abaixo:
+Critério Pontuação máxima
+Metodologia de operação do SOC 20
+Qualificação da equipe 20
+Ferramentas e tecnologia 15
+Plano de transição 10
+6.3 Serão desclassificadas as propostas com Nota Técnica inferior a 70% (setenta por cento) da
+pontuação máxima.
+6.4 Em caso de empate na nota final, prevalecerá a proposta de menor preço.
+Página 3
+--TABELA--
+Critério | Pontuação máxima
+Metodologia de operação do SOC | 20
+Qualificação da equipe | 20
+Ferramentas e tecnologia | 15
+Plano de transição | 10
+
+===== PAGINA 5 =====
+RFP nº 2026-017 — Versão 1.0 — DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+7. CONDIÇÕES COMERCIAIS E CONTRATUAIS
+7.1 O contrato terá vigência de 36 (trinta e seis) meses, prorrogável por iguais períodos mediante
+acordo entre as partes.
+7.2 Os preços serão reajustados anualmente pela variação do IPCA.
+7.3 O pagamento será efetuado em até 60 (sessenta) dias após o aceite da nota fiscal.
+7.4 O descumprimento de qualquer nível de serviço (SLA) previsto no Anexo I sujeitará a Contratada a
+multa de 10% (dez por cento) do valor mensal do contrato, por ocorrência.
+7.5 A Contratada responderá de forma integral e ilimitada por quaisquer danos decorrentes de
+incidentes de segurança ocorridos no ambiente do Contratante.
+7.6 A Contratada deverá manter seguro de responsabilidade civil cibernética em valor compatível com
+os riscos do contrato.
+7.7 É vedada a subcontratação, total ou parcial, do objeto deste contrato.
+7.8 As obrigações de confidencialidade vigorarão por 5 (cinco) anos após o término do contrato.
+Página 4
+
+===== PAGINA 6 =====
+RFP nº 2026-017 — Versão 1.0 — DOCUMENTO FICTÍCIO PARA TESTE — qualquer semelhança com organizações reais é coincidência.
+Página 5
+--IMAGENS: 1

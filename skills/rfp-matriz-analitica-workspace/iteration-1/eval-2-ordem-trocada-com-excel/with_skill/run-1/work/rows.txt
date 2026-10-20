@@ -1,0 +1,1929 @@
+k: d1_inv
+doc: D01
+sec: Inventário
+loc: p. 1–6 (6 páginas físicas; impressas: sem número, 1 a 5)
+ev: "Solicitação de Proposta (RFP) nº 2026-017 [...] Versão 1.0 — 15/10/2026"
+tipo: Registro de cobertura
+dom: Administrativo do processo
+desc: Documento principal processado integralmente (6 páginas). A p. 6 não tem camada de texto (imagem digitalizada) e foi lida por OCR — ver @d1_ocr. O usuário enviou os arquivos na ordem Q&A/Questionário (xlsx) → Apresentação (pptx) → Anexo I (docx) → RFP (pdf); para a análise foram reordenados na ordem de processamento (RFP = D01, Anexo I = D02, Apresentação = D03, Q&A/Questionário = D04), de modo que as alterações do Q&A fossem confrontadas com os originais.
+acao: Nenhuma (informativo)
+resp: Bid Manager
+
+k: d1_regime
+doc: D01
+sec: 1. APRESENTAÇÃO — item 1.2
+loc: p. 2 (impressa: 1)
+ev: "O Banco é instituição financeira autorizada a funcionar pelo Banco Central do Brasil e está sujeito à Resolução CMN nº 4.893/2021"
+tipo: Registro de cobertura
+dom: Regulatório/Compliance
+desc: Regime identificado: contratação privada (sociedade anônima, proposta enviada pelo "portal de fornecedores do Banco", sem referência a licitação, edital ou legislação de contratações públicas) em setor regulado (instituição financeira autorizada pelo Banco Central, sujeita à Res. CMN nº 4.893/2021). Referências jurídicas associadas nesta matriz: Código Civil, LGPD (Lei 13.709/2018) e Res. CMN nº 4.893/2021 (citada pelo cliente). A Lei 14.133/2021 não se aplica.
+acao: Nenhuma (informativo)
+resp: Compliance
+
+k: d1_ocr
+doc: D01
+sec: Anexo III — Declaração de Localização de Dados
+loc: p. 6 (impressa: 5) (OCR)
+ev: "ANEXO III — DECLARAÇÃO DE LOCALIZAÇÃO DE DADOS"
+tipo: Registro de cobertura
+dom: Administrativo do processo
+desc: Página sem texto extraível (imagem digitalizada ocupando a página), sinalizada pela extração. A imagem foi aberta e lida integralmente; o conteúdo foi analisado em @d1_decl e @d1_dados. Nenhum trecho ilegível. O Anexo III não é citado no corpo da RFP.
+acao: Nenhuma (informativo)
+resp: Bid Manager
+
+k: d1_preced
+doc: D01
+sec: — (documento inteiro)
+loc: D01 p. 1–6 (busca integral) · D02 a D04 (busca integral)
+ev: Não localizado · "As especificações técnicas detalhadas constam do Anexo I — Especificação Técnica."
+tipo: Lacuna
+dom: Jurídico/Contratual / Administrativo do processo
+desc: Nenhum documento define ordem de precedência entre RFP, Anexo I, Anexo III, material do workshop e respostas do Q&A. Há divergências reais entre eles (transição 30 × 60 dias, @d2_trans; base de usuários, @d3_usr e @d4_usrc; região do SIEM × residência de dados, @d2_regiao; retenção de logs, @d2_logs5). Não se pode presumir que o Q&A ou o Anexo I prevaleçam por serem mais recentes ou mais específicos.
+s: 4
+p: 3
+imp: Sem regra de prevalência, o proponente pode precificar a versão menos onerosa e o cliente exigir a mais onerosa na execução (prazo, volumetria, retenção, localização de dados).
+fw: APMP Body of Knowledge
+ctrl: Gestão de conformidade com os documentos da concorrência (identificador a confirmar)
+assoc: Boa prática
+rel: d2_trans, d3_usr, d4_usrc, d2_regiao, d2_logs5, d3_vinc
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Qual a ordem de precedência entre a RFP, seus anexos (I, III e IV), o material do workshop de 22/10/2026 e as respostas do Q&A em caso de divergência entre eles?
+resp: Jurídico
+
+k: d1_cmn
+doc: D01
+sec: 1. APRESENTAÇÃO — item 1.2
+loc: p. 2 (impressa: 1)
+ev: "está sujeito à Resolução CMN nº 4.893/2021, que dispõe sobre a política de segurança cibernética e sobre os requisitos para a contratação de serviços de processamento e armazenamento de dados e de computação em nuvem"
+tipo: Requisito implícito
+dom: Regulatório/Compliance
+nat: Inferida
+desc: Inferida: o SOC (com SIEM fornecido pelo proponente, possivelmente em nuvem, @d2_siem) processa e armazena dados do Banco, de modo que a contratação se enquadra nos requisitos da Res. CMN nº 4.893/2021 para serviços de processamento, armazenamento de dados e nuvem. O proponente terá de aceitar cláusulas e apoiar obrigações regulatórias do Banco. O questionário confirma a exigência como obrigatória (@d4_qt04). As cláusulas específicas não foram fornecidas.
+s: 4
+p: 3
+imp: Cláusulas regulatórias não conhecidas podem exigir controles, auditorias, localização de dados e planos de continuidade não precificados.
+fw: Resolução CMN nº 4.893/2021 (citada pelo cliente)
+ctrl: Requisitos para contratação de serviços de processamento, armazenamento de dados e computação em nuvem (identificador a confirmar)
+assoc: Direta
+rel: d2_siem, d4_qt04, d1_dados, d2_regiao
+acao: Atender
+perg: Quais cláusulas contratuais e evidências decorrentes da Resolução CMN nº 4.893/2021 o Banco exigirá do Contratado (por exemplo: acesso do regulador, comunicação de incidentes, plano de continuidade, localização dos dados)?
+resp: Compliance
+
+k: d1_usr
+doc: D01
+sec: 2. OBJETO — item 2.1
+loc: p. 2 (impressa: 1)
+ev: "abrangendo aproximadamente 4.500 colaboradores"
+tipo: Dado de dimensionamento
+dom: Comercial/Preço / Operação/Serviços
+obr: Informativo
+desc: Base de dimensionamento original do objeto. Alterada pelo Q&A nº 5 para 5.000 usuários (@d4_usr5) e divergente dos 6.200 usuários ativos informados no workshop (@d3_usr) e dos ~900 usuários das subsidiárias (@d3_subs).
+s: 4
+p: 3
+imp: Base de usuários define preço de IAM e dimensionamento do SOC; diferença de até ~58% entre as fontes.
+rel: d4_usr5, d3_usr, d4_usrc
+st: Alterado
+acao: Precificar
+resp: Pricing/Financeiro
+
+k: d1_soc
+doc: D01
+sec: 2. OBJETO — item 2.1
+loc: p. 2 (impressa: 1)
+ev: "prestação de serviços gerenciados de Centro de Operações de Segurança (SOC), em regime 24x7x365"
+tipo: Requisito funcional / de serviço
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: Serviço gerenciado de SOC em regime ininterrupto, o que implica escala de turnos e equipe mínima por turno. Detalhado no Anexo I item 1.1 (@d2_mon).
+s: 3
+p: 3
+imp: Principal direcionador de custo de pessoal (cobertura 24x7x365).
+fw: NIST CSF 2.0
+ctrl: DE.CM — Continuous Monitoring
+assoc: Direta
+rel: d2_mon
+acao: Precificar
+resp: Delivery/Operação
+
+k: d1_iam
+doc: D01
+sec: 2. OBJETO — item 2.1
+loc: p. 2 (impressa: 1)
+ev: "e de gestão de identidades e acessos (IAM), abrangendo aproximadamente 4.500 colaboradores"
+tipo: Requisito funcional / de serviço
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: Escopo de IAM como serviço gerenciado, detalhado no Anexo I seção 3. A RFP não define se o proponente fornece a plataforma de IAM/IGA ou opera a do Banco (ambiente atual: Active Directory + scripts internos, @d3_iam) — ver @d3_iga.
+s: 3
+p: 3
+imp: Escopo de IAM afeta licenças, implantação e equipe.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.16 — Gestão de identidade
+assoc: Direta
+rel: d3_iam, d3_iga
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d1_workshop
+doc: D01
+sec: 3. CRONOGRAMA DO PROCESSO — item 3.1
+loc: p. 2 (impressa: 1)
+ev: "Workshop de apresentação do ambiente 22/10/2026"
+tipo: Prazo / marco
+dom: Administrativo do processo
+obr: Informativo
+desc: O material do workshop (D03) trouxe informações ausentes da RFP (6.200 usuários, migração de logs, meta de falsos positivos, subsidiárias). A RFP não diz se o workshop é obrigatório nem se seu conteúdo é vinculante (@d3_vinc).
+s: 2
+p: 3
+imp: Ausência no workshop ou desconsideração do seu conteúdo leva a dimensionamento incompleto.
+rel: d3_vinc
+acao: Atender
+resp: Bid Manager
+
+k: d1_perg
+doc: D01
+sec: 3. CRONOGRAMA DO PROCESSO — item 3.1
+loc: p. 2 (impressa: 1)
+ev: "Prazo final para envio de perguntas 05/11/2026"
+tipo: Prazo / marco
+dom: Administrativo do processo
+desc: Última janela formal para as perguntas desta matriz. O Q&A Rodada 1 (D04) já foi respondido e não há previsão de nova rodada.
+s: 3
+p: 3
+imp: Perguntas não enviadas no prazo deixam contradições e lacunas para a proposta (premissas e ressalvas).
+acao: Atender
+resp: Bid Manager
+
+k: d1_resp
+doc: D01
+sec: 3. CRONOGRAMA DO PROCESSO — item 3.1
+loc: p. 2 (impressa: 1)
+ev: "Divulgação das respostas 12/11/2026"
+tipo: Prazo / marco
+dom: Administrativo do processo
+obr: Informativo
+desc: Data coincide com a data do Q&A Rodada 1 (@d4_q1).
+s: 1
+p: 3
+imp: Sem efeito relevante.
+rel: d4_inv
+acao: Nenhuma (informativo)
+resp: Bid Manager
+
+k: d1_entrega
+doc: D01
+sec: 3. CRONOGRAMA DO PROCESSO — item 3.1
+loc: p. 2 (impressa: 1)
+ev: "Entrega das propostas 20/11/2026, até as 18h"
+tipo: Prazo / marco
+dom: Administrativo do processo
+desc: Prazo original de entrega, prorrogado para 27/11/2026, até as 18h, pelo Q&A nº 1 (@d4_q1). Probabilidade 2: a data é inequívoca e foi formalmente prorrogada; a perda do prazo dependeria de falha interna.
+s: 5
+p: 2
+imp: Proposta entregue fora do prazo não é considerada.
+rel: d4_q1
+st: Alterado
+acao: Atender
+resp: Bid Manager
+
+k: d1_inicio
+doc: D01
+sec: 3. CRONOGRAMA DO PROCESSO — item 3.1
+loc: p. 2 (impressa: 1)
+ev: "Início previsto dos serviços 01/02/2027"
+tipo: Prazo / marco
+dom: Transição/Implantação
+desc: O início coincide com o dia seguinte ao fim do contrato do SIEM legado (31/01/2027, sem prorrogação, @d3_siemleg). Como a transição é contada da assinatura (30 ou 60 dias, @d2_trans), a assinatura teria de ocorrer até ~02/01/2027 (30 dias) ou ~03/12/2026 (60 dias), poucos dias após a entrega das propostas (27/11/2026). A RFP não informa a data prevista de assinatura nem se "início dos serviços" é o início ou o fim da transição.
+s: 4
+p: 3
+imp: Janela de transição comprimida e sem folga; início da operação exposto a multas.
+fw: PMBOK Guide (7ª edição)
+ctrl: Domínio de desempenho de planejamento
+assoc: Correlata
+rel: d1_trans, d2_trans, d3_siemleg, d3_risktrans
+acao: Esclarecer no Q&A
+perg: Qual a data prevista de assinatura do contrato? O "início previsto dos serviços" em 01/02/2027 corresponde ao início da transição ou ao início da operação plena?
+resp: Delivery/Operação
+
+k: d1_trans
+doc: D01
+sec: 3. CRONOGRAMA DO PROCESSO — item 3.2
+loc: p. 2 (impressa: 1)
+ev: "A transição dos serviços deverá ser concluída em até 30 (trinta) dias corridos a partir da assinatura do contrato."
+tipo: Prazo / marco
+dom: Transição/Implantação
+desc: Prazo de transição diverge do Anexo I item 4.1 (60 dias) — ver contradição @d2_trans. A diferença altera esforço de transição, operação paralela sem custo (@d2_paralelo) e risco de multa.
+s: 4
+p: 3
+imp: Transição em 30 dias exige equipe maior e mais cedo; atraso expõe a multas.
+fw: PMBOK Guide (7ª edição)
+ctrl: Domínio de desempenho de planejamento
+assoc: Correlata
+rel: d2_trans, d2_paralelo, d3_risktrans
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+resp: Delivery/Operação
+
+k: d1_idioma
+doc: D01
+sec: 4. INSTRUÇÕES PARA APRESENTAÇÃO DA PROPOSTA — item 4.1
+loc: p. 3 (impressa: 2)
+ev: "A proposta deverá ser redigida em língua portuguesa"
+tipo: Instrução de resposta
+dom: Administrativo do processo
+desc: Idioma obrigatório; a RFP não diz se anexos técnicos (certificados, datasheets em inglês) precisam de tradução.
+s: 3
+p: 3
+imp: Documentos em outro idioma podem ser desconsiderados na pontuação.
+acao: Esclarecer no Q&A
+perg: Certificados, atestados e documentação técnica de fabricantes em inglês são aceitos sem tradução?
+resp: Bid Manager
+
+k: d1_portal
+doc: D01
+sec: 4. INSTRUÇÕES PARA APRESENTAÇÃO DA PROPOSTA — item 4.1
+loc: p. 3 (impressa: 2)
+ev: "enviada exclusivamente pelo portal de fornecedores do Banco"
+tipo: Instrução de resposta
+dom: Administrativo do processo
+desc: Canal único de entrega. Endereço do portal, exigência de cadastro prévio e limites de arquivo não são informados.
+s: 5
+p: 3
+imp: Falta de cadastro ou falha no portal impede a entrega da proposta.
+acao: Esclarecer no Q&A
+perg: Qual o endereço do portal de fornecedores, há cadastro prévio obrigatório (com prazo) e há limite de tamanho ou formato de arquivo?
+resp: Bid Manager
+
+k: d1_paginas
+doc: D01
+sec: 4. INSTRUÇÕES PARA APRESENTAÇÃO DA PROPOSTA — item 4.2
+loc: p. 3 (impressa: 2)
+ev: "A proposta técnica deverá ter no máximo 40 (quarenta) páginas, excluídos os anexos."
+tipo: Instrução de resposta
+dom: Administrativo do processo
+desc: Limite de páginas sem consequência declarada para o excesso e sem definir o que conta como anexo.
+s: 3
+p: 3
+imp: Conteúdo excedente pode ser desconsiderado, reduzindo a Nota Técnica.
+acao: Esclarecer no Q&A
+perg: Qual a consequência de exceder 40 páginas e quais documentos são considerados anexos excluídos do limite (questionário técnico, currículos, certificados, plano de transição)?
+resp: Bid Manager
+
+k: d1_anexo4
+doc: D01
+sec: 4. INSTRUÇÕES PARA APRESENTAÇÃO DA PROPOSTA — item 4.3
+loc: p. 3 (impressa: 2)
+ev: "A proposta comercial deverá ser apresentada conforme a planilha modelo do Anexo IV — Planilha de Preços."
+tipo: Instrução de resposta
+dom: Comercial/Preço
+desc: Formato obrigatório da proposta comercial; o Anexo IV não foi fornecido (@d1_lac4).
+s: 3
+p: 3
+imp: Proposta comercial fora do modelo pode ser recusada ou ajustada pelo cliente.
+rel: d1_lac4
+acao: Atender
+resp: Pricing/Financeiro
+
+k: d1_lac4
+doc: D01
+sec: 4. INSTRUÇÕES PARA APRESENTAÇÃO DA PROPOSTA — item 4.3
+loc: p. 3 (impressa: 2)
+ev: Não localizado · "conforme a planilha modelo do Anexo IV — Planilha de Preços"
+tipo: Lacuna
+dom: Comercial/Preço
+desc: Anexo IV citado pelo cliente e não fornecido no pacote (D01 a D04). Sem ele não se conhece a estrutura de preços exigida (preço mensal fixo, por usuário, por EPS, itens de transição e migração, opcionais como PAM).
+s: 4
+p: 3
+imp: Impede montar a proposta comercial no formato obrigatório e testar a estratégia de preço.
+rel: d1_anexo4
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Favor disponibilizar o Anexo IV — Planilha de Preços. Ele prevê preços por componente (SOC, IAM, transição, migração de logs, PAM) e por unidade (usuário, EPS, ativo)?
+resp: Pricing/Financeiro
+
+k: d1_lac2
+doc: D01
+sec: 4. INSTRUÇÕES (item 4.3) · Anexo III
+loc: p. 3 (impressa: 2) · p. 6 (impressa: 5) (OCR)
+ev: Não localizado · "ANEXO III — DECLARAÇÃO DE LOCALIZAÇÃO DE DADOS" · "Anexo IV — Planilha de Preços"
+tipo: Lacuna
+dom: Administrativo do processo / Jurídico/Contratual
+nat: Inferida
+desc: Inferida: a numeração dos anexos (I, III e IV) indica a existência de um Anexo II, que não é citado no corpo da RFP nem foi fornecido. Pode conter minuta contratual, matriz de responsabilidades ou outro conteúdo com efeito na resposta (ver @d1_minuta).
+s: 3
+p: 3
+imp: Possível obrigação ou instrução não conhecida pelo proponente.
+rel: d1_minuta
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Existe um Anexo II da RFP nº 2026-017? Em caso positivo, favor disponibilizá-lo.
+resp: Bid Manager
+
+k: d1_quest
+doc: D01
+sec: 4. INSTRUÇÕES PARA APRESENTAÇÃO DA PROPOSTA — item 4.4
+loc: p. 3 (impressa: 2)
+ev: "O questionário técnico (planilha anexa) deverá ser integralmente preenchido."
+tipo: Instrução de resposta
+dom: Administrativo do processo
+desc: Na RFP, sem sanção declarada. A planilha (D04, aba "Instruções") acrescenta a desclassificação de questionários incompletos e estende a obrigação a "todas as abas" (@d4_instr, @d4_instr_amb).
+s: 4
+p: 3
+imp: Questionário incompleto leva à desclassificação (conforme D04).
+rel: d4_instr, d4_instr_amb
+st: Alterado
+acao: Atender
+resp: Pré-venda/Arquitetura
+
+k: d1_iso
+doc: D01
+sec: 5. CRITÉRIOS DE HABILITAÇÃO — item 5.1 a)
+loc: p. 3 (impressa: 2)
+ev: "certificado ISO/IEC 27001 vigente, emitido por organismo acreditado, cujo escopo inclua os serviços de SOC"
+tipo: Critério eliminatório / de habilitação
+dom: Segurança da Informação/Cyber / Regulatório/Compliance
+desc: Probabilidade 5: o caput do item 5.1 diz que "Serão inabilitados" os proponentes que não apresentarem o certificado; o efeito decorre diretamente do texto. O escopo do certificado deve abranger os serviços de SOC; não se exige expressamente versão 2022 nem escopo de IAM. Repetido no questionário (QT-01, @d4_qt01).
+s: 5
+p: 5
+imp: Inabilitação.
+fw: ISO/IEC 27001:2022
+ctrl: Cláusula 4.3 — Determinação do escopo do SGSI
+assoc: Direta
+rel: d4_qt01
+acao: Avaliar Go/No-Go
+perg: O certificado ISO/IEC 27001 deve estar na versão 2022? O escopo deve abranger também os serviços de IAM e a localidade física do SOC proposto?
+resp: Compliance
+
+k: d1_atest
+doc: D01
+sec: 5. CRITÉRIOS DE HABILITAÇÃO — item 5.1 b)
+loc: p. 3 (impressa: 2)
+ev: "no mínimo 3 (três) atestados de capacidade técnica de prestação de serviços de SOC para instituições financeiras, com ambiente de no mínimo 2.000 usuários"
+tipo: Critério eliminatório / de habilitação
+dom: Administrativo do processo / Operação/Serviços
+desc: Probabilidade 5: inabilitação expressa no caput do item 5.1. Exige três atestados de SOC em instituições financeiras com porte mínimo; ver ambiguidades em @d1_atest_amb.
+s: 5
+p: 5
+imp: Inabilitação.
+rel: d1_atest_amb
+acao: Avaliar Go/No-Go
+resp: Bid Manager
+
+k: d1_atest_amb
+doc: D01
+sec: 5. CRITÉRIOS DE HABILITAÇÃO — item 5.1 b)
+loc: p. 3 (impressa: 2)
+ev: "no mínimo 3 (três) atestados [...] para instituições financeiras, com ambiente de no mínimo 2.000 usuários"
+tipo: Ambiguidade
+dom: Administrativo do processo
+desc: Não está claro se o mínimo de 2.000 usuários vale para cada atestado ou para a soma; se "instituições financeiras" inclui seguradoras, cooperativas, fintechs e instituições de pagamento; e se atestados de contratos em andamento ou de clientes no exterior são aceitos. A diferença entre interpretações pode decidir a habilitação.
+s: 5
+p: 3
+imp: Interpretação divergente da do cliente leva à inabilitação.
+rel: d1_atest
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O mínimo de 2.000 usuários se aplica a cada um dos 3 atestados? "Instituições financeiras" inclui seguradoras, cooperativas de crédito e instituições de pagamento? São aceitos atestados de contratos em andamento e de clientes no exterior?
+resp: Bid Manager
+
+k: d1_socbr
+doc: D01
+sec: 5. CRITÉRIOS DE HABILITAÇÃO — item 5.1 c)
+loc: p. 3 (impressa: 2)
+ev: "comprovação de que o SOC está localizado em território nacional."
+tipo: Critério eliminatório / de habilitação
+dom: Regulatório/Compliance / Operação/Serviços
+desc: Probabilidade 5: inabilitação expressa no caput do item 5.1. Confirmado pelo Q&A nº 2 (@d4_q2). Não define o meio de comprovação nem se "SOC" abrange a plataforma SIEM (ver @d2_regiao) e as equipes remotas (@d4_q6).
+s: 5
+p: 5
+imp: Inabilitação; impede operação offshore ou follow-the-sun.
+fw: Resolução CMN nº 4.893/2021 (citada pelo cliente)
+ctrl: Localização do processamento e armazenamento de dados (identificador a confirmar)
+assoc: Correlata
+rel: d4_q2, d2_regiao, d1_dados
+acao: Avaliar Go/No-Go
+perg: Qual documento será aceito como comprovação da localização do SOC (endereço, contrato de locação, visita técnica)? A exigência abrange as equipes de nível 2 e 3 e a plataforma SIEM?
+resp: Compliance
+
+k: d1_cert
+doc: D01
+sec: 5. CRITÉRIOS DE HABILITAÇÃO — item 5.2
+loc: p. 3 (impressa: 2)
+ev: "O proponente deverá possuir equipe técnica devidamente certificada."
+tipo: Ambiguidade
+dom: Pessoas/Equipe / Administrativo do processo
+desc: Exigência sob o título "Critérios de habilitação", mas fora da lista de causas de inabilitação do item 5.1; não define certificações, quantidade de profissionais nem forma de comprovação. Relaciona-se ao CISSP do coordenador (@d2_cissp), ao critério "Qualificação da equipe" (@d1_crit_eq) e ao QT-06 (@d4_qt06).
+s: 4
+p: 3
+imp: Pode levar à inabilitação ou à perda de pontos se o cliente adotar critério não divulgado; afeta custo de equipe.
+rel: d2_cissp, d1_crit_eq, d4_qt06
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O item 5.2 é causa de inabilitação? Quais certificações, para quais perfis e em que quantidade mínima são exigidas, e como devem ser comprovadas?
+resp: RH/Staffing
+
+k: d1_peso
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.1
+loc: p. 4 (impressa: 3)
+ev: "A nota final será composta pela Nota Técnica (peso de 60%) e pela Nota de Preço (peso de 40%)."
+tipo: Critério de avaliação / pontuação
+dom: Administrativo do processo / Comercial/Preço
+desc: Técnica e preço com pesos 60/40; a fórmula da Nota de Preço não é informada (@d1_lacpreco).
+s: 3
+p: 3
+imp: Define o equilíbrio entre investimento na solução técnica e agressividade de preço.
+rel: d1_lacpreco
+acao: Atender
+resp: Bid Manager
+
+k: d1_lacpreco
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.1
+loc: p. 4 (impressa: 3)
+ev: Não localizado · "pela Nota de Preço (peso de 40%)"
+tipo: Lacuna
+dom: Comercial/Preço
+desc: A RFP não informa como a Nota de Preço é calculada (proporcional ao menor preço, faixas, preço de referência) nem se há preço máximo ou critério de inexequibilidade.
+s: 4
+p: 3
+imp: Impede simular a nota final e calibrar o preço.
+rel: d1_peso
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Qual a fórmula de cálculo da Nota de Preço (por exemplo, menor preço ÷ preço do proponente × 40)? Há preço máximo aceitável ou critério de inexequibilidade?
+resp: Pricing/Financeiro
+
+k: d1_crit_met
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.2
+loc: p. 4 (impressa: 3)
+ev: "Metodologia de operação do SOC 20"
+tipo: Critério de avaliação / pontuação
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: Critério de maior peso (com equipe), sem subcritérios ou forma de avaliação divulgados.
+s: 3
+p: 3
+imp: Perda de até 20 pontos da Nota Técnica.
+fw: NIST CSF 2.0
+ctrl: Funções Detect (DE) e Respond (RS)
+assoc: Correlata
+rel: d1_soma
+acao: Atender
+resp: Pré-venda/Arquitetura
+
+k: d1_crit_eq
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.2
+loc: p. 4 (impressa: 3)
+ev: "Qualificação da equipe 20"
+tipo: Critério de avaliação / pontuação
+dom: Pessoas/Equipe
+desc: Sem definição de como a qualificação será medida (certificações, experiência, currículos); ver @d1_cert.
+s: 3
+p: 3
+imp: Perda de até 20 pontos da Nota Técnica.
+rel: d1_cert, d1_soma
+acao: Atender
+resp: RH/Staffing
+
+k: d1_crit_fer
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.2
+loc: p. 4 (impressa: 3)
+ev: "Ferramentas e tecnologia 15"
+tipo: Critério de avaliação / pontuação
+dom: Técnico/Arquitetura
+desc: Critério relacionado a SIEM, SOAR, threat intelligence e PAM; não diz se itens desejáveis (PAM, @d2_pam) pontuam aqui.
+s: 3
+p: 3
+imp: Perda de até 15 pontos da Nota Técnica.
+rel: d2_pam, d1_soma
+acao: Atender
+resp: Pré-venda/Arquitetura
+
+k: d1_crit_trans
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.2
+loc: p. 4 (impressa: 3)
+ev: "Plano de transição 10"
+tipo: Critério de avaliação / pontuação
+dom: Transição/Implantação
+desc: Plano de transição é pontuado, mas o prazo de transição é contraditório (@d2_trans).
+s: 3
+p: 3
+imp: Perda de até 10 pontos se o plano adotar prazo diferente do esperado pelo avaliador.
+rel: d2_trans, d1_soma
+acao: Atender
+resp: Delivery/Operação
+
+k: d1_soma
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.2
+loc: p. 4 (impressa: 3) — item 6.2 (caput e tabela)
+ev: A: "A Nota Técnica, de no máximo 60 (sessenta) pontos" · B: "Metodologia de operação do SOC 20 [...] Qualificação da equipe 20 [...] Ferramentas e tecnologia 15 [...] Plano de transição 10"
+tipo: Contradição
+dom: Administrativo do processo
+desc: A soma das pontuações máximas da tabela é 65, não 60. Não se sabe se há normalização (×60/65), erro em algum critério ou teto de 60 pontos. O corte de 70% (@d1_corte) equivale a 42 pontos sobre 60 ou 45,5 sobre 65. Também não está claro como o questionário ponderado da aba oculta "Pesos" (@d4_pesos) entra na Nota Técnica.
+s: 4
+p: 3
+imp: Incerteza sobre o peso real de cada critério e sobre a nota mínima para não ser desclassificado.
+rel: d1_crit_met, d1_crit_eq, d1_crit_fer, d1_crit_trans, d1_corte, d4_pesos
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: A soma dos critérios do item 6.2 é 65 pontos, mas a Nota Técnica máxima declarada é 60. Qual valor está correto e sobre qual base será aplicado o corte de 70% do item 6.3?
+resp: Bid Manager
+
+k: d1_corte
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.3
+loc: p. 4 (impressa: 3)
+ev: "Serão desclassificadas as propostas com Nota Técnica inferior a 70% (setenta por cento) da pontuação máxima."
+tipo: Critério eliminatório / de habilitação
+dom: Administrativo do processo
+desc: Corte técnico desclassificatório. A base (60 ou 65 pontos, @d1_soma) e a interação com o desconto oculto de 2 pontos por requisito não obrigatório não atendido (@d4_desc) não estão claras.
+s: 5
+p: 3
+imp: Desclassificação técnica.
+rel: d1_soma, d4_desc, d4_risktec
+acao: Mitigar
+resp: Bid Manager
+
+k: d1_empate
+doc: D01
+sec: 6. CRITÉRIOS DE AVALIAÇÃO — item 6.4
+loc: p. 4 (impressa: 3)
+ev: "Em caso de empate na nota final, prevalecerá a proposta de menor preço."
+tipo: Critério de avaliação / pontuação
+dom: Comercial/Preço
+desc: Desempate por preço. Probabilidade 2: empate exato na nota final é pouco provável.
+s: 2
+p: 2
+imp: Em empate, vence o menor preço.
+acao: Nenhuma (informativo)
+resp: Pricing/Financeiro
+
+k: d1_vig
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.1
+loc: p. 5 (impressa: 4)
+ev: "O contrato terá vigência de 36 (trinta e seis) meses, prorrogável por iguais períodos mediante acordo entre as partes."
+tipo: Obrigação contratual
+dom: Jurídico/Contratual
+desc: Vigência de 36 meses; prorrogação depende de acordo. Não há regras de rescisão imotivada, aviso prévio ou transição de saída (ver @d1_minuta).
+s: 3
+p: 3
+imp: Horizonte para amortizar investimentos de transição e plataforma.
+rel: d1_minuta
+acao: Precificar
+resp: Pricing/Financeiro
+
+k: d1_reaj
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.2
+loc: p. 5 (impressa: 4)
+ev: "Os preços serão reajustados anualmente pela variação do IPCA."
+tipo: Obrigação contratual
+dom: Financeiro
+desc: Não define a data-base (proposta, assinatura ou início). Com proposta em 11/2026 e início em 02/2027, a defasagem até o primeiro reajuste pode chegar a ~15 meses.
+s: 2
+p: 3
+imp: Perda inflacionária até o primeiro reajuste.
+acao: Esclarecer no Q&A
+perg: Qual a data-base do reajuste anual pelo IPCA: data de entrega da proposta, de assinatura do contrato ou de início dos serviços?
+resp: Pricing/Financeiro
+
+k: d1_pgto
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.3
+loc: p. 5 (impressa: 4)
+ev: "O pagamento será efetuado em até 60 (sessenta) dias após o aceite da nota fiscal."
+tipo: Obrigação contratual
+dom: Financeiro
+desc: Prazo de pagamento longo e sem prazo para o aceite da nota fiscal, o que pode estender o ciclo de caixa além de 60 dias. Probabilidade 4: o prazo de até 60 dias após o aceite está fixado no texto e o aceite não tem prazo, de modo que o custo financeiro tende a ocorrer ao longo de todo o contrato.
+s: 3
+p: 4
+imp: Custo de capital de giro a incorporar ao preço.
+acao: Precificar
+perg: Qual o prazo máximo para o aceite da nota fiscal após sua emissão? Há correção monetária ou juros em caso de atraso no pagamento?
+resp: Pricing/Financeiro
+
+k: d1_multa
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.4
+loc: p. 5 (impressa: 4)
+ev: "O descumprimento de qualquer nível de serviço (SLA) previsto no Anexo I sujeitará a Contratada a multa de 10% (dez por cento) do valor mensal do contrato, por ocorrência."
+tipo: Penalidade / multa / glosa
+dom: Jurídico/Contratual / Financeiro
+desc: Multa de 10% do valor mensal por ocorrência, para qualquer SLA, sem teto mensal e sem gradação por gravidade: dez ocorrências no mês equivalem a 100% da fatura. Probabilidade 4: a multa incide automaticamente "por ocorrência" e o Q&A nº 4 (@d4_q4) recusou estabelecer limite máximo. Os SLAs dependem de matriz não fornecida (@d2_matriz) e de apuração não definida (@d2_apur).
+s: 5
+p: 4
+imp: Exposição financeira sem limite, podendo superar o faturamento mensal.
+fw: Código Civil (Lei 10.406/2002)
+ctrl: Art. 412 — limite da cláusula penal ao valor da obrigação principal
+assoc: Correlata
+rel: d4_q4, d2_sla15, d2_disp, d2_rel, d2_revog, d2_matriz, d2_apur, d4_riskfin
+acao: Propor exceção/ressalva
+perg: Há período de carência para a aplicação de multas por SLA durante a transição e a estabilização da operação (por exemplo, primeiros 90 dias)?
+resp: Jurídico
+
+k: d1_resp_ilim
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.5
+loc: p. 5 (impressa: 4)
+ev: "A Contratada responderá de forma integral e ilimitada por quaisquer danos decorrentes de incidentes de segurança ocorridos no ambiente do Contratante."
+tipo: Obrigação contratual
+dom: Jurídico/Contratual
+desc: Responsabilidade sem teto por "quaisquer danos" de incidentes no ambiente do Contratante, sem exigir culpa do Contratado nem excluir danos indiretos. O Q&A nº 4 afirma que "as condições do item 7 permanecem inalteradas" (@d4_q4). Um seguro cyber (@d1_seguro) dificilmente cobre exposição ilimitada.
+s: 5
+p: 3
+imp: Exposição jurídica e financeira ilimitada, inclusive por incidentes não causados pelo proponente.
+fw: Código Civil (Lei 10.406/2002)
+ctrl: Responsabilidade civil contratual e limitação de responsabilidade (identificador a confirmar)
+assoc: Correlata
+rel: d4_q4, d4_riskfin, d1_seguro
+acao: Avaliar Go/No-Go
+perg: A responsabilidade do item 7.5 se limita a danos causados por culpa ou dolo comprovados do Contratado? O Banco aceita teto de responsabilidade (por exemplo, o valor anual do contrato) e a exclusão de lucros cessantes e danos indiretos?
+resp: Jurídico
+
+k: d1_seguro
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.6
+loc: p. 5 (impressa: 4)
+ev: "A Contratada deverá manter seguro de responsabilidade civil cibernética em valor compatível com os riscos do contrato."
+tipo: Obrigação contratual
+dom: Jurídico/Contratual / Financeiro
+desc: Seguro cyber obrigatório; valor indefinido (@d1_seg_amb).
+s: 3
+p: 3
+imp: Custo de prêmio a incluir no preço.
+rel: d1_seg_amb, d1_resp_ilim
+acao: Precificar
+resp: Jurídico
+
+k: d1_seg_amb
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.6
+loc: p. 5 (impressa: 4)
+ev: "em valor compatível com os riscos do contrato"
+tipo: Ambiguidade
+dom: Jurídico/Contratual / Financeiro
+desc: Critério subjetivo; combinado com responsabilidade ilimitada (@d1_resp_ilim), não há valor de referência objetivo para a apólice. Também não diz se a apólice deve ser apresentada na proposta ou na assinatura.
+s: 3
+p: 3
+imp: Prêmio subestimado ou exigência de cobertura maior após a assinatura.
+rel: d1_seguro, d1_resp_ilim
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Qual o valor mínimo de cobertura do seguro de responsabilidade civil cibernética? O Banco deve constar como segurado adicional? A apólice deve ser apresentada com a proposta ou na assinatura?
+resp: Jurídico
+
+k: d1_subc
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.7
+loc: p. 5 (impressa: 4)
+ev: "É vedada a subcontratação, total ou parcial, do objeto deste contrato."
+tipo: Restrição
+dom: Jurídico/Contratual
+desc: Vedação total, inclusive parcial. Pode alcançar o provedor de nuvem do SIEM (@d2_siem), serviços de threat intelligence (@d4_qt05), suporte de fabricantes e profissionais contratados como pessoa jurídica — ver @d2_subc_amb.
+s: 4
+p: 3
+imp: Limita o modelo de entrega e de equipe; risco de descumprimento contratual.
+rel: d2_subc_amb, d2_siem, d4_qt05
+acao: Esclarecer no Q&A
+resp: Jurídico
+
+k: d1_conf
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS — item 7.8
+loc: p. 5 (impressa: 4)
+ev: "As obrigações de confidencialidade vigorarão por 5 (cinco) anos após o término do contrato."
+tipo: Obrigação contratual
+dom: Jurídico/Contratual
+desc: Confidencialidade pós-contratual de 5 anos; conteúdo das obrigações não detalhado (sem minuta, @d1_minuta).
+s: 2
+p: 3
+imp: Obrigação de longo prazo, usual no mercado.
+fw: ISO/IEC 27001:2022
+ctrl: A.6.6 — Acordos de confidencialidade ou de não divulgação
+assoc: Correlata
+rel: d1_minuta
+acao: Atender
+resp: Jurídico
+
+k: d1_minuta
+doc: D01
+sec: 7. CONDIÇÕES COMERCIAIS E CONTRATUAIS
+loc: p. 5 (impressa: 4)
+ev: Não localizado · "O contrato terá vigência de 36 (trinta e seis) meses"
+tipo: Lacuna
+dom: Jurídico/Contratual
+nat: Inferida
+desc: Inferida: a RFP descreve condições contratuais, mas não fornece minuta. Rescisão, garantia contratual, proteção de dados (acordo de tratamento LGPD, @d2_lgpd), propriedade intelectual, devolução de dados e transição de saída não são conhecidas. Pode constar do Anexo II não fornecido (@d1_lac2).
+s: 4
+p: 3
+imp: Obrigações contratuais relevantes desconhecidas na precificação.
+rel: d1_lac2, d2_lgpd
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Haverá minuta contratual? Favor disponibilizá-la antes da entrega das propostas, incluindo cláusulas de rescisão, garantias, proteção de dados e transição de saída.
+resp: Jurídico
+
+k: d1_decl
+doc: D01
+sec: Anexo III — Declaração de Localização de Dados
+loc: p. 6 (impressa: 5) (OCR)
+ev: "Esta declaração deverá ser entregue assinada pelo representante legal do proponente junto com a proposta, sob pena de inabilitação."
+tipo: Critério eliminatório / de habilitação
+dom: Administrativo do processo / Regulatório/Compliance
+desc: Probabilidade 5: inabilitação expressa no texto. Requisito de habilitação ausente da lista do item 5.1 e presente só no anexo digitalizado (sem texto extraível), o que favorece que passe despercebido. A declaração compromete o proponente com a residência de dados no Brasil (@d1_dados), em conflito com a região livre do SIEM (@d2_regiao).
+s: 5
+p: 5
+imp: Inabilitação se não entregue; se entregue, vincula o proponente à residência de dados no Brasil.
+rel: d1_dados, d2_regiao, d1_ocr
+acao: Atender
+resp: Jurídico
+
+k: d1_dados
+doc: D01
+sec: Anexo III — Declaração de Localização de Dados
+loc: p. 6 (impressa: 5) (OCR)
+ev: "todos os dados do Banco Horizonte Fictício S.A., incluindo os registros (logs) de segurança, serão armazenados e processados exclusivamente em território nacional, durante toda a vigência do contrato."
+tipo: Restrição
+dom: Privacidade/Proteção de Dados / Infraestrutura/Cloud
+desc: Residência de dados no Brasil para armazenamento e processamento, inclusive logs, backups e eventuais análises em nuvem. Limita a escolha de SIEM/SaaS, threat intelligence e suporte remoto de fabricantes no exterior. Contradiz o Anexo I item 1.2 (@d2_regiao).
+s: 4
+p: 3
+imp: Restringe arquitetura e fornecedores; pode elevar custo da plataforma.
+fw: Resolução CMN nº 4.893/2021 (citada pelo cliente)
+ctrl: Localização do processamento e armazenamento de dados em nuvem (identificador a confirmar)
+assoc: Correlata
+rel: d1_decl, d2_regiao, d1_socbr
+acao: Atender
+resp: Pré-venda/Arquitetura
+
+k: d2_inv
+doc: D02
+sec: Inventário
+loc: Documento inteiro (§ 1 a § 6; 22 parágrafos, 0 tabelas; página não disponível)
+ev: "Anexo I — Especificação Técnica"
+tipo: Registro de cobertura
+dom: Administrativo do processo
+desc: Processado integralmente. A extração não sinalizou marcas de revisão nem comentários. Word sem paginação fixa: localizador por seção e item.
+acao: Nenhuma (informativo)
+resp: Bid Manager
+
+k: d2_mon
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.1
+loc: § 1. SERVIÇOS DE SOC · item 1.1
+ev: "O proponente deverá prestar serviço de monitoramento contínuo de eventos de segurança, em regime 24x7x365."
+tipo: Requisito funcional / de serviço
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: Repete o regime 24x7x365 do objeto da RFP (@d1_soc).
+s: 3
+p: 3
+imp: Escala 24x7x365 é o principal custo de pessoal.
+fw: ISO/IEC 27001:2022
+ctrl: A.8.16 — Atividades de monitoramento
+assoc: Direta
+rel: d1_soc
+st: Duplicado
+acao: Precificar
+resp: Delivery/Operação
+
+k: d2_siem
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.2
+loc: § 1. SERVIÇOS DE SOC · item 1.2
+ev: "O proponente deverá fornecer a solução de SIEM"
+tipo: Requisito funcional / de serviço
+dom: Técnico/Arquitetura / Infraestrutura/Cloud
+desc: Licenças, infraestrutura e armazenamento do SIEM ficam com o proponente. O custo depende da volumetria (EPS), recusada no Q&A nº 3 (@d4_q3), e da retenção (@d2_logs12, @d2_logs5). Não define a propriedade da plataforma e dos dados ao fim do contrato.
+s: 4
+p: 3
+imp: Componente de custo relevante e dependente de volumetria desconhecida.
+fw: NIST CSF 2.0
+ctrl: DE.AE — Adverse Event Analysis
+assoc: Correlata
+rel: d4_q3, d2_logs12, d2_logs5, d2_regiao
+acao: Precificar
+perg: Ao término do contrato, a plataforma SIEM, as regras de correlação e os logs armazenados devem ser transferidos ao Banco ou a novo fornecedor? Em que formato e prazo?
+resp: Pré-venda/Arquitetura
+
+k: d2_regiao
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.2 × RFP Anexo III
+loc: Anexo I § 1 item 1.2 · RFP p. 6 (impressa: 5) (OCR)
+ev: A: "podendo esta ser disponibilizada em nuvem pública, em região de livre escolha do proponente" (Anexo I, 1.2) · B: "serão armazenados e processados exclusivamente em território nacional" (RFP, Anexo III)
+tipo: Contradição
+dom: Infraestrutura/Cloud / Regulatório/Compliance
+desc: O Anexo I permite SIEM em nuvem pública em qualquer região; a declaração do Anexo III, exigida sob pena de inabilitação (@d1_decl), obriga armazenamento e processamento de todos os dados e logs exclusivamente no Brasil, e o Q&A nº 2 (@d4_q2) reforça a localização nacional do SOC. Seguir a "livre escolha" (região fora do Brasil, possivelmente mais barata) tornaria a declaração falsa, com risco de inabilitação ou descumprimento contratual, além de configurar transferência internacional de dados pessoais.
+s: 5
+p: 3
+imp: Arquitetura e custo do SIEM mudam conforme a região; a interpretação errada leva à inabilitação ou a descumprimento.
+fw: LGPD (Lei 13.709/2018)
+ctrl: Art. 33 — Transferência internacional de dados
+assoc: Correlata
+rel: d1_decl, d1_dados, d4_q2, d1_cmn, d1_preced
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O Anexo I (item 1.2) admite SIEM em nuvem pública em região de livre escolha, mas o Anexo III exige armazenamento e processamento exclusivamente no Brasil. Confirma-se que a região da nuvem deve ser obrigatoriamente no Brasil, inclusive para backups e réplicas de recuperação de desastre?
+resp: Compliance
+
+k: d2_subc_amb
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.2 × RFP item 7.7
+loc: Anexo I § 1 item 1.2 · RFP p. 5 (impressa: 4) item 7.7
+ev: A: "podendo esta ser disponibilizada em nuvem pública" (Anexo I, 1.2) · B: "É vedada a subcontratação, total ou parcial, do objeto deste contrato." (RFP, 7.7)
+tipo: Ambiguidade
+dom: Jurídico/Contratual / Infraestrutura/Cloud
+desc: Não está claro se o uso de provedor de nuvem pública, de serviços de fabricantes (SIEM SaaS, threat intelligence) ou de profissionais contratados como pessoa jurídica configura subcontratação vedada.
+s: 4
+p: 3
+imp: Se o cliente entender como subcontratação, o modelo de entrega proposto fica inviável ou em descumprimento.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.23 — Segurança da informação para uso de serviços em nuvem
+assoc: Correlata
+rel: d1_subc, d2_siem
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O uso de provedor de nuvem pública, de licenças e serviços de fabricantes (SIEM, threat intelligence) e de profissionais contratados como pessoa jurídica é considerado subcontratação vedada pelo item 7.7?
+resp: Jurídico
+
+k: d2_logs12
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.3
+loc: § 1. SERVIÇOS DE SOC · item 1.3
+ev: "Os registros (logs) de segurança deverão ser retidos por no mínimo 12 (doze) meses."
+tipo: Requisito não funcional
+dom: Técnico/Arquitetura / Dados/Analytics
+desc: Retenção mínima de 12 meses; conflita com os 5 anos do item 1.6 (@d2_logs5). O QT-03 qualifica como "online" (@d4_qt03).
+s: 3
+p: 3
+imp: Custo de armazenamento do SIEM.
+fw: ISO/IEC 27001:2022
+ctrl: A.8.15 — Registro de logs
+assoc: Direta
+rel: d2_logs5, d4_qt03
+st: Em esclarecimento
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d2_int
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.4
+loc: § 1. SERVIÇOS DE SOC · item 1.4
+ev: "O SIEM deverá ser integrado a todos os ativos relevantes do Contratante."
+tipo: Requisito funcional / de serviço
+dom: Técnico/Arquitetura
+desc: Integração do SIEM às fontes de log; quantidade e tipos de ativos indefinidos (@d2_int_amb) e EPS recusado (@d4_q3).
+s: 4
+p: 3
+imp: Esforço de integração e licenciamento sem base de cálculo.
+fw: ISO/IEC 27001:2022
+ctrl: A.8.15 — Registro de logs
+assoc: Correlata
+rel: d2_int_amb, d4_q3
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d2_int_amb
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.4
+loc: § 1. SERVIÇOS DE SOC · item 1.4
+ev: "todos os ativos relevantes do Contratante"
+tipo: Ambiguidade
+dom: Técnico/Arquitetura
+desc: Critério de relevância não definido. O ambiente tem 850 servidores, 2 data centers e 2 nuvens públicas (@d3_srv, @d3_dc, @d3_cloud), além de possíveis ativos das subsidiárias (@d3_subs). O número de fontes e de conectores customizados define preço e esforço de transição.
+s: 4
+p: 3
+imp: Escopo de integração aberto, que o cliente pode ampliar sem contrapartida.
+rel: d2_int, d3_srv, d3_dc, d3_cloud, d3_subs
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Qual a lista ou quantidade de ativos "relevantes" a integrar ao SIEM (servidores, estações, rede, nuvem, aplicações, bancos de dados)? Quantos exigem conector customizado? Os ativos das subsidiárias estão incluídos?
+resp: Pré-venda/Arquitetura
+
+k: d2_ir
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.5
+loc: § 1. SERVIÇOS DE SOC · item 1.5
+ev: "O serviço deverá contemplar resposta a incidentes, incluindo contenção, erradicação"
+tipo: Requisito funcional / de serviço
+dom: Segurança da Informação/Cyber
+desc: Contenção e erradicação implicam atuação ativa nos ativos do Banco (bloqueio, isolamento, remoção), o que, somado à responsabilidade ilimitada (@d1_resp_ilim), aumenta a exposição. Não define se a atuação é remota ou presencial, nem os limites de autonomia.
+s: 4
+p: 3
+imp: Escopo de resposta e exposição jurídica indefinidos; possível deslocamento a SP e Campinas.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.26 — Resposta a incidentes de segurança da informação
+assoc: Direta
+rel: d1_resp_ilim, d3_dc
+acao: Esclarecer no Q&A
+perg: A contenção e a erradicação serão executadas diretamente pelo Contratado nos ativos do Banco ou recomendadas para execução pela equipe do Banco? Há necessidade de atendimento presencial e em quais localidades?
+resp: Segurança/Cyber
+
+k: d2_pir
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.5
+loc: § 1. SERVIÇOS DE SOC · item 1.5
+ev: "e elaboração de relatório pós-incidente"
+tipo: Entregável
+dom: Segurança da Informação/Cyber
+desc: Relatório por incidente; prazo e conteúdo mínimo não definidos.
+s: 2
+p: 3
+imp: Esforço de documentação por incidente.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.27 — Aprendizado com incidentes de segurança da informação
+assoc: Direta
+acao: Atender
+resp: Segurança/Cyber
+
+k: d2_logs5
+doc: D02
+sec: 1. SERVIÇOS DE SOC — itens 1.3 e 1.6
+loc: § 1. SERVIÇOS DE SOC · itens 1.3 e 1.6
+ev: A: "deverão ser retidos por no mínimo 12 (doze) meses" (item 1.3) · B: "Para fins de auditoria, os logs deverão ser mantidos por 5 (cinco) anos." (item 1.6)
+tipo: Contradição
+dom: Técnico/Arquitetura / Regulatório/Compliance
+desc: Dois prazos de retenção para os mesmos logs na mesma seção (12 meses e 5 anos). O QT-03 (@d4_qt03) fala em 12 meses "online", sugerindo 12 meses online + 5 anos em arquivo, mas isso não está escrito. A migração de 24 meses de logs históricos (@d3_migr) acrescenta volume. Também não se sabe quem guarda os logs após o fim do contrato de 36 meses.
+s: 4
+p: 3
+imp: Diferença de 12 para 60 meses de armazenamento altera de forma relevante o custo do SIEM.
+fw: ISO/IEC 27001:2022
+ctrl: A.8.15 — Registro de logs
+assoc: Correlata
+rel: d2_logs12, d4_qt03, d3_migr, d1_preced
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Confirma-se a retenção de 12 meses online (pesquisável no SIEM) e de 5 anos em arquivamento? O arquivamento pode ser em armazenamento frio? Quem custeia e guarda os logs após o fim do contrato?
+resp: Pré-venda/Arquitetura
+
+k: d2_lgpd
+doc: D02
+sec: 1. SERVIÇOS DE SOC — item 1.3 · 3. IAM — item 3.1
+loc: § 1 item 1.3 · § 3 item 3.1
+ev: "Os registros (logs) de segurança deverão ser retidos" · "Gestão do ciclo de vida das identidades (admissão, movimentação e desligamento)"
+tipo: Requisito implícito
+dom: Privacidade/Proteção de Dados
+nat: Inferida
+desc: Inferida: logs de segurança e dados de identidade contêm dados pessoais de colaboradores e clientes (usuário, IP, atividade), retidos por até 5 anos. O proponente atuará como operador na LGPD, sujeito às instruções do Banco e a deveres de segurança e de apoio na comunicação de incidentes. Os documentos não trazem acordo de tratamento de dados (@d1_minuta).
+s: 4
+p: 3
+imp: Obrigações e responsabilidade de operador de dados pessoais não precificadas.
+fw: LGPD (Lei 13.709/2018)
+ctrl: Art. 39 (operador trata conforme instruções do controlador) · Art. 46 (medidas de segurança)
+assoc: Direta
+rel: d1_minuta, d1_dados
+acao: Registrar premissa na proposta
+perg: O Banco firmará acordo de tratamento de dados pessoais com o Contratado na condição de operador? Quais exigências se aplicam (prazo de comunicação de incidentes, auditoria, eliminação de dados ao fim do contrato)?
+resp: Jurídico
+
+k: d2_sla15
+doc: D02
+sec: 2. NÍVEIS DE SERVIÇO (SLA) — item 2.1
+loc: § 2. NÍVEIS DE SERVIÇO (SLA) · item 2.1
+ev: "Tempo máximo para início do tratamento de incidentes críticos: 15 (quinze) minutos."
+tipo: SLA / KPI
+dom: Operação/Serviços / Segurança da Informação/Cyber
+desc: Cada descumprimento gera multa de 10% do valor mensal (@d1_multa). A definição de "crítico" depende da matriz do Contratante, não fornecida (@d2_matriz); "início do tratamento" não está definido (reconhecimento, triagem ou contato com o Banco).
+s: 4
+p: 3
+imp: Dimensionamento de turno e exposição a multa por ocorrência.
+fw: ITIL 4
+ctrl: Prática de gerenciamento de nível de serviço
+assoc: Direta
+rel: d1_multa, d2_matriz, d2_apur
+acao: Esclarecer no Q&A
+perg: Como é definido e medido o "início do tratamento" (abertura de chamado, triagem humana, notificação ao Banco) e a partir de qual evento os 15 minutos são contados?
+resp: Delivery/Operação
+
+k: d2_disp
+doc: D02
+sec: 2. NÍVEIS DE SERVIÇO (SLA) — item 2.2
+loc: § 2. NÍVEIS DE SERVIÇO (SLA) · item 2.2
+ev: "Disponibilidade mínima mensal da plataforma SIEM: 99,9%."
+tipo: SLA / KPI
+dom: Infraestrutura/Cloud / Continuidade
+desc: 99,9% mensal equivale a ~43 minutos de indisponibilidade por mês. Janelas de manutenção e falhas em componentes do Banco (VPN, @d2_vpn) não são excluídas. Exige alta disponibilidade no Brasil (@d1_dados). Cada descumprimento gera multa (@d1_multa).
+s: 4
+p: 3
+imp: Arquitetura redundante e exposição a multa.
+fw: ITIL 4
+ctrl: Prática de gerenciamento de disponibilidade
+assoc: Direta
+rel: d1_multa, d2_vpn, d1_dados
+acao: Esclarecer no Q&A
+perg: Janelas de manutenção programada e indisponibilidades causadas por componentes sob responsabilidade do Banco (VPN, conectividade, fontes de log) são excluídas do cálculo de disponibilidade?
+resp: Pré-venda/Arquitetura
+
+k: d2_rel
+doc: D02
+sec: 2. NÍVEIS DE SERVIÇO (SLA) — item 2.3
+loc: § 2. NÍVEIS DE SERVIÇO (SLA) · item 2.3
+ev: "Relatório mensal de indicadores, a ser entregue até o 5º dia útil do mês subsequente."
+tipo: SLA / KPI
+dom: Operação/Serviços
+desc: Entregável mensal com prazo, listado como SLA; pela redação do item 7.4 ("qualquer nível de serviço"), o atraso no relatório também pode gerar multa de 10% (@d1_multa). Indicadores mínimos não definidos.
+s: 3
+p: 3
+imp: Multa de 10% por atraso em relatório.
+fw: ITIL 4
+ctrl: Prática de gerenciamento de nível de serviço
+assoc: Correlata
+rel: d1_multa
+acao: Esclarecer no Q&A
+perg: Quais indicadores devem compor o relatório mensal? O atraso na entrega do relatório está sujeito à multa do item 7.4 da RFP?
+resp: Delivery/Operação
+
+k: d2_matriz
+doc: D02
+sec: 2. NÍVEIS DE SERVIÇO (SLA) — item 2.4
+loc: § 2. NÍVEIS DE SERVIÇO (SLA) · item 2.4
+ev: Não localizado · "A classificação de criticidade dos incidentes seguirá a matriz de classificação do Contratante."
+tipo: Lacuna
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: Matriz citada pelo cliente e não fornecida. Ela define quais incidentes são "críticos" e, portanto, sujeitos ao SLA de 15 minutos e à multa por ocorrência; também não se sabe se o Banco pode alterá-la unilateralmente.
+s: 4
+p: 3
+imp: Sem a matriz, não é possível dimensionar a equipe nem estimar a exposição a multas.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.25 — Avaliação e decisão sobre eventos de segurança da informação
+assoc: Correlata
+rel: d2_sla15, d1_multa
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Favor disponibilizar a matriz de classificação de criticidade de incidentes do Banco, com o volume histórico mensal de incidentes por nível, e informar se alterações na matriz dependem de acordo entre as partes.
+resp: Segurança/Cyber
+
+k: d2_apur
+doc: D02
+sec: 2. NÍVEIS DE SERVIÇO (SLA)
+loc: § 2. NÍVEIS DE SERVIÇO (SLA) · itens 2.1 a 2.4 · RFP p. 5 (impressa: 4) item 7.4
+ev: Não localizado · "O descumprimento de qualquer nível de serviço (SLA) previsto no Anexo I sujeitará a Contratada a multa" (RFP, 7.4)
+tipo: Lacuna
+dom: Operação/Serviços / Jurídico/Contratual
+nat: Inferida
+desc: Inferida: o Anexo I define metas, mas não o período de apuração, a fonte de medição, as exclusões, o processo de contestação nem o que conta como uma "ocorrência". Não há SLA de IAM além da revogação em 24 h (@d2_revog). Com multa por ocorrência (@d1_multa), essas regras determinam a exposição financeira.
+s: 4
+p: 3
+imp: Exposição a multas não quantificável.
+fw: ITIL 4
+ctrl: Prática de gerenciamento de nível de serviço
+assoc: Correlata
+rel: d1_multa, d2_sla15, d2_disp, d2_rel, d2_revog
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Qual a metodologia de apuração dos SLAs (período, fonte de medição, exclusões, contestação) e o que constitui uma "ocorrência" para fins do item 7.4 da RFP?
+resp: Delivery/Operação
+
+k: d2_ciclo
+doc: D02
+sec: 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) — item 3.1
+loc: § 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) · item 3.1
+ev: "Gestão do ciclo de vida das identidades (admissão, movimentação e desligamento)"
+tipo: Requisito funcional / de serviço
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: Exige integração com fonte autoritativa (RH), não prevista nas responsabilidades do Contratante (@d2_lacresp). Ambiente atual: AD + scripts internos (@d3_iam). Volume de 4.500 a ~7.100 identidades conforme a fonte (@d4_usrc). A seção 3 não usa verbo de obrigação; classificado como mandatório pelo efeito (especificação do objeto).
+s: 3
+p: 3
+imp: Automação de ciclo de vida e integrações a precificar.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.16 — Gestão de identidade
+assoc: Direta
+rel: d2_lacresp, d3_iam, d3_iga, d4_usrc
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d2_revog
+doc: D02
+sec: 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) — item 3.1
+loc: § 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) · item 3.1
+ev: "com revogação dos acessos de colaboradores desligados em até 24 (vinte e quatro) horas"
+tipo: SLA / KPI
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: SLA sujeito à multa de 10% por ocorrência (@d1_multa). O marco inicial (desligamento efetivo ou recebimento da notificação do RH) não está definido, e o cumprimento depende de o Banco comunicar o desligamento a tempo.
+s: 4
+p: 3
+imp: Multa por ocorrência por atraso que pode ser causado pelo próprio Banco.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.18 — Direitos de acesso
+assoc: Direta
+rel: d1_multa, d2_apur
+acao: Esclarecer no Q&A
+perg: O prazo de 24 horas para revogação é contado a partir de qual evento (efetivação do desligamento no sistema de RH ou recebimento da solicitação pelo Contratado)? Atrasos na comunicação pelo Banco são excluídos do SLA?
+resp: Delivery/Operação
+
+k: d2_mfa
+doc: D02
+sec: 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) — item 3.2
+loc: § 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) · item 3.2
+ev: "Autenticação multifator (MFA) obrigatória para 100% dos usuários com acesso privilegiado."
+tipo: Requisito não funcional
+dom: Segurança da Informação/Cyber
+desc: Não define quem fornece a solução e as licenças de MFA nem o número de usuários privilegiados.
+s: 3
+p: 3
+imp: Possível custo de licenças e implantação de MFA.
+fw: ISO/IEC 27001:2022
+ctrl: A.8.5 — Autenticação segura
+assoc: Direta
+acao: Esclarecer no Q&A
+perg: Quantos usuários possuem acesso privilegiado? A solução de MFA deve ser fornecida pelo Contratado ou já existe no Banco?
+resp: Segurança/Cyber
+
+k: d2_recert
+doc: D02
+sec: 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) — item 3.3
+loc: § 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) · item 3.3
+ev: "Revisão (recertificação) trimestral dos acessos concedidos."
+tipo: Requisito funcional / de serviço
+dom: Segurança da Informação/Cyber / Operação/Serviços
+desc: Campanhas trimestrais de recertificação exigem ferramenta de governança de identidades ou processo manual intensivo; com "AD + scripts internos" (@d3_iam), o fornecimento da ferramenta é incerto (@d3_iga). Não define quais sistemas entram na revisão.
+s: 3
+p: 3
+imp: Esforço recorrente e possível licença de IGA.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.18 — Direitos de acesso
+assoc: Direta
+rel: d3_iam, d3_iga
+acao: Precificar
+resp: Delivery/Operação
+
+k: d2_pam
+doc: D02
+sec: 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) — item 3.4
+loc: § 3. GESTÃO DE IDENTIDADES E ACESSOS (IAM) · item 3.4
+ev: "É desejável que a solução contemple cofre de senhas para contas privilegiadas (PAM)."
+tipo: Requisito funcional / de serviço
+dom: Segurança da Informação/Cyber
+obr: Desejável
+desc: Desejável; o Banco não tem PAM (@d3_pam). Não consta dos critérios do item 6.2 nem do questionário, e não se sabe se pontua ou se deve ser cotado à parte.
+s: 3
+p: 3
+imp: Incluir PAM eleva o preço; não incluir pode custar pontos em "Ferramentas e tecnologia".
+fw: ISO/IEC 27001:2022
+ctrl: A.8.2 — Direitos de acesso privilegiado
+assoc: Direta
+rel: d3_pam, d1_crit_fer
+acao: Esclarecer no Q&A
+perg: A oferta de PAM (item 3.4) será pontuada? Em qual critério do item 6.2? Deve ser cotada como item opcional separado na planilha de preços?
+resp: Pré-venda/Arquitetura
+
+k: d2_trans
+doc: D02
+sec: 4. TRANSIÇÃO — item 4.1 × RFP item 3.2
+loc: Anexo I § 4. TRANSIÇÃO · item 4.1 · RFP p. 2 (impressa: 1) item 3.2
+ev: A: "A transição dos serviços deverá ser concluída em até 30 (trinta) dias corridos a partir da assinatura do contrato." (RFP, 3.2) · B: "A transição dos serviços deverá ser concluída em até 60 (sessenta) dias corridos a partir da assinatura do contrato." (Anexo I, 4.1)
+tipo: Contradição
+dom: Transição/Implantação
+desc: Prazos de transição incompatíveis (30 × 60 dias); não há cláusula de precedência (@d1_preced) e o Q&A Rodada 1 não tratou do tema. A diferença altera o custo da equipe de transição, a operação paralela sem custo (@d2_paralelo) e o plano de transição pontuado (@d1_crit_trans).
+s: 4
+p: 3
+imp: Diferença de 30 dias no esforço e no custo de transição; risco de multa se o cliente aplicar o prazo menor.
+fw: PMBOK Guide (7ª edição)
+ctrl: Domínio de desempenho de planejamento
+assoc: Correlata
+rel: d1_trans, d1_preced, d2_paralelo, d1_crit_trans, d3_risktrans
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O prazo de transição é de 30 dias (RFP, item 3.2) ou de 60 dias (Anexo I, item 4.1) a partir da assinatura? As multas por SLA se aplicam durante a transição?
+resp: Delivery/Operação
+
+k: d2_paralelo
+doc: D02
+sec: 4. TRANSIÇÃO — item 4.2
+loc: § 4. TRANSIÇÃO · item 4.2
+ev: "Durante a transição, o proponente deverá operar em paralelo com o fornecedor atual, sem custo adicional para o Contratante."
+tipo: Requisito funcional / de serviço
+dom: Transição/Implantação / Comercial/Preço
+desc: Probabilidade 5: o texto exige a operação paralela "sem custo adicional", de modo que o custo de equipe e plataforma durante 30 a 60 dias é certo e precisa ser diluído no preço mensal. Não define a cooperação exigida do fornecedor atual, cujo contrato de SIEM encerra em 31/01/2027 (@d3_siemleg).
+s: 3
+p: 5
+imp: Custo de transição não faturável a diluir no preço.
+rel: d2_trans, d3_siemleg, d3_risktrans
+acao: Precificar
+perg: O fornecedor atual está contratualmente obrigado a cooperar na transição (repasse de conhecimento, exportação de logs e regras)? Há faturamento durante a transição ou o primeiro faturamento ocorre só após o aceite da transição?
+resp: Pricing/Financeiro
+
+k: d2_cissp
+doc: D02
+sec: 5. EQUIPE — item 5.1
+loc: § 5. EQUIPE · item 5.1
+ev: "O serviço deverá contar com coordenador com certificação CISSP, dedicado exclusivamente ao contrato."
+tipo: Restrição
+dom: Pessoas/Equipe
+desc: Probabilidade 5: custo fixo explicitamente exigido (profissional CISSP com dedicação exclusiva durante 36 meses). Não define se o coordenador cobre também o IAM nem se pode atuar remotamente.
+s: 3
+p: 5
+imp: Custo fixo de coordenação dedicada.
+rel: d1_cert
+acao: Precificar
+resp: RH/Staffing
+
+k: d2_n1
+doc: D02
+sec: 5. EQUIPE — item 5.2
+loc: § 5. EQUIPE · item 5.2
+ev: "Os analistas de nível 1 deverão atuar presencialmente na sede do Contratante, em São Paulo/SP, em horário comercial."
+tipo: Restrição
+dom: Pessoas/Equipe
+desc: Alterado pelo Q&A nº 6 (@d4_q6), que admite atuação remota em território nacional. Mesmo antes da alteração, não definia como o nível 1 atua fora do horário comercial num serviço 24x7x365 (@d2_mon).
+s: 3
+p: 3
+imp: Custo de alocação presencial (reduzido após o Q&A).
+rel: d4_q6, d2_mon
+st: Alterado
+acao: Registrar premissa na proposta
+resp: RH/Staffing
+
+k: d2_vpn
+doc: D02
+sec: 6. RESPONSABILIDADES DO CONTRATANTE — item 6.1
+loc: § 6. RESPONSABILIDADES DO CONTRATANTE · item 6.1
+ev: "Disponibilizar acesso remoto seguro (VPN) aos ambientes monitorados."
+tipo: Responsabilidade / dependência do cliente
+dom: Infraestrutura/Cloud
+obr: Informativo
+desc: Dependência do Banco; falhas de VPN afetam SLAs (@d2_disp) e a operação remota do nível 1 (@d4_q6).
+s: 2
+p: 3
+imp: Indisponibilidade do Banco pode gerar descumprimento de SLA atribuído ao Contratado.
+rel: d2_disp, d4_q6
+acao: Registrar premissa na proposta
+resp: Delivery/Operação
+
+k: d2_doc
+doc: D02
+sec: 6. RESPONSABILIDADES DO CONTRATANTE — item 6.2
+loc: § 6. RESPONSABILIDADES DO CONTRATANTE · item 6.2
+ev: "Disponibilizar a documentação técnica do ambiente em até 10 (dez) dias após a assinatura do contrato."
+tipo: Responsabilidade / dependência do cliente
+dom: Transição/Implantação
+obr: Informativo
+desc: Probabilidade 4: a documentação pode chegar só no 10º dia de uma transição de 30 dias (RFP, 3.2), um terço do prazo, o que tende a comprimir o planejamento e as integrações.
+s: 3
+p: 4
+imp: Atraso na transição por dependência do cliente.
+rel: d2_trans, d3_risktrans
+acao: Registrar premissa na proposta
+resp: Delivery/Operação
+
+k: d2_lacresp
+doc: D02
+sec: 6. RESPONSABILIDADES DO CONTRATANTE
+loc: § 6. RESPONSABILIDADES DO CONTRATANTE · itens 6.1 e 6.2
+ev: Não localizado · "6. RESPONSABILIDADES DO CONTRATANTE" (lista restrita aos itens 6.1 e 6.2)
+tipo: Lacuna
+dom: Transição/Implantação / Operação/Serviços
+nat: Inferida
+desc: Inferida: não há obrigação do Banco de fornecer acesso ao SIEM legado e exportação dos logs históricos (@d3_migr), integração com o sistema de RH como fonte autoritativa (@d2_ciclo), pontos focais, aprovação de mudanças, licenças já existentes nem cooperação do fornecedor atual (@d2_paralelo).
+s: 3
+p: 3
+imp: Atividades sem responsável podem ser cobradas do Contratado.
+rel: d3_migr, d2_ciclo, d2_paralelo
+st: Em esclarecimento
+acao: Registrar premissa na proposta
+perg: O Banco será responsável por fornecer acesso ao SIEM legado e a exportação dos logs históricos, a integração com o sistema de RH, ponto focal técnico e a aprovação de mudanças? Há matriz de responsabilidades (RACI)?
+resp: Delivery/Operação
+
+k: d3_inv
+doc: D03
+sec: Inventário
+loc: slides 1–5 · notas do apresentador do slide 5
+ev: "Workshop com proponentes — RFP nº 2026-017 — 22/10/2026"
+tipo: Registro de cobertura
+dom: Administrativo do processo
+desc: Processado integralmente, inclusive as notas do apresentador do slide 5 (sinalizadas pela extração), que trazem ampliação de escopo (@d3_subs). A extração não sinalizou slides ocultos. A RFP não define se o material do workshop é vinculante (@d3_vinc).
+acao: Nenhuma (informativo)
+resp: Bid Manager
+
+k: d3_usr
+doc: D03
+sec: Números do ambiente × RFP item 2.1
+loc: slide 2 — "Números do ambiente" · RFP p. 2 (impressa: 1) item 2.1
+ev: A: "abrangendo aproximadamente 4.500 colaboradores" (RFP, 2.1) · B: "6.200 usuários ativos" (slide 2)
+tipo: Contradição
+dom: Comercial/Preço / Operação/Serviços
+desc: Base de usuários diverge em ~38%. "Colaboradores" e "usuários ativos" podem ter universos diferentes (terceiros, contas de serviço), mas nenhum documento explica. O Q&A nº 5 depois fixou 5.000 (@d4_usr5), sem resolver a divergência (@d4_usrc).
+s: 4
+p: 3
+imp: Preço de IAM e dimensionamento do SOC dependem da base adotada.
+rel: d1_usr, d4_usr5, d4_usrc, d1_preced
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Os 6.200 usuários ativos do slide 2 incluem terceiros, contas de serviço ou contas não contempladas nos 4.500 colaboradores da RFP?
+resp: Pré-venda/Arquitetura
+
+k: d3_srv
+doc: D03
+sec: Números do ambiente
+loc: slide 2 — "Números do ambiente"
+ev: "850 servidores (70% Windows, 30% Linux)"
+tipo: Dado de dimensionamento
+dom: Infraestrutura/Cloud
+obr: Informativo
+desc: Base para as fontes de log do SIEM; não há quantidade de ativos de rede, estações, aplicações ou bancos de dados.
+s: 3
+p: 3
+imp: Dimensionamento de conectores e volumetria.
+rel: d2_int_amb
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d3_dc
+doc: D03
+sec: Números do ambiente
+loc: slide 2 — "Números do ambiente"
+ev: "2 data centers próprios (São Paulo e Campinas)"
+tipo: Dado de dimensionamento
+dom: Infraestrutura/Cloud
+obr: Informativo
+desc: Dois sites físicos; atendimento presencial em Campinas, se exigido na resposta a incidentes (@d2_ir), não está previsto.
+s: 2
+p: 3
+imp: Possíveis deslocamentos e coletores em dois sites.
+rel: d2_ir, d2_int_amb
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d3_cloud
+doc: D03
+sec: Números do ambiente
+loc: slide 2 — "Números do ambiente"
+ev: "Workloads em 2 nuvens públicas"
+tipo: Dado de dimensionamento
+dom: Infraestrutura/Cloud
+obr: Informativo
+desc: Não identifica os provedores nem o volume de contas e workloads; afeta conectores do SIEM e o escopo de IAM em nuvem.
+s: 3
+p: 3
+imp: Integrações de nuvem sem base de dimensionamento.
+rel: d2_int_amb
+acao: Esclarecer no Q&A
+perg: Quais são os provedores de nuvem pública e quantas contas, assinaturas e workloads devem ser monitorados?
+resp: Pré-venda/Arquitetura
+
+k: d3_siemleg
+doc: D03
+sec: Ferramentas atuais
+loc: slide 3 — "Ferramentas atuais"
+ev: "SIEM legado — contrato encerra em 31/01/2027, sem possibilidade de prorrogação"
+tipo: Premissa do cliente
+dom: Transição/Implantação
+obr: Informativo
+desc: O fim do SIEM legado coincide com o início previsto dos serviços (01/02/2027, @d1_inicio): o novo SIEM precisa estar operacional, com logs migrados, até essa data. Limita também a operação paralela (@d2_paralelo) ao período anterior a 31/01/2027.
+s: 4
+p: 3
+imp: Sem folga para atrasos na transição.
+rel: d1_inicio, d2_paralelo, d3_migr, d3_risktrans
+acao: Mitigar
+resp: Delivery/Operação
+
+k: d3_risktrans
+doc: D03
+sec: Ferramentas atuais × RFP 3.1, 3.2, 7.4 × Anexo I 4.1, 6.2
+loc: slide 3 — "Ferramentas atuais" · RFP p. 2 (impressa: 1) itens 3.1 e 3.2 · RFP p. 5 (impressa: 4) item 7.4 · Anexo I § 4 item 4.1 e § 6 item 6.2
+ev: A: "SIEM legado — contrato encerra em 31/01/2027, sem possibilidade de prorrogação" (slide 3) · B: "Início previsto dos serviços 01/02/2027" (RFP, 3.1) · C: "multa de 10% (dez por cento) do valor mensal do contrato, por ocorrência" (RFP, 7.4)
+tipo: Risco para o proponente
+dom: Transição/Implantação / Financeiro
+nat: Inferida
+desc: Risco combinado: fim do SIEM legado sem prorrogação em 31/01/2027 (@d3_siemleg); início em 01/02/2027 (@d1_inicio); transição de 30 ou 60 dias contada da assinatura, sem data de assinatura definida (@d2_trans); documentação do ambiente só até o 10º dia (@d2_doc); operação paralela sem custo (@d2_paralelo); migração de 24 meses de logs (@d3_migr); EPS não informado (@d4_q3); e multa de 10% por ocorrência sem teto (@d1_multa, @d4_q4). Se a assinatura atrasar, o Banco fica sem SIEM e o proponente inicia a operação exposto a multas. Probabilidade 4: a data de fim do legado é declarada "sem possibilidade de prorrogação" e coincide com o início dos serviços, e o Q&A nº 4 recusou limitar as multas.
+s: 5
+p: 4
+imp: Transição inviável no prazo, com multas desde o primeiro mês e risco reputacional.
+fw: ISO 31000
+ctrl: Processo de avaliação de riscos (identificador a confirmar)
+assoc: Correlata
+rel: d3_siemleg, d1_inicio, d1_trans, d2_trans, d2_doc, d2_paralelo, d3_migr, d4_q3, d1_multa, d4_q4
+acao: Avaliar Go/No-Go
+perg: Se a assinatura ocorrer depois da data necessária para concluir a transição até 31/01/2027, o Banco aceitará período de carência de SLAs e multas e a prorrogação do prazo de transição?
+resp: Bid Manager
+
+k: d3_iam
+doc: D03
+sec: Ferramentas atuais
+loc: slide 3 — "Ferramentas atuais"
+ev: "IAM: Active Directory + scripts internos"
+tipo: Dado de dimensionamento
+dom: Segurança da Informação/Cyber
+obr: Informativo
+desc: Não há ferramenta de IAM/IGA; ciclo de vida, revogação em 24 h e recertificação trimestral (@d2_ciclo, @d2_revog, @d2_recert) exigirão automação nova.
+s: 3
+p: 3
+imp: Esforço de implantação de IAM maior do que a simples operação.
+rel: d2_ciclo, d2_revog, d2_recert, d3_iga
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d3_iga
+doc: D03
+sec: Ferramentas atuais × Anexo I item 3.1
+loc: slide 3 — "Ferramentas atuais" · Anexo I § 3 item 3.1
+ev: A: "IAM: Active Directory + scripts internos" (slide 3) · B: "Gestão do ciclo de vida das identidades (admissão, movimentação e desligamento)" (Anexo I, 3.1)
+tipo: Ambiguidade
+dom: Segurança da Informação/Cyber / Comercial/Preço
+desc: Nenhum documento diz se o proponente deve fornecer plataforma de IAM/IGA (licenças e implantação) ou apenas operar os processos sobre o AD e os scripts existentes. A diferença de custo para 4.500 a ~7.100 identidades é relevante.
+s: 4
+p: 3
+imp: Preço de IAM pode variar de serviço de operação a projeto com licenças.
+rel: d1_iam, d2_ciclo, d2_recert, d3_iam
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O serviço de IAM inclui o fornecimento e a implantação de plataforma de governança de identidades (IGA) pelo Contratado, ou a operação dos processos sobre o Active Directory e os scripts existentes? Quais sistemas-alvo devem ser integrados?
+resp: Pré-venda/Arquitetura
+
+k: d3_pam
+doc: D03
+sec: Ferramentas atuais
+loc: slide 3 — "Ferramentas atuais"
+ev: "Não há solução de PAM"
+tipo: Oportunidade / diferencial
+dom: Segurança da Informação/Cyber
+obr: Informativo
+desc: O Banco não tem PAM e o Anexo I o marca como desejável (@d2_pam). Oferecer PAM (incluído ou opcional) pode diferenciar a proposta em "Ferramentas e tecnologia" (@d1_crit_fer), sujeito ao esclarecimento sobre pontuação.
+fw: ISO/IEC 27001:2022
+ctrl: A.8.2 — Direitos de acesso privilegiado
+assoc: Correlata
+rel: d2_pam, d1_crit_fer
+acao: Precificar
+resp: Pré-venda/Arquitetura
+
+k: d3_alertas
+doc: D03
+sec: Desafios
+loc: slide 4 — "Desafios"
+ev: "Cerca de 1.200 alertas por dia"
+tipo: Dado de dimensionamento
+dom: Operação/Serviços
+obr: Informativo
+desc: Único dado de volume operacional disponível, já que o EPS foi recusado (@d4_q3). Base para dimensionar analistas por turno.
+s: 3
+p: 3
+imp: Dimensionamento de equipe de triagem.
+rel: d4_q3
+acao: Precificar
+resp: Delivery/Operação
+
+k: d3_fp
+doc: D03
+sec: Desafios
+loc: slide 4 — "Desafios"
+ev: "70% de falsos positivos"
+tipo: Dado de dimensionamento
+dom: Operação/Serviços
+obr: Informativo
+desc: Indica regras de correlação mal ajustadas no legado; exigirá ajuste (tuning) intenso no início da operação.
+s: 2
+p: 3
+imp: Carga inicial de triagem elevada.
+rel: d3_meta
+acao: Precificar
+resp: Segurança/Cyber
+
+k: d3_meta
+doc: D03
+sec: Desafios
+loc: slide 4 — "Desafios"
+ev: "Meta: reduzir os falsos positivos para 10% no primeiro trimestre de operação"
+tipo: Ambiguidade
+dom: Operação/Serviços / Jurídico/Contratual
+obr: Desejável
+desc: Meta agressiva (de 70% para 10% em três meses), apresentada só no workshop e ausente dos SLAs do Anexo I. Se tratada como SLA, entra no regime de multa por ocorrência (@d1_multa). Não define o método de medição de falso positivo.
+s: 4
+p: 3
+imp: Obrigação de resultado difícil de cumprir e potencialmente sujeita a multa.
+rel: d3_fp, d1_multa, d3_vinc
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: A meta de reduzir os falsos positivos para 10% no primeiro trimestre é obrigação contratual (SLA sujeito a multa) ou objetivo de melhoria? Como será medido o percentual de falsos positivos?
+resp: Segurança/Cyber
+
+k: d3_fp_op
+doc: D03
+sec: Desafios
+loc: slide 4 — "Desafios"
+ev: "Meta: reduzir os falsos positivos para 10% no primeiro trimestre de operação"
+tipo: Oportunidade / diferencial
+dom: Operação/Serviços
+obr: Informativo
+desc: Um plano de redução de falsos positivos com marcos e medição pode diferenciar a proposta em "Metodologia de operação do SOC" (@d1_crit_met), desde que apresentado como objetivo e não como SLA.
+fw: NIST CSF 2.0
+ctrl: DE.AE — Adverse Event Analysis
+assoc: Correlata
+rel: d3_meta, d1_crit_met
+acao: Atender
+resp: Segurança/Cyber
+
+k: d3_migr
+doc: D03
+sec: Expectativas para o novo serviço
+loc: slide 5 — "Expectativas para o novo serviço"
+ev: "Migração de 24 meses de logs históricos do SIEM legado para a nova plataforma"
+tipo: Requisito funcional / de serviço
+dom: Transição/Implantação / Dados/Analytics
+obr: Desejável
+desc: Escopo ausente da RFP e do Anexo I, apresentado como "expectativa". Volume desconhecido (EPS recusado, @d4_q3); acesso e exportação do legado não garantidos (@d2_lacresp); o contrato do legado termina em 31/01/2027 (@d3_siemleg). Implica retenção superior a 12 meses (@d2_logs5) e armazenamento no Brasil (@d1_dados).
+s: 4
+p: 3
+imp: Projeto de migração de dados de volume desconhecido, não previsto no preço.
+rel: d2_logs5, d3_siemleg, d2_lacresp, d4_q3, d3_vinc
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: A migração de 24 meses de logs históricos do SIEM legado é obrigatória? Qual o volume (GB/TB) e o formato de exportação, e quem extrairá os dados do SIEM legado antes de 31/01/2027?
+resp: Pré-venda/Arquitetura
+
+k: d3_visao
+doc: D03
+sec: Expectativas para o novo serviço
+loc: slide 5 — "Expectativas para o novo serviço"
+ev: "Visão unificada de riscos para a diretoria"
+tipo: Entregável
+dom: Dados/Analytics / Segurança da Informação/Cyber
+obr: Desejável
+desc: Expectativa vaga: pode ser painel executivo do SOC, consolidação de riscos de SOC e IAM ou ferramenta de GRC. Não consta do Anexo I.
+s: 3
+p: 3
+imp: Escopo aberto de relatórios ou ferramenta.
+rel: d3_vinc
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O que se espera da "visão unificada de riscos para a diretoria" (painel do SOC, relatório executivo, ferramenta de GRC)? É escopo obrigatório?
+resp: Pré-venda/Arquitetura
+
+k: d3_subs
+doc: D03
+sec: Expectativas para o novo serviço — notas do apresentador
+loc: slide 5 — notas do apresentador
+ev: "as subsidiárias Horizonte Seguros e Horizonte Investimentos (cerca de 900 usuários adicionais) também deverão ser incluídas no escopo."
+tipo: Requisito funcional / de serviço
+dom: Operação/Serviços / Jurídico/Contratual
+desc: Ampliação de escopo presente apenas nas notas do apresentador (não exibidas no slide), ausente do objeto da RFP (item 2.1, apenas o Banco) e do Q&A nº 5 (5.000 usuários). Implica mais usuários e ativos e, possivelmente, outras entidades contratantes. Não se sabe se os ~900 usuários estão nos 6.200 do slide 2.
+s: 4
+p: 3
+imp: Escopo e preço subdimensionados se as subsidiárias forem incluídas depois.
+rel: d1_usr, d4_usr5, d4_usrc, d2_int_amb, d3_vinc
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: As subsidiárias Horizonte Seguros e Horizonte Investimentos fazem parte do escopo desta RFP? Se sim, os ~900 usuários estão incluídos nos 5.000 do Q&A nº 5, quais ativos delas serão monitorados e quem será a parte contratante?
+resp: Bid Manager
+
+k: d3_vinc
+doc: D03
+sec: Expectativas para o novo serviço (slide e notas)
+loc: slide 5 — "Expectativas para o novo serviço" · slide 5 — notas do apresentador
+ev: "Expectativas para o novo serviço" · "Lembrar os proponentes: [...] também deverão ser incluídas no escopo."
+tipo: Ambiguidade
+dom: Administrativo do processo / Jurídico/Contratual
+desc: A RFP prevê o workshop (@d1_workshop), mas não diz se as informações e "expectativas" apresentadas (6.200 usuários, meta de falsos positivos, migração de logs, visão de riscos, subsidiárias) integram o escopo contratual. Sem precedência definida (@d1_preced), o Banco pode exigir esse conteúdo na execução.
+s: 4
+p: 3
+imp: Escopo não precificado exigível na execução.
+rel: d1_workshop, d1_preced, d3_meta, d3_migr, d3_visao, d3_subs
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O material apresentado no workshop de 22/10/2026, inclusive as notas do apresentador, integra o escopo contratual? Se sim, será formalizado por adendo à RFP?
+resp: Bid Manager
+
+k: d4_inv
+doc: D04
+sec: Inventário
+loc: abas "Instruções", "Q&A Rodada 1", "Questionário Técnico" e "Pesos" (OCULTA)
+ev: "Questionário Técnico e Respostas aos Esclarecimentos — RFP nº 2026-017"
+tipo: Registro de cobertura
+dom: Administrativo do processo
+desc: Processado integralmente, inclusive a aba oculta "Pesos" (A1:B9), que traz pesos e regra de desconto de pontuação não divulgados na RFP (@d4_pesos, @d4_desc). As respostas do Q&A (12/11/2026) coincidem com a data de divulgação do cronograma (@d1_resp). O arquivo não tem versão própria.
+acao: Nenhuma (informativo)
+resp: Bid Manager
+
+k: d4_instr
+doc: D04
+sec: Instruções
+loc: aba "Instruções" · A3
+ev: "O preenchimento de todas as abas deste arquivo é obrigatório. Questionários incompletos serão desclassificados."
+tipo: Critério eliminatório / de habilitação
+dom: Administrativo do processo
+desc: Probabilidade 5: desclassificação expressa no texto. Acrescenta sanção ao item 4.4 da RFP (@d1_quest). "Todas as abas" incluiria "Q&A Rodada 1" e a aba oculta "Pesos", que não têm campos de resposta (@d4_instr_amb).
+s: 5
+p: 5
+imp: Desclassificação.
+rel: d1_quest, d4_instr_amb
+acao: Atender
+resp: Pré-venda/Arquitetura
+
+k: d4_instr_amb
+doc: D04
+sec: Instruções
+loc: aba "Instruções" · A3
+ev: "O preenchimento de todas as abas deste arquivo é obrigatório."
+tipo: Ambiguidade
+dom: Administrativo do processo
+desc: Só a aba "Questionário Técnico" tem campos de resposta (colunas D e E); "Q&A Rodada 1" e "Pesos" (oculta) não são formulários. Não se sabe se "Comentários" é obrigatório em todos os itens nem se "Parcial" conta como incompleto.
+s: 5
+p: 3
+imp: Interpretação divergente pode levar à desclassificação.
+rel: d4_instr, d1_quest
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O preenchimento obrigatório refere-se somente à aba "Questionário Técnico"? A coluna "Comentários" é obrigatória? A resposta "Parcial" é aceita como preenchimento completo?
+resp: Bid Manager
+
+k: d4_q1
+doc: D04
+ver: Q&A Rodada 1 — 12/11/2026
+sec: Q&A Rodada 1 — pergunta nº 1 (RFP, item 3.1)
+loc: aba "Q&A Rodada 1" · E2 (pergunta nº 1, Rodada 1, 12/11/2026)
+ev: "A data de entrega das propostas fica prorrogada para 27/11/2026, até as 18h."
+tipo: Prazo / marco
+dom: Administrativo do processo
+desc: Altera o item 3.1 da RFP (@d1_entrega). O restante do cronograma (início em 01/02/2027) não foi ajustado, o que encurta o intervalo entre proposta, assinatura e transição (@d3_risktrans). Probabilidade 2: data explícita e formalizada; a perda do prazo dependeria de falha interna.
+s: 5
+p: 2
+imp: Proposta fora do prazo não é considerada; prazo extra de uma semana para a resposta.
+rel: d1_entrega, d3_risktrans
+acao: Atender
+resp: Bid Manager
+
+k: d4_q2
+doc: D04
+ver: Q&A Rodada 1 — 12/11/2026
+sec: Q&A Rodada 1 — pergunta nº 2 (RFP, item 5.1 c)
+loc: aba "Q&A Rodada 1" · E3 (pergunta nº 2, Rodada 1, 12/11/2026)
+ev: "Não. O SOC deverá estar localizado em território nacional."
+tipo: Critério eliminatório / de habilitação
+dom: Regulatório/Compliance / Operação/Serviços
+desc: Confirma o critério 5.1 c) da RFP (@d1_socbr) e veda operar o SOC a partir de outro país. Probabilidade 5: o critério é de habilitação e a resposta formal afasta qualquer outra leitura. Reforça a residência no Brasil prevista no Anexo III (@d1_dados) contra a região livre do Anexo I (@d2_regiao).
+s: 5
+p: 5
+imp: Inabilitação se o SOC estiver fora do Brasil.
+rel: d1_socbr, d1_dados, d2_regiao
+st: Duplicado
+acao: Avaliar Go/No-Go
+resp: Compliance
+
+k: d4_q3
+doc: D04
+ver: Q&A Rodada 1 — 12/11/2026
+sec: Q&A Rodada 1 — pergunta nº 3 (Anexo I, item 1.4)
+loc: aba "Q&A Rodada 1" · E4 (pergunta nº 3, Rodada 1, 12/11/2026)
+ev: "A volumetria será informada somente ao proponente vencedor."
+tipo: Lacuna
+dom: Comercial/Preço / Técnico/Arquitetura
+desc: Informação indispensável ao preço do SIEM (licenciamento, armazenamento de 12 meses ou 5 anos, migração de 24 meses) recusada formalmente. Probabilidade 5: o cliente recusou a informação no Q&A, de modo que o preço será feito sem a volumetria real. Referências disponíveis: 1.200 alertas/dia, 850 servidores e 4.500 a ~7.100 usuários (@d3_alertas, @d3_srv, @d4_usrc).
+s: 4
+p: 5
+imp: Preço do SIEM sem base; risco de prejuízo se o volume real for maior.
+rel: d2_int, d2_siem, d2_logs5, d3_migr, d3_alertas
+acao: Registrar premissa na proposta
+perg: Na impossibilidade de informar o EPS, o Banco aceita que o preço seja baseado em volumetria de referência declarada na proposta (EPS e GB/dia), com repactuação se o volume real exceder a faixa?
+resp: Pricing/Financeiro
+
+k: d4_q4
+doc: D04
+ver: Q&A Rodada 1 — 12/11/2026
+sec: Q&A Rodada 1 — pergunta nº 4 (RFP, item 7.4)
+loc: aba "Q&A Rodada 1" · E5 (pergunta nº 4, Rodada 1, 12/11/2026)
+ev: "As condições do item 7 permanecem inalteradas."
+tipo: Penalidade / multa / glosa
+dom: Jurídico/Contratual / Financeiro
+desc: Resposta que mantém a multa por ocorrência sem teto (@d1_multa) e, por abranger todo o item 7, também a responsabilidade ilimitada (@d1_resp_ilim). Indica que o Banco não pretende negociar o tema nesta fase.
+s: 5
+p: 3
+imp: Confirma exposição financeira sem limite; ressalvas na proposta podem ser mal recebidas.
+fw: Código Civil (Lei 10.406/2002)
+ctrl: Art. 412 — limite da cláusula penal ao valor da obrigação principal
+assoc: Correlata
+rel: d1_multa, d1_resp_ilim, d4_riskfin
+acao: Propor exceção/ressalva
+resp: Jurídico
+
+k: d4_usr5
+doc: D04
+ver: Q&A Rodada 1 — 12/11/2026
+sec: Q&A Rodada 1 — pergunta nº 5 (RFP, item 2.1)
+loc: aba "Q&A Rodada 1" · E6 (pergunta nº 5, Rodada 1, 12/11/2026)
+ev: "Considerar 5.000 usuários."
+tipo: Dado de dimensionamento
+dom: Comercial/Preço
+obr: Mandatório
+desc: Altera a base de 4.500 colaboradores da RFP (@d1_usr) para 5.000 usuários, sem explicar a diferença para os 6.200 usuários ativos do workshop (@d3_usr) nem os ~900 das subsidiárias (@d3_subs) — ver @d4_usrc.
+s: 3
+p: 3
+imp: Base de preço formal para IAM e SOC.
+rel: d1_usr, d3_usr, d4_usrc
+acao: Precificar
+resp: Pricing/Financeiro
+
+k: d4_usrc
+doc: D04
+ver: Q&A Rodada 1 — 12/11/2026
+sec: Q&A Rodada 1 — pergunta nº 5 × Apresentação slides 2 e 5
+loc: aba "Q&A Rodada 1" · E6 (pergunta nº 5, Rodada 1, 12/11/2026) · Apresentação slide 2 — "Números do ambiente" · slide 5 — notas do apresentador
+ev: A: "Considerar 5.000 usuários." (Q&A nº 5) · B: "6.200 usuários ativos" (slide 2) e "cerca de 900 usuários adicionais" (slide 5, notas)
+tipo: Contradição
+dom: Comercial/Preço / Operação/Serviços
+desc: Mesmo após o Q&A há três bases: 5.000 (Q&A), 6.200 (workshop) e até ~7.100 com as subsidiárias, diferença de até 42%. Precificar 5.000 e ter de atender 7.100 gera prejuízo sem previsão de repactuação.
+s: 4
+p: 3
+imp: Subprecificação de IAM (por identidade) e do SOC.
+rel: d4_usr5, d3_usr, d3_subs, d1_usr, d1_preced
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: O Q&A nº 5 fixa 5.000 usuários, mas o workshop informou 6.200 usuários ativos e ~900 usuários das subsidiárias. Qual a base contratual para preço e haverá repactuação se a quantidade real superar a base em determinado percentual?
+resp: Pricing/Financeiro
+
+k: d4_q6
+doc: D04
+ver: Q&A Rodada 1 — 12/11/2026
+sec: Q&A Rodada 1 — pergunta nº 6 (Anexo I, item 5.2)
+loc: aba "Q&A Rodada 1" · E7 (pergunta nº 6, Rodada 1, 12/11/2026)
+ev: "Sim, desde que em território nacional."
+tipo: Restrição
+dom: Pessoas/Equipe
+desc: Altera o Anexo I item 5.2 (@d2_n1): o nível 1 pode atuar remotamente no Brasil. Reduz o custo de alocação presencial. Sem precedência definida (@d1_preced), convém registrar a premissa na proposta.
+s: 2
+p: 3
+imp: Redução de custo de equipe.
+rel: d2_n1, d1_preced
+acao: Registrar premissa na proposta
+resp: RH/Staffing
+
+k: d4_qt01
+doc: D04
+sec: Questionário Técnico — QT-01
+loc: aba "Questionário Técnico" · B2:C2 (QT-01) · aba "Pesos" (OCULTA) · B2
+ev: "Possui certificação ISO/IEC 27001 com escopo que inclua os serviços de SOC?" · Obrigatório: "Sim" · Peso: "3"
+tipo: Critério de avaliação / pontuação
+dom: Segurança da Informação/Cyber
+desc: Repete o critério de habilitação 5.1 a) (@d1_iso); peso 3 na aba oculta.
+s: 3
+p: 3
+imp: Pontuação do questionário; resposta negativa coincide com inabilitação.
+fw: ISO/IEC 27001:2022
+ctrl: Cláusula 4.3 — Determinação do escopo do SGSI
+assoc: Direta
+rel: d1_iso
+st: Duplicado
+acao: Atender
+resp: Compliance
+
+k: d4_qt02
+doc: D04
+sec: Questionário Técnico — QT-02
+loc: aba "Questionário Técnico" · B3:C3 (QT-02) · aba "Pesos" (OCULTA) · B3
+ev: "Oferece integração nativa com plataforma SOAR?" · Obrigatório: "Não" · Peso: "1"
+tipo: Critério de avaliação / pontuação
+dom: Técnico/Arquitetura / Segurança da Informação/Cyber
+obr: Desejável
+desc: Requisito não previsto na RFP nem no Anexo I. Pela regra oculta (@d4_desc), responder "Não atende" desconta 2 pontos da Nota Técnica. Não diz se a SOAR deve ser fornecida ou apenas integrável.
+s: 3
+p: 3
+imp: Perda de 2 pontos ou custo de licença SOAR.
+fw: NIST CSF 2.0
+ctrl: RS.MA — Incident Management
+assoc: Correlata
+rel: d4_desc
+acao: Esclarecer no Q&A
+perg: A integração com SOAR deve incluir o fornecimento da plataforma SOAR (licença no preço) ou apenas a capacidade de integração com SOAR do Banco?
+resp: Pré-venda/Arquitetura
+
+k: d4_qt03
+doc: D04
+sec: Questionário Técnico — QT-03
+loc: aba "Questionário Técnico" · B4:C4 (QT-03) · aba "Pesos" (OCULTA) · B4
+ev: "Retém os logs online por no mínimo 12 meses?" · Obrigatório: "Sim" · Peso: "2"
+tipo: Critério de avaliação / pontuação
+dom: Técnico/Arquitetura
+desc: Introduz o termo "online", ausente do Anexo I, o que sugere 12 meses online + 5 anos em arquivo (@d2_logs12, @d2_logs5).
+s: 3
+p: 3
+imp: Define a camada de armazenamento quente do SIEM.
+fw: ISO/IEC 27001:2022
+ctrl: A.8.15 — Registro de logs
+assoc: Direta
+rel: d2_logs12, d2_logs5
+acao: Atender
+resp: Pré-venda/Arquitetura
+
+k: d4_qt04
+doc: D04
+sec: Questionário Técnico — QT-04
+loc: aba "Questionário Técnico" · B5:C5 (QT-04) · aba "Pesos" (OCULTA) · B5
+ev: "Atende aos requisitos da Resolução CMN nº 4.893/2021?" · Obrigatório: "Sim" · Peso: "3"
+tipo: Critério de avaliação / pontuação
+dom: Regulatório/Compliance
+desc: Pergunta genérica de conformidade regulatória, obrigatória e com o maior peso; os documentos não detalham quais requisitos da resolução o proponente deve comprovar (@d1_cmn). Conflita com a região livre do Anexo I (@d2_regiao).
+s: 4
+p: 3
+imp: Resposta "Atende" sem lastro gera obrigação ampla; "Não atende" em item obrigatório tem efeito indefinido.
+fw: Resolução CMN nº 4.893/2021 (citada pelo cliente)
+ctrl: Requisitos para contratação de processamento, armazenamento de dados e computação em nuvem (identificador a confirmar)
+assoc: Direta
+rel: d1_cmn, d2_regiao
+acao: Esclarecer no Q&A
+perg: Quais requisitos da Resolução CMN nº 4.893/2021 o proponente deve comprovar no QT-04 e com quais evidências?
+resp: Compliance
+
+k: d4_qt05
+doc: D04
+sec: Questionário Técnico — QT-05
+loc: aba "Questionário Técnico" · B6:C6 (QT-05) · aba "Pesos" (OCULTA) · B6
+ev: "Oferece serviço de threat intelligence?" · Obrigatório: "Não" · Peso: "2"
+tipo: Critério de avaliação / pontuação
+dom: Segurança da Informação/Cyber
+obr: Desejável
+desc: Não previsto na RFP nem no Anexo I; "Não atende" desconta 2 pontos (@d4_desc). Fontes de threat intelligence de terceiros ou no exterior podem conflitar com a vedação de subcontratação (@d1_subc) e com a residência de dados (@d1_dados).
+s: 3
+p: 3
+imp: Perda de 2 pontos ou custo de serviço de threat intelligence.
+fw: ISO/IEC 27001:2022
+ctrl: A.5.7 — Inteligência de ameaças
+assoc: Direta
+rel: d4_desc, d1_subc, d1_dados
+acao: Precificar
+resp: Segurança/Cyber
+
+k: d4_qt06
+doc: D04
+sec: Questionário Técnico — QT-06
+loc: aba "Questionário Técnico" · B7:C7 (QT-06) · aba "Pesos" (OCULTA) · B7
+ev: "Possui equipe com certificações reconhecidas pelo mercado?" · Obrigatório: "Sim" · Peso: "2"
+tipo: Critério de avaliação / pontuação
+dom: Pessoas/Equipe
+desc: Tão vago quanto o item 5.2 da RFP (@d1_cert): não define certificações nem quantidades.
+s: 3
+p: 3
+imp: Avaliação subjetiva da equipe.
+rel: d1_cert, d1_crit_eq
+acao: Esclarecer no Q&A
+resp: RH/Staffing
+
+k: d4_pesos
+doc: D04
+sec: Pesos (aba oculta)
+loc: aba "Pesos" (OCULTA) · A1:B7
+ev: "QT-01" "3" · "QT-02" "1" · "QT-03" "2" · "QT-04" "3" · "QT-05" "2" · "QT-06" "2"
+tipo: Ambiguidade
+dom: Administrativo do processo
+desc: Aba oculta atribui pesos aos itens do questionário, mas a RFP (item 6.2) não menciona o questionário entre os critérios de pontuação nem explica como os pesos entram na Nota Técnica, cuja soma já é inconsistente (@d1_soma). Critério de pontuação não divulgado formalmente.
+s: 4
+p: 3
+imp: Nota Técnica imprevisível; risco de corte técnico.
+rel: d1_soma, d4_desc, d4_risktec
+st: Em esclarecimento
+acao: Esclarecer no Q&A
+perg: Como os pesos atribuídos aos itens do questionário técnico são aplicados na Nota Técnica e em qual critério do item 6.2 da RFP?
+resp: Bid Manager
+
+k: d4_desc
+doc: D04
+sec: Pesos (aba oculta)
+loc: aba "Pesos" (OCULTA) · A9
+ev: "Requisitos não obrigatórios respondidos como 'Não atende' reduzem a Nota Técnica em 2 (dois) pontos cada."
+tipo: Critério de avaliação / pontuação
+dom: Administrativo do processo
+desc: Regra de penalização oculta: itens "não obrigatórios" (QT-02 SOAR, QT-05 threat intelligence) passam a ter efeito de quase obrigatórios — até 4 pontos de 60, relevantes perto do corte de 70% (@d1_corte). Não diz o efeito de "Parcial" nem de "Não atende" em itens obrigatórios.
+s: 4
+p: 3
+imp: Perda de pontos por regra não divulgada na RFP.
+rel: d4_qt02, d4_qt05, d1_corte, d4_pesos
+acao: Esclarecer no Q&A
+perg: Confirma-se a regra de desconto de 2 pontos por requisito não obrigatório respondido como "Não atende"? Qual o efeito de "Parcial" e de "Não atende" em requisitos obrigatórios?
+resp: Bid Manager
+
+k: d4_risktec
+doc: D04
+sec: Pesos (aba oculta) × RFP itens 6.2 e 6.3
+loc: aba "Pesos" (OCULTA) · A9 · RFP p. 4 (impressa: 3) itens 6.2 e 6.3
+ev: A: "Serão desclassificadas as propostas com Nota Técnica inferior a 70% (setenta por cento) da pontuação máxima." (RFP, 6.3) · B: "Requisitos não obrigatórios respondidos como 'Não atende' reduzem a Nota Técnica em 2 (dois) pontos cada." (aba Pesos, A9)
+tipo: Risco para o proponente
+dom: Administrativo do processo
+nat: Inferida
+desc: Risco combinado: corte técnico de 70% (@d1_corte), soma de critérios inconsistente 65/60 (@d1_soma), pesos e desconto ocultos (@d4_pesos, @d4_desc), questionário desclassificatório se incompleto (@d4_instr, @d4_instr_amb) e requisitos de equipe vagos (@d1_cert, @d4_qt06): o proponente não consegue estimar a Nota Técnica e corre risco de desclassificação por regras não divulgadas na RFP.
+s: 5
+p: 3
+imp: Desclassificação técnica.
+rel: d1_corte, d1_soma, d4_pesos, d4_desc, d4_instr, d4_instr_amb, d1_cert, d4_qt06
+acao: Mitigar
+resp: Bid Manager
+
+k: d4_riskfin
+doc: D04
+sec: Q&A nº 4 × RFP itens 7.4 a 7.6 × Anexo I seção 2
+loc: aba "Q&A Rodada 1" · E5 (pergunta nº 4, Rodada 1, 12/11/2026) · RFP p. 5 (impressa: 4) itens 7.4 e 7.5 · Anexo I § 2
+ev: A: "multa de 10% (dez por cento) do valor mensal do contrato, por ocorrência" (RFP, 7.4) · B: "responderá de forma integral e ilimitada por quaisquer danos" (RFP, 7.5) · C: "As condições do item 7 permanecem inalteradas." (Q&A nº 4)
+tipo: Risco para o proponente
+dom: Jurídico/Contratual / Financeiro
+nat: Inferida
+desc: Risco combinado: multa por ocorrência sem teto (@d1_multa) e responsabilidade ilimitada (@d1_resp_ilim), mantidas pelo Q&A nº 4 (@d4_q4), somadas ao SLA de 15 minutos dependente de matriz não fornecida (@d2_sla15, @d2_matriz), à apuração indefinida (@d2_apur), à volumetria recusada (@d4_q3) e ao seguro sem valor definido (@d1_seg_amb): exposição financeira sem limite e não quantificável. Probabilidade 4: a multa é automática por ocorrência e o cliente já recusou formalmente alterar as condições do item 7 no Q&A.
+s: 5
+p: 4
+imp: Exposição financeira e jurídica ilimitada, possivelmente superior ao valor do contrato.
+fw: ISO 31000
+ctrl: Processo de avaliação de riscos (identificador a confirmar)
+assoc: Correlata
+rel: d1_multa, d1_resp_ilim, d4_q4, d2_sla15, d2_matriz, d2_apur, d4_q3, d1_seg_amb
+acao: Avaliar Go/No-Go
+resp: Jurídico

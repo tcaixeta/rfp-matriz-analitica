@@ -1,0 +1,454 @@
+# -*- coding: utf-8 -*-
+"""Base de dados da matriz de analise - RFP 2026-017 (Banco Horizonte Ficticio S.A.)."""
+
+DOCS = [
+    # ordem recebida, arquivo, nome logico, natureza, data, observacao
+    (1, "QA_Rodada1_e_Questionario.xlsx", "Q&A Rodada 1 + Questionário Técnico",
+     "Esclarecimentos oficiais (altera o RFP) + formulário a devolver preenchido", "12/11/2026",
+     "4 abas: Instruções, Q&A Rodada 1 (6 respostas), Questionário Técnico (QT-01 a QT-06) e 'Pesos' (aba OCULTA, com pesos e regra de penalidade)."),
+    (2, "Apresentacao_Ambiente_Atual.pptx", "Apresentação do workshop (ambiente atual)",
+     "Material informativo do workshop de 22/10/2026 (não é documento normativo)", "22/10/2026",
+     "5 slides; o slide 5 tem nota do apresentador incluindo subsidiárias no escopo."),
+    (3, "Anexo_I_Especificacao_Tecnica.docx", "Anexo I — Especificação Técnica",
+     "Anexo normativo do RFP", "15/10/2026", "6 seções: SOC, SLA, IAM, Transição, Equipe, Responsabilidades do Contratante."),
+    (4, "RFP-2026-017_Servicos_SOC_IAM.pdf", "RFP nº 2026-017 v1.0 (documento principal)",
+     "Documento principal", "15/10/2026",
+     "6 páginas. A página 6 (Anexo III — Declaração de Localização de Dados) é imagem escaneada, sem texto pesquisável: transcrita por leitura visual."),
+]
+
+# Hierarquia adotada (o RFP NAO traz clausula de precedencia - ver PE-01)
+HIERARQUIA = [
+    "1. Q&A Rodada 1 (12/11/2026): mais recente; prevalece sobre o que alterar expressamente.",
+    "2. RFP nº 2026-017 (corpo principal) e seus anexos com caráter de formulário (Anexo III).",
+    "3. Anexo I — Especificação Técnica.",
+    "4. Questionário Técnico (inclusive a aba oculta 'Pesos', que revela critério de pontuação).",
+    "5. Apresentação do workshop: apenas informativa; o que estiver só nela é tratado como expectativa/risco de escopo, não como obrigação, até ser formalizado.",
+]
+
+# Colunas da matriz
+COLS = ["ID", "Categoria", "Tema", "Fonte principal", "Outras fontes", "Requisito / conteúdo (resumo)",
+        "Tipo", "Posição vigente (após Q&A)", "Conflito / ambiguidade", "Risco", "Impacto Pricing",
+        "Impacto Jurídico", "Área responsável", "Análise", "Ação recomendada", "Pergunta (ref.)"]
+
+M = []
+def add(*a):
+    assert len(a) == len(COLS), (a[0], len(a))
+    M.append(dict(zip(COLS, a)))
+
+# ---------------- CRONOGRAMA E PRAZOS ----------------
+add("CR-01", "Cronograma", "Entrega das propostas", "Q&A #1", "RFP 3.1",
+    "RFP: 20/11/2026 até 18h. Q&A #1 prorroga para 27/11/2026 até 18h.",
+    "Prazo", "27/11/2026 até 18h (prorrogado)", "Alterado pelo Q&A", "Médio", "Não", "Não",
+    "Bid / Comercial",
+    "A prorrogação consta só no Q&A. O RFP v1.0 não foi reemitido.",
+    "Planejar a entrega para 27/11, 18h, mas confirmar no portal de fornecedores se a data foi atualizada. Até lá, manter o plano B de 20/11.", "PE-14")
+add("CR-02", "Cronograma", "Workshop do ambiente", "RFP 3.1", "PPTX slide 1",
+    "Workshop de apresentação do ambiente em 22/10/2026.", "Prazo", "22/10/2026", "—", "Baixo", "Não", "Não",
+    "Pré-vendas", "A apresentação do workshop traz informações que não estão no RFP (usuários, subsidiárias, migração de logs, meta de falsos positivos).",
+    "Participar e levar as perguntas da aba 'Esclarecimentos'. Pedir que o conteúdo do workshop seja formalizado em ata ou Q&A.", "PE-02")
+add("CR-03", "Cronograma", "Prazo para perguntas", "RFP 3.1", "",
+    "Perguntas até 05/11/2026; respostas divulgadas em 12/11/2026.", "Prazo", "05/11/2026", "—", "Alto", "Não", "Não",
+    "Bid / Comercial", "Este é o último canal formal para resolver os conflitos desta matriz. O Q&A recebido é a 'Rodada 1', o que sugere que pode haver novas rodadas.",
+    "Enviar o pacote de perguntas desta matriz antes de 05/11/2026.", "—")
+add("CR-04", "Cronograma", "Início dos serviços x fim do SIEM legado", "RFP 3.1", "PPTX slide 3",
+    "Início previsto em 01/02/2027. O contrato do SIEM legado termina em 31/01/2027, sem possibilidade de prorrogação.",
+    "Prazo", "01/02/2027 (go-live sem folga)", "Sem margem de contingência", "Alto", "Sim", "Sim",
+    "Pré-vendas / Jurídico",
+    "Não há folga: se o novo SIEM não estiver operando em 01/02/2027, o banco fica sem monitoramento. A migração de 24 meses de logs (TS-06) também precisa acontecer antes de 31/01/2027, enquanto o legado ainda existe. A data de assinatura do contrato não foi informada.",
+    "Pedir a data prevista de assinatura. Condicionar os prazos de transição à assinatura e ao cumprimento das obrigações do Contratante. Prever plano de contingência.", "PE-03")
+add("CR-05", "Cronograma", "Prazo de transição", "RFP 3.2", "Anexo I 4.1",
+    "RFP 3.2: transição concluída em até 30 dias corridos da assinatura. Anexo I 4.1: até 60 dias corridos da assinatura.",
+    "Obrigatório", "INDEFINIDO: 30 x 60 dias (adotar 30 dias como pior caso)", "CONFLITO RFP x Anexo I", "Alto", "Sim", "Sim",
+    "Pré-vendas / Pricing / Jurídico",
+    "Os dois documentos divergem e o Q&A não tratou do tema. O plano de transição vale 10 pontos (6.2). Com 30 dias, a equipe de onboarding fica mais concentrada e mais cara. Somado à multa de 10% por SLA (CT-04), o atraso na transição é um risco relevante.",
+    "Pedir esclarecimento. Precificar e planejar para 30 dias, com a premissa de que a contagem só corre após a entrega da documentação (CR-07) e dos acessos (VPN).", "PE-04")
+add("CR-06", "Cronograma", "Operação paralela sem custo", "Anexo I 4.2", "PPTX slide 3",
+    "Durante a transição, operar em paralelo com o fornecedor atual, sem custo adicional para o Contratante.",
+    "Obrigatório", "Paralelo sem custo adicional", "Ambiguidade (duração do paralelo)", "Médio", "Sim", "Sim",
+    "Pricing",
+    "O custo da operação paralela tem de ser diluído na mensalidade. A duração depende de CR-05 e fica limitada pelo fim do SIEM legado em 31/01/2027.",
+    "Embutir o custo de transição e paralelo no preço, ou em uma linha de setup se o Anexo IV permitir. Limitar o paralelo ao prazo de transição.", "PE-04")
+add("CR-07", "Cronograma", "Documentação do ambiente pelo Contratante", "Anexo I 6.2", "Anexo I 6.1",
+    "Contratante entrega a documentação técnica em até 10 dias após a assinatura e disponibiliza VPN (6.1).",
+    "Obrigação do Contratante", "10 dias após a assinatura", "Ambiguidade (impacto no prazo de 30 dias)", "Médio", "Não", "Sim",
+    "Jurídico / Pré-vendas",
+    "Com transição de 30 dias, o banco pode consumir até 1/3 do prazo antes de entregar a documentação. Não há previsão de que atrasos do Contratante suspendam os prazos da Contratada.",
+    "Incluir premissa: prazos de transição e SLAs ficam suspensos enquanto houver pendências do Contratante (documentação, VPN, acessos).", "PE-04")
+
+# ---------------- INSTRUCOES / FORMA DA PROPOSTA ----------------
+add("PR-01", "Proposta (forma)", "Idioma e canal", "RFP 4.1", "",
+    "Proposta em língua portuguesa, enviada exclusivamente pelo portal de fornecedores.", "Obrigatório (forma)",
+    "Português; somente pelo portal", "—", "Baixo", "Não", "Não", "Bid / Comercial", "Requisito formal.",
+    "Confirmar o cadastro e o acesso ao portal com antecedência e fazer um teste de upload.", "—")
+add("PR-02", "Proposta (forma)", "Limite de páginas", "RFP 4.2", "",
+    "Proposta técnica com no máximo 40 páginas, excluídos os anexos.", "Obrigatório (forma)", "40 páginas", "—", "Médio",
+    "Não", "Não", "Bid / Comercial",
+    "O RFP não diz qual é a consequência de exceder o limite. Os critérios técnicos (65 pontos) têm de caber em 40 páginas.",
+    "Estruturar a proposta pelos 4 critérios do item 6.2. Levar detalhes para anexos.", "—")
+add("PR-03", "Proposta (forma)", "Planilha de preços (Anexo IV)", "RFP 4.3", "",
+    "Proposta comercial conforme a planilha modelo do Anexo IV — Planilha de Preços.", "Obrigatório (forma)",
+    "Anexo IV NÃO RECEBIDO", "DOCUMENTO AUSENTE", "Alto", "Sim", "Não", "Pricing / Bid",
+    "O Anexo IV não está entre os arquivos recebidos. Sem ele não se sabe a estrutura de preço (por usuário, por EPS, fixo mensal, setup), o que impede o pricing final.",
+    "Baixar o Anexo IV no portal. Se não existir, pedir via Q&A.", "PE-05")
+add("PR-04", "Proposta (forma)", "Anexo II", "RFP (numeração)", "",
+    "O RFP menciona Anexos I, III e IV. O Anexo II não é citado nem foi recebido.", "Verificação",
+    "Anexo II desconhecido", "DOCUMENTO AUSENTE / lacuna", "Médio", "Não", "Sim", "Bid / Jurídico",
+    "Pode ser a minuta de contrato ou um modelo de atestado. Se for a minuta, é essencial para o jurídico.",
+    "Confirmar no portal se existe Anexo II (minuta contratual?) e pedir o envio.", "PE-05")
+add("PR-05", "Proposta (forma)", "Questionário técnico integral", "RFP 4.4", "XLSX aba Instruções",
+    "O questionário deve ser integralmente preenchido. Instruções da planilha: 'o preenchimento de todas as abas é obrigatório; questionários incompletos serão desclassificados'.",
+    "Eliminatório", "Preencher as colunas D e E de QT-01 a QT-06", "Ambiguidade ('todas as abas')", "Alto", "Não", "Sim",
+    "Pré-vendas / Bid",
+    "As abas 'Q&A Rodada 1' e 'Pesos' (oculta) não são de preenchimento, mas a instrução diz 'todas as abas'. O risco de desclassificação é formal.",
+    "Preencher todo o Questionário Técnico, inclusive Comentários. Não alterar as demais abas. Confirmar via Q&A quais abas exigem preenchimento.", "PE-13")
+add("PR-06", "Proposta (forma)", "Declaração de localização de dados (Anexo III)", "RFP p.6 (Anexo III, escaneado)", "RFP 5.1c; Q&A #2",
+    "Declaração assinada pelo representante legal: todos os dados do Banco, inclusive logs de segurança, serão armazenados e processados exclusivamente em território nacional durante toda a vigência. Deve ser entregue com a proposta, sob pena de inabilitação.",
+    "Eliminatório", "Obrigatória: dados e logs só no Brasil", "CONFLITO com Anexo I 1.2 (nuvem em região livre)", "Alto", "Sim", "Sim",
+    "Jurídico / Pré-vendas",
+    "A declaração vincula toda a cadeia: SIEM em nuvem, backups, DR, threat intel e suporte do fabricante com acesso a dados. Assinar exige garantir que nenhum componente (inclusive telemetria do fabricante do SIEM) processe dados fora do Brasil. A página é imagem, sem texto extraível.",
+    "Validar a arquitetura antes da assinatura: região Brasil do hyperscaler, DR no Brasil e suporte do fabricante sem acesso a dados fora do país. Colher a assinatura do representante legal com procuração válida.", "PE-06")
+
+# ---------------- HABILITACAO ----------------
+add("HB-01", "Habilitação", "ISO/IEC 27001", "RFP 5.1a", "QT-01 (obrigatório, peso 3)",
+    "Certificado ISO/IEC 27001 vigente, emitido por organismo acreditado, com escopo que inclua os serviços de SOC.",
+    "Eliminatório", "Obrigatório", "—", "Alto", "Não", "Não", "Compliance / Bid",
+    "Checar a validade do certificado até a data de entrega e, de preferência, durante o contrato. O escopo tem de citar o SOC explicitamente.",
+    "Separar o certificado e a declaração de escopo, e confirmar a acreditação do organismo.", "—")
+add("HB-02", "Habilitação", "Atestados de capacidade técnica", "RFP 5.1b", "",
+    "No mínimo 3 atestados de serviços de SOC para instituições financeiras, com ambiente de no mínimo 2.000 usuários.",
+    "Eliminatório", "≥3 atestados SOC / IF / ≥2.000 usuários", "Ambiguidade ('instituição financeira')", "Alto", "Não", "Não",
+    "Bid / Comercial",
+    "Não está claro se seguradoras, corretoras ou cooperativas contam como 'instituição financeira', nem se os atestados precisam ser de contratos vigentes.",
+    "Levantar atestados elegíveis. Se houver dúvida sobre o enquadramento, perguntar via Q&A.", "PE-15")
+add("HB-03", "Habilitação", "SOC em território nacional", "RFP 5.1c", "Q&A #2; Anexo III",
+    "Comprovar que o SOC está localizado em território nacional. Q&A #2: não é permitido operar o SOC a partir de outro país.",
+    "Eliminatório", "SOC no Brasil (confirmado no Q&A #2)", "Confirmado pelo Q&A", "Alto", "Sim", "Não", "Pré-vendas / Bid",
+    "Exclui follow-the-sun com centros no exterior. O RFP não define o meio de comprovação.",
+    "Preparar a comprovação (endereço, contrato de locação, fotos, certificação do site).", "—")
+add("HB-04", "Habilitação", "Equipe certificada", "RFP 5.2", "QT-06 (obrigatório, peso 2); Anexo I 5.1",
+    "O proponente deverá possuir equipe técnica 'devidamente certificada'.", "Obrigatório (critério aberto)",
+    "Certificações não especificadas", "Ambiguidade (critério subjetivo)", "Médio", "Não", "Não", "Pré-vendas / RH",
+    "O texto não diz quais certificações nem quantos profissionais. Única exigência objetiva: coordenador com CISSP (EQ-01).",
+    "Anexar a matriz de certificações da equipe (CISSP, GCIH, CEH, Security+, certificações dos fabricantes de SIEM e IAM).", "PE-15")
+
+# ---------------- AVALIACAO ----------------
+add("AV-01", "Avaliação", "Composição da nota final", "RFP 6.1", "",
+    "Nota final = Nota Técnica (peso 60%) + Nota de Preço (peso 40%).", "Critério", "60/40", "Ambiguidade (fórmula de preço)", "Médio",
+    "Sim", "Não", "Pricing",
+    "A fórmula da Nota de Preço não foi informada (proporcional ao menor preço? faixas?). Sem ela não dá para simular o trade-off entre preço e técnica.",
+    "Pedir a fórmula da Nota de Preço.", "PE-07")
+add("AV-02", "Avaliação", "Soma dos critérios técnicos", "RFP 6.2", "",
+    "Nota Técnica de no máximo 60 pontos, mas os critérios somam 65 (Metodologia 20 + Equipe 20 + Ferramentas 15 + Transição 10).",
+    "Critério", "INDEFINIDO: 60 x 65", "INCONSISTÊNCIA interna do RFP", "Alto", "Não", "Sim", "Bid / Jurídico",
+    "Erro aritmético no RFP. Afeta a nota de corte (AV-03) e a normalização da nota técnica.",
+    "Pedir correção via Q&A. Enquanto isso, mirar no corte mais exigente (45,5 pontos).", "PE-07")
+add("AV-03", "Avaliação", "Nota técnica mínima", "RFP 6.3", "RFP 6.2",
+    "Desclassificação se a Nota Técnica for menor que 70% da pontuação máxima.", "Eliminatório",
+    "Corte de 42,0 pts (base 60) ou 45,5 pts (base 65)", "Depende de AV-02", "Alto", "Não", "Não", "Pré-vendas",
+    "A penalidade oculta do questionário (AV-05) pode tirar até 4 pontos. Isso pesa numa margem estreita.",
+    "Mirar em pelo menos 50 pontos. Ver a aba 'Pontuação'.", "PE-07")
+add("AV-04", "Avaliação", "Desempate", "RFP 6.4", "", "Em caso de empate, prevalece a proposta de menor preço.", "Critério", "Menor preço",
+    "—", "Baixo", "Sim", "Não", "Pricing", "Reforça o peso do preço.", "—", "—")
+add("AV-05", "Avaliação", "Pesos e penalidade ocultos no questionário", "XLSX aba 'Pesos' (OCULTA)", "Questionário QT-01 a QT-06",
+    "Aba oculta com pesos (QT-01=3, QT-02=1, QT-03=2, QT-04=3, QT-05=2, QT-06=2) e a regra: 'requisitos não obrigatórios respondidos como Não atende reduzem a Nota Técnica em 2 pontos cada'.",
+    "Critério (não divulgado no RFP)", "QT-02 (SOAR) e QT-05 (Threat Intel) = -2 pts cada se 'Não atende'",
+    "CRITÉRIO OCULTO / não previsto no RFP", "Alto", "Sim", "Sim", "Pré-vendas / Pricing / Jurídico",
+    "O critério não aparece nos itens 6.1 a 6.3. Requisitos 'não obrigatórios' acabam pontuando: deixar de oferecer SOAR ou threat intel custa até 4 pontos. A regra não diz o que acontece com 'Parcial'. Os pesos não têm uso explicado.",
+    "Oferecer SOAR e threat intelligence (ao menos como 'Atende' com escopo básico, ou 'Parcial' bem justificado). Jurídico: avaliar se cabe questionar a transparência do critério. Pedir confirmação via Q&A.", "PE-08")
+add("AV-06", "Avaliação", "Detalhamento dos critérios técnicos", "RFP 6.2", "",
+    "Critérios sem rubrica: não se sabe como cada critério é pontuado.", "Critério", "Sem rubrica", "Ambiguidade", "Médio", "Não", "Não", "Pré-vendas",
+    "A atribuição de nota fica subjetiva.", "Pedir a rubrica ou os subcritérios.", "PE-07")
+
+# ---------------- ESCOPO SOC ----------------
+add("TS-01", "Escopo SOC", "Monitoramento 24x7x365", "Anexo I 1.1", "RFP 2.1",
+    "Monitoramento contínuo de eventos de segurança em regime 24x7x365.", "Obrigatório", "24x7x365", "—", "Médio", "Sim", "Não", "Pré-vendas / Pricing",
+    "É a base de dimensionamento dos turnos (mínimo de 5 a 6 FTEs por posição 24x7).", "Dimensionar a escala com base em cerca de 1.200 alertas/dia (TS-07).", "—")
+add("TS-02", "Escopo SOC", "SIEM fornecido pelo proponente / localização", "Anexo I 1.2", "Anexo III; RFP 1.2 (Res. CMN 4.893); QT-04",
+    "O proponente fornece o SIEM, 'podendo ser disponibilizado em nuvem pública, em região de livre escolha do proponente'.",
+    "Obrigatório", "SIEM do proponente, OBRIGATORIAMENTE em região no Brasil", "CONFLITO Anexo I 1.2 x Anexo III", "Alto", "Sim", "Sim",
+    "Pré-vendas / Pricing / Jurídico",
+    "A 'região de livre escolha' contradiz a declaração do Anexo III (dados e logs só no Brasil, sob pena de inabilitação). Prevalece a regra mais restritiva e eliminatória. Regiões no Brasil costumam custar mais, e alguns SIEM SaaS não têm instância no país.",
+    "Arquitetar e precificar o SIEM 100% no Brasil (inclusive DR e backup). Responder QT-04 de forma coerente. Pedir confirmação via Q&A.", "PE-06")
+add("TS-03", "Escopo SOC", "Retenção de logs", "Anexo I 1.3", "Anexo I 1.6; QT-03",
+    "1.3: logs retidos por no mínimo 12 meses. 1.6: para auditoria, logs mantidos por 5 anos. QT-03: 'retém os logs online por no mínimo 12 meses?'.",
+    "Obrigatório", "Premissa: 12 meses online + 5 anos em arquivo (cold storage)", "CONFLITO interno do Anexo I (12 meses x 5 anos)", "Alto", "Sim", "Sim",
+    "Pricing / Pré-vendas / Jurídico",
+    "A leitura mais coerente com o QT-03 é 12 meses de retenção online (pesquisável) e 5 anos de arquivo. Não está definido: tempo de recuperação do arquivo, quem guarda os logs após o fim do contrato, se há devolução ao final e se os 5 anos correm durante ou após a vigência. O volume é desconhecido (EPS não informado: TS-04).",
+    "Precificar armazenamento em camadas (hot 12 meses, cold 5 anos) com preço unitário por GB/TB excedente. Definir a devolução dos logs ao fim do contrato.", "PE-09")
+add("TS-04", "Escopo SOC", "Integração do SIEM com 'todos os ativos relevantes' / volumetria", "Anexo I 1.4", "Q&A #3; PPTX slide 2",
+    "SIEM integrado a todos os ativos relevantes. Q&A #3: a volumetria (EPS) será informada somente ao vencedor. PPTX: 850 servidores (70% Windows, 30% Linux), 2 data centers (SP e Campinas) e 2 nuvens públicas.",
+    "Obrigatório", "Escopo aberto; EPS desconhecido", "Ambiguidade crítica (escopo e volumetria)", "Alto", "Sim", "Sim",
+    "Pricing / Pré-vendas / Jurídico",
+    "Licenças de SIEM e armazenamento costumam ser cobrados por EPS ou GB/dia. Sem a volumetria, o preço fixo carrega um risco ilimitado de sobrecusto. 'Ativos relevantes' não está definido: não se sabe se inclui estações, rede, aplicações, SaaS ou subsidiárias.",
+    "Declarar uma premissa de EPS e GB/dia estimados (ex.: com base em 850 servidores, 2 DCs e 2 nuvens), com faixa contratada e preço unitário por excedente. Definir a lista de fontes de log no anexo da proposta. Insistir na volumetria via Q&A.", "PE-10")
+add("TS-05", "Escopo SOC", "Resposta a incidentes", "Anexo I 1.5", "Anexo I 6.1",
+    "Resposta a incidentes, incluindo contenção, erradicação e relatório pós-incidente.", "Obrigatório", "IR incluso", "Ambiguidade (limites do IR)", "Alto", "Sim", "Sim",
+    "Pré-vendas / Pricing / Jurídico",
+    "Não há limites: não se sabe se o atendimento é remoto ou presencial, se inclui forense e recuperação, nem quantas horas ou incidentes estão cobertos. Somado à responsabilidade ilimitada (CT-05), executar contenção e erradicação aumenta a exposição.",
+    "Definir o escopo de IR (remoto, banco de horas, forense como opcional) e as responsabilidades de cada parte em matriz RACI.", "PE-11")
+add("TS-06", "Escopo SOC", "Migração de 24 meses de logs históricos", "PPTX slide 5", "Anexo I 1.3/1.6; PPTX slide 3",
+    "Expectativa apresentada no workshop: migrar 24 meses de logs históricos do SIEM legado para a nova plataforma.",
+    "Expectativa (não formalizada)", "Fora do RFP/Anexo I: tratar como opcional", "ESCOPO NÃO FORMALIZADO", "Alto", "Sim", "Sim",
+    "Pricing / Pré-vendas",
+    "Não consta no RFP nem no Anexo I. O volume é desconhecido e a migração depende do fornecedor e do formato do SIEM legado, cujo contrato acaba em 31/01/2027. Se virar obrigação depois, gera custo não precificado.",
+    "Perguntar via Q&A se faz parte do escopo. Cotar como item opcional e separado, com premissas de volume e formato e com a cooperação do fornecedor atual.", "PE-02")
+add("TS-07", "Escopo SOC", "Meta de falsos positivos", "PPTX slide 4", "Anexo I 2",
+    "Hoje são cerca de 1.200 alertas/dia e 70% de falsos positivos. Meta: 10% de falsos positivos no primeiro trimestre de operação.",
+    "Expectativa (não formalizada)", "Não é SLA contratual (não consta no Anexo I 2)", "Expectativa x SLA", "Médio", "Sim", "Sim",
+    "Pré-vendas / Jurídico",
+    "Sair de 70% para 10% em 3 meses é agressivo, depende do tuning e da cooperação do banco e pode virar critério de aceite informal. Se for incluída como SLA, incide multa de 10% (CT-04).",
+    "Apresentar a redução de falsos positivos como plano de tuning progressivo, sem compromisso contratual de 10% no primeiro trimestre. Pedir confirmação de que não é SLA.", "PE-02")
+add("TS-08", "Escopo SOC", "Visão unificada de riscos para a diretoria", "PPTX slide 5", "",
+    "Expectativa: visão unificada de riscos para a diretoria.", "Expectativa (não formalizada)", "Escopo não especificado", "Ambiguidade", "Baixo", "Sim", "Não",
+    "Pré-vendas", "Pode significar dashboard executivo ou GRC. Não está especificado.", "Oferecer dashboard executivo dentro do relatório mensal (SL-03) e deixar GRC como opcional.", "PE-02")
+add("TS-09", "Escopo SOC", "SOAR", "QT-02 (não obrigatório, peso 1)", "Aba Pesos",
+    "Integração nativa com plataforma SOAR.", "Desejável (pontuável/penalizável)", "Oferecer: 'Não atende' = -2 pts", "Ver AV-05", "Médio", "Sim", "Não",
+    "Pré-vendas / Pricing", "Não consta no Anexo I, mas é penalizado se não for atendido. Também ajuda a cumprir o SLA de 15 minutos e a meta de falsos positivos.",
+    "Incluir SOAR (nativo do SIEM ou ferramenta própria) no preço base.", "PE-08")
+add("TS-10", "Escopo SOC", "Threat intelligence", "QT-05 (não obrigatório, peso 2)", "Aba Pesos",
+    "Serviço de threat intelligence.", "Desejável (pontuável/penalizável)", "Oferecer: 'Não atende' = -2 pts", "Ver AV-05", "Médio", "Sim", "Sim",
+    "Pré-vendas / Pricing", "Não consta no Anexo I. Feeds de threat intel podem processar dados fora do Brasil, o que conflita com o Anexo III.",
+    "Incluir threat intel (feeds e boletins) com garantia de que os dados do banco não saem do país.", "PE-08")
+
+# ---------------- SLA ----------------
+add("SL-01", "SLA", "Início de tratamento de incidentes críticos", "Anexo I 2.1", "RFP 7.4",
+    "Tempo máximo de 15 minutos para iniciar o tratamento de incidentes críticos.", "Obrigatório (SLA)", "15 min", "—", "Alto", "Sim", "Sim",
+    "Pré-vendas / Jurídico", "Cada violação gera multa de 10% do valor mensal (CT-04). Não está definido o marco inicial: detecção, alerta ou abertura do chamado.",
+    "Definir o marco de início e de 'início do tratamento'. Dimensionar o N2 de plantão.", "PE-12")
+add("SL-02", "SLA", "Disponibilidade do SIEM", "Anexo I 2.2", "RFP 7.4",
+    "Disponibilidade mínima mensal de 99,9% da plataforma SIEM.", "Obrigatório (SLA)", "99,9% mensal (~43 min/mês)", "—", "Médio", "Sim", "Sim",
+    "Pré-vendas / Jurídico", "Depende do SLA do provedor de nuvem e do fabricante. Não define janelas de manutenção nem exclusões.",
+    "Prever exclusões (manutenção programada, força maior, falhas do Contratante) e alinhar com o SLA do hyperscaler.", "PE-12")
+add("SL-03", "SLA", "Relatório mensal", "Anexo I 2.3", "RFP 7.4",
+    "Relatório mensal de indicadores até o 5º dia útil do mês seguinte.", "Obrigatório (SLA)", "5º dia útil", "—", "Baixo", "Não", "Sim",
+    "Pré-vendas", "Um atraso, mesmo pequeno, gera multa de 10% (CT-04), uma penalidade desproporcional.", "Automatizar o relatório. Pedir multas graduadas por tipo de SLA.", "PE-12")
+add("SL-04", "SLA", "Classificação de criticidade", "Anexo I 2.4", "",
+    "A criticidade dos incidentes segue a matriz de classificação do Contratante.", "Obrigatório", "Matriz não fornecida", "Ambiguidade (matriz desconhecida)", "Alto", "Sim", "Sim",
+    "Pré-vendas / Jurídico", "O Contratante define sozinho o que é 'crítico' e, com isso, o volume de SLA de 15 minutos e de multas.",
+    "Pedir a matriz. Propor que a classificação seja acordada na transição e que mudanças passem por governança.", "PE-12")
+
+# ---------------- IAM ----------------
+add("IA-01", "Escopo IAM", "Ciclo de vida de identidades / revogação em 24h", "Anexo I 3.1", "PPTX slide 3",
+    "Gestão de admissão, movimentação e desligamento, com revogação dos acessos de desligados em até 24 horas. Ambiente atual: Active Directory + scripts internos.",
+    "Obrigatório", "Revogação em 24h", "Ambiguidade (gatilho e ferramenta)", "Alto", "Sim", "Sim", "Pré-vendas / Pricing",
+    "O prazo depende de o RH comunicar o desligamento. Não se sabe se o proponente fornece ferramenta de IGA nem quais sistemas-alvo entram, além do AD.",
+    "Definir o gatilho (evento do RH), os sistemas-alvo e se haverá ferramenta de IGA fornecida. Cotar a integração com o RH.", "PE-11")
+add("IA-02", "Escopo IAM", "MFA para privilegiados", "Anexo I 3.2", "",
+    "MFA obrigatório para 100% dos usuários com acesso privilegiado.", "Obrigatório", "100% privilegiados", "—", "Médio", "Sim", "Não", "Pré-vendas / Pricing",
+    "O número de contas privilegiadas não foi informado, e não se sabe se a solução de MFA é fornecida pelo proponente.", "Definir premissa de quantidade de contas privilegiadas e da solução de MFA.", "PE-11")
+add("IA-03", "Escopo IAM", "Recertificação trimestral", "Anexo I 3.3", "", "Revisão (recertificação) trimestral dos acessos concedidos.", "Obrigatório",
+    "Trimestral", "—", "Médio", "Sim", "Não", "Pré-vendas", "Exige ferramenta ou processo de campanha e depende da participação dos gestores do banco.", "Definir o escopo das campanhas e as responsabilidades do Contratante.", "PE-11")
+add("IA-04", "Escopo IAM", "PAM (cofre de senhas)", "Anexo I 3.4", "PPTX slide 3",
+    "É desejável cofre de senhas para contas privilegiadas (PAM). O banco não tem PAM hoje.", "Desejável", "Opcional", "—", "Médio", "Sim", "Não",
+    "Pricing / Pré-vendas", "Pode pesar no critério 'Ferramentas e tecnologia' (15 pontos). Não está no questionário, então não há penalidade oculta.",
+    "Cotar o PAM como item opcional separado, para não inflar o preço base.", "—")
+add("IA-05", "Escopo IAM", "Modelo do serviço IAM", "RFP 2.1", "Anexo I 3",
+    "Serviço gerenciado de IAM para cerca de 4.500 colaboradores. Não diz se inclui licenciamento de ferramentas.", "Obrigatório", "Indefinido (serviço ou serviço + ferramenta)",
+    "Ambiguidade", "Alto", "Sim", "Não", "Pricing / Pré-vendas",
+    "O RFP diz que o SIEM é do proponente, mas é omisso quanto às ferramentas de IAM (IGA, MFA, PAM). A diferença de preço é grande.", "Perguntar via Q&A. Precificar com ferramentas separadas por linha.", "PE-11")
+
+# ---------------- DIMENSIONAMENTO ----------------
+add("DM-01", "Dimensionamento", "Número de usuários", "Q&A #5", "RFP 2.1; PPTX slide 2; PPTX notas slide 5",
+    "RFP 2.1: cerca de 4.500 colaboradores. PPTX: 6.200 usuários ativos. Notas do PPTX: mais cerca de 900 usuários das subsidiárias. Q&A #5: 'considerar 5.000 usuários'.",
+    "Premissa de dimensionamento", "5.000 usuários (Q&A #5) com preço por excedente", "CONFLITO entre 4 números (4.500 / 5.000 / 6.200 / ~7.100)", "Alto", "Sim", "Sim",
+    "Pricing / Pré-vendas / Jurídico",
+    "O Q&A é a fonte oficial mais recente, mas o próprio banco mostrou 6.200 usuários ativos (talvez incluindo terceiros ou contas de serviço) e, com as subsidiárias, cerca de 7.100. Precificar só com 5.000 pode subdimensionar o serviço em até 42%.",
+    "Precificar a base de 5.000 conforme o Q&A, com preço unitário por usuário adicional e faixas. Declarar a premissa na proposta e pedir a definição de 'usuário' (colaborador, terceiro, conta de serviço).", "PE-01")
+add("DM-02", "Dimensionamento", "Subsidiárias no escopo", "PPTX notas do slide 5", "RFP 2.1",
+    "Nota do apresentador: Horizonte Seguros e Horizonte Investimentos (cerca de 900 usuários) também deverão entrar no escopo.",
+    "Expectativa (não formalizada)", "Fora do RFP: tratar como opcional", "ESCOPO NÃO FORMALIZADO", "Alto", "Sim", "Sim",
+    "Jurídico / Pricing",
+    "Essa informação está só nas notas do apresentador. O RFP fala em contratante único. As subsidiárias são pessoas jurídicas distintas e podem ter outros reguladores (seguradora/SUSEP, gestora/CVM). Isso afeta partes do contrato, faturamento, Anexo III, SLA e responsabilidade.",
+    "Perguntar via Q&A. Se confirmado, cotar como módulo opcional e exigir que as subsidiárias sejam partes ou intervenientes no contrato.", "PE-01")
+
+# ---------------- EQUIPE ----------------
+add("EQ-01", "Equipe", "Coordenador CISSP dedicado", "Anexo I 5.1", "RFP 5.2",
+    "Coordenador com certificação CISSP, dedicado exclusivamente ao contrato.", "Obrigatório", "1 FTE CISSP exclusivo", "—", "Médio", "Sim", "Sim",
+    "Pricing / RH", "Custo fixo relevante. Exigirá substituição equivalente em férias ou desligamento.", "Precificar 1 FTE sênior exclusivo e definir regra de substituto.", "—")
+add("EQ-02", "Equipe", "Analistas N1 presenciais", "Q&A #6", "Anexo I 5.2",
+    "Anexo I 5.2: N1 presencial na sede em São Paulo/SP, em horário comercial. Q&A #6: N1 pode atuar remotamente, desde que em território nacional.",
+    "Obrigatório (flexibilizado)", "Remoto permitido, no Brasil", "Alterado pelo Q&A", "Baixo", "Sim", "Não", "Pricing / Pré-vendas",
+    "A flexibilização reduz custo (deslocamento, posições on-site). Os dados continuam no Brasil (Anexo III).",
+    "Precificar o N1 remoto no SOC nacional. Opcionalmente, oferecer presença on-site como diferencial.", "—")
+
+# ---------------- CONTRATUAL ----------------
+add("CT-01", "Contratual", "Vigência", "RFP 7.1", "", "36 meses, prorrogável por iguais períodos mediante acordo.", "Condição comercial", "36 meses", "—", "Baixo", "Sim", "Sim",
+    "Jurídico / Pricing", "Base para amortizar setup e transição.", "Amortizar setup em 36 meses e prever multa rescisória por término antecipado.", "—")
+add("CT-02", "Contratual", "Reajuste", "RFP 7.2", "", "Reajuste anual pelo IPCA.", "Condição comercial", "IPCA anual", "—", "Baixo", "Sim", "Não", "Pricing",
+    "Licenças de SIEM e nuvem costumam ser cotadas em dólar. O IPCA não cobre a variação cambial.", "Avaliar hedge ou margem cambial nos componentes em USD.", "—")
+add("CT-03", "Contratual", "Prazo de pagamento", "RFP 7.3", "", "Pagamento em até 60 dias após o aceite da nota fiscal.", "Condição comercial", "60 dias após aceite", "Ambiguidade (critério de aceite)",
+    "Médio", "Sim", "Sim", "Pricing / Jurídico", "Prazo longo, com custo financeiro. O prazo e o critério do aceite não estão definidos, então o ciclo real pode passar de 90 dias.",
+    "Incluir o custo financeiro no preço. Propor aceite tácito em X dias.", "PE-16")
+add("CT-04", "Contratual", "Multa por descumprimento de SLA", "RFP 7.4", "Q&A #4; Anexo I 2",
+    "Multa de 10% do valor mensal do contrato por ocorrência de descumprimento de qualquer SLA. Q&A #4: 'as condições do item 7 permanecem inalteradas' (sem teto).",
+    "Condição contratual", "10% por ocorrência, SEM TETO", "Risco crítico (Q&A recusou limitar)", "Alto", "Sim", "Sim", "Jurídico / Pricing",
+    "Dez ocorrências no mês consomem 100% da mensalidade. A multa vale para todos os SLAs, inclusive atraso de relatório, e a criticidade é definida pelo banco (SL-04). Não há gradação nem cura, e o tema não foi negociado no Q&A.",
+    "Jurídico: propor teto mensal (ex.: 10-20% da fatura), gradação por SLA, período de carência na transição e exclusões. Pricing: provisionar risco. Avaliar se a proposta pode trazer ressalvas sem desclassificação.", "PE-16")
+add("CT-05", "Contratual", "Responsabilidade ilimitada", "RFP 7.5", "",
+    "A Contratada responde de forma integral e ilimitada por quaisquer danos decorrentes de incidentes de segurança no ambiente do Contratante.",
+    "Condição contratual", "Ilimitada, sem nexo causal", "Risco crítico / possível no-go", "Alto", "Sim", "Sim", "Jurídico / Diretoria",
+    "Na redação atual, a Contratada responde por qualquer incidente no ambiente do banco, mesmo sem culpa ou nexo com o serviço (ex.: falha de sistema do próprio banco). Inclui danos indiretos e lucros cessantes. Nenhum seguro cobre esse risco, e a cláusula conflita com 7.6.",
+    "Ponto de go/no-go. Propor responsabilidade limitada a 12 meses de contrato, apenas por culpa comprovada e excluindo danos indiretos. Escalar à diretoria.", "PE-16")
+add("CT-06", "Contratual", "Seguro cyber", "RFP 7.6", "RFP 7.5",
+    "Manter seguro de responsabilidade civil cibernética 'em valor compatível com os riscos do contrato'.", "Condição contratual", "Valor indefinido", "Ambiguidade",
+    "Médio", "Sim", "Sim", "Jurídico / Pricing", "'Compatível' é subjetivo e, junto com 7.5 (ilimitado), não tem referência.", "Pedir o valor mínimo da apólice. Cotar o prêmio com a corretora.", "PE-16")
+add("CT-07", "Contratual", "Vedação à subcontratação", "RFP 7.7", "Anexo I 1.2",
+    "É vedada a subcontratação, total ou parcial, do objeto.", "Condição contratual", "Vedada", "CONFLITO prático com SIEM em nuvem / fabricantes",
+    "Alto", "Sim", "Sim", "Jurídico / Pré-vendas",
+    "O próprio Anexo I prevê SIEM em nuvem pública, ou seja, um hyperscaler. Suporte de fabricante, threat intel de terceiros e forense especializada também podem ser vistos como subcontratação. A vedação também impede consórcio ou parceiro para IAM.",
+    "Pedir confirmação de que provedores de nuvem, licenças e suporte de fabricantes não são subcontratação. Listar os terceiros na proposta.", "PE-17")
+add("CT-08", "Contratual", "Confidencialidade", "RFP 7.8", "", "Confidencialidade por 5 anos após o término do contrato.", "Condição contratual", "5 anos pós-término", "—", "Baixo", "Não", "Sim", "Jurídico",
+    "Prazo usual.", "Verificar compatibilidade com a retenção de logs de 5 anos (TS-03).", "—")
+add("CT-09", "Contratual", "Hierarquia entre documentos", "RFP (omissão)", "Q&A; Anexo I; PPTX",
+    "O RFP não define a precedência entre RFP, anexos, Q&A e materiais do workshop.", "Lacuna", "Adotada: Q&A > RFP > Anexo I > questionário > workshop", "LACUNA",
+    "Alto", "Não", "Sim", "Jurídico", "Há pelo menos 5 conflitos entre os documentos (CR-05, TS-02, TS-03, DM-01, AV-02). Sem regra de precedência, o banco pode exigir a interpretação mais onerosa.",
+    "Pedir cláusula de precedência. Na proposta, declarar a interpretação adotada para cada conflito.", "PE-01")
+add("CT-10", "Contratual", "Minuta de contrato / LGPD", "RFP (omissão)", "",
+    "Não foi recebida minuta de contrato, nem cláusula de proteção de dados pessoais (LGPD, papel de operador), de propriedade dos logs ou de devolução de dados no fim do contrato.",
+    "Lacuna", "Não tratado", "LACUNA", "Médio", "Não", "Sim", "Jurídico",
+    "O SOC e o IAM tratam dados pessoais de colaboradores. Faltam regras de devolução e eliminação dos logs no fim do contrato, o que se liga à retenção de 5 anos.",
+    "Pedir a minuta contratual (talvez seja o Anexo II) e as cláusulas de proteção de dados.", "PE-05")
+
+# ---------------- REGULATORIO ----------------
+add("RG-01", "Regulatório", "Resolução CMN nº 4.893/2021", "RFP 1.2", "QT-04 (obrigatório, peso 3); Anexo III; Anexo I 1.2",
+    "O banco está sujeito à Res. CMN 4.893/2021 (política de segurança cibernética e contratação de processamento, armazenamento e nuvem).",
+    "Obrigatório", "Conformidade exigida", "Relacionado ao conflito TS-02", "Alto", "Sim", "Sim", "Compliance / Jurídico",
+    "A norma impõe requisitos contratuais à contratação de serviços relevantes de processamento e nuvem (acesso do BCB, continuidade, comunicação ao regulador etc.). QT-04 é obrigatório e tem o maior peso. Confirmar a redação vigente da norma, que pode ter sido alterada.",
+    "Montar um anexo de conformidade com a Res. 4.893 (cláusulas exigidas, acesso do BCB, plano de continuidade, localização no Brasil) e conferir a versão vigente.", "PE-06")
+
+# ---------------- QUESTIONARIO ----------------
+QUEST = [
+    # ID, requisito, obrigatorio, peso, penalidade, resposta recomendada, justificativa, matriz
+    ("QT-01", "Possui certificação ISO/IEC 27001 com escopo que inclua os serviços de SOC?", "Sim", 3, "—",
+     "Atende (se o escopo do certificado incluir o SOC)", "Também é critério eliminatório (RFP 5.1a).", "HB-01"),
+    ("QT-02", "Oferece integração nativa com plataforma SOAR?", "Não", 1, "-2 pts se 'Não atende'",
+     "Atende (incluir SOAR na oferta)", "Penalidade oculta de 2 pts. O custo de incluir tende a ser menor que a perda de nota.", "TS-09 / AV-05"),
+    ("QT-03", "Retém os logs online por no mínimo 12 meses?", "Sim", 2, "—",
+     "Atende, com comentário: 12 meses online + 5 anos em arquivo (Anexo I 1.6)", "Usar o comentário para fixar a interpretação do conflito 1.3 x 1.6.", "TS-03"),
+    ("QT-04", "Atende aos requisitos da Resolução CMN nº 4.893/2021?", "Sim", 3, "—",
+     "Atende, com comentário: SIEM e dados 100% em região no Brasil", "Tem de ser coerente com o Anexo III. Resolve o conflito com o Anexo I 1.2.", "RG-01 / TS-02"),
+    ("QT-05", "Oferece serviço de threat intelligence?", "Não", 2, "-2 pts se 'Não atende'",
+     "Atende (incluir threat intel na oferta)", "Penalidade oculta de 2 pts. Garantir que os dados não saiam do Brasil.", "TS-10 / AV-05"),
+    ("QT-06", "Possui equipe com certificações reconhecidas pelo mercado?", "Sim", 2, "—",
+     "Atende, com comentário listando as certificações (CISSP, GCIH etc.)", "Ligado ao RFP 5.2 e ao Anexo I 5.1.", "HB-04 / EQ-01"),
+]
+
+# ---------------- CONFLITOS ----------------
+CONFLITOS = [
+    # ID, tema, fonte A, fonte B, fonte C, posicao recomendada, gravidade, matriz, pergunta
+    ("CF-01", "Prazo de transição", "RFP 3.2: 30 dias corridos da assinatura", "Anexo I 4.1: 60 dias corridos da assinatura",
+     "PPTX: SIEM legado acaba em 31/01/2027 e início em 01/02/2027", "Planejar para 30 dias (pior caso) e pedir esclarecimento. Condicionar os prazos às entregas do Contratante.", "Alta", "CR-05", "PE-04"),
+    ("CF-02", "Localização do SIEM e dos dados", "Anexo I 1.2: nuvem pública, região de livre escolha",
+     "Anexo III: dados e logs exclusivamente no Brasil (eliminatório)", "RFP 1.2 / QT-04: Res. CMN 4.893", "Prevalece o Anexo III (mais restritivo e eliminatório): tudo em região Brasil.", "Alta", "TS-02", "PE-06"),
+    ("CF-03", "Retenção de logs", "Anexo I 1.3: mínimo de 12 meses", "Anexo I 1.6: 5 anos para auditoria", "QT-03: 12 meses 'online'",
+     "12 meses online + 5 anos em arquivo, com preço por camada.", "Alta", "TS-03", "PE-09"),
+    ("CF-04", "Número de usuários", "RFP 2.1: cerca de 4.500 colaboradores", "Q&A #5: considerar 5.000",
+     "PPTX: 6.200 ativos + ~900 das subsidiárias (notas)", "Base de 5.000 (Q&A), com preço unitário por excedente e premissa explícita.", "Alta", "DM-01", "PE-01"),
+    ("CF-05", "Pontuação técnica máxima", "RFP 6.2: máximo de 60 pontos", "RFP 6.2 (tabela): critérios somam 65", "RFP 6.3: corte de 70%",
+     "Mirar no corte de 45,5 pts (base 65) e pedir correção.", "Média", "AV-02", "PE-07"),
+    ("CF-06", "Data de entrega", "RFP 3.1: 20/11/2026, 18h", "Q&A #1: 27/11/2026, 18h", "—", "Prevalece o Q&A (27/11). Confirmar no portal.", "Baixa (resolvido)", "CR-01", "PE-14"),
+    ("CF-07", "Local de trabalho do N1", "Anexo I 5.2: presencial em SP, horário comercial", "Q&A #6: remoto permitido no Brasil", "—",
+     "Prevalece o Q&A (remoto no Brasil).", "Baixa (resolvido)", "EQ-02", "—"),
+    ("CF-08", "Subcontratação x SIEM em nuvem", "RFP 7.7: subcontratação vedada", "Anexo I 1.2: SIEM pode ser em nuvem pública", "—",
+     "Pedir confirmação de que nuvem e fabricantes não são subcontratação.", "Alta", "CT-07", "PE-17"),
+    ("CF-09", "Escopo formal x workshop", "RFP / Anexo I: sem migração de logs, sem subsidiárias, sem meta de falsos positivos",
+     "PPTX: migração de 24 meses de logs, subsidiárias no escopo, meta de 10% de falsos positivos", "—",
+     "Tratar como opcionais ou expectativas não contratuais até haver formalização via Q&A.", "Alta", "TS-06 / DM-02 / TS-07", "PE-02"),
+    ("CF-10", "Critério de pontuação oculto", "RFP 6: só os 4 critérios técnicos e o preço", "Aba oculta 'Pesos': penalidade de -2 pts por não obrigatório 'Não atende'", "—",
+     "Responder 'Atende' em QT-02 e QT-05 e pedir que o critério seja divulgado formalmente.", "Alta", "AV-05", "PE-08"),
+]
+
+# ---------------- PERGUNTAS DE ESCLARECIMENTO ----------------
+PERGUNTAS = [
+    # ID, ref doc, pergunta, justificativa, prioridade, area
+    ("PE-01", "RFP 2.1; Q&A #5; Apresentação do workshop (slides 2 e 5)",
+     "No Q&A #5, o Banco orienta considerar 5.000 usuários. A apresentação do workshop informa 6.200 usuários ativos e a inclusão das subsidiárias Horizonte Seguros e Horizonte Investimentos (~900 usuários). Pedimos confirmar: (a) o número de usuários para dimensionamento; (b) a definição de 'usuário' (colaboradores, terceiros, contas de serviço); (c) se as subsidiárias fazem parte do escopo e, nesse caso, se serão partes ou intervenientes do contrato. Pedimos ainda (d) qual a ordem de precedência entre RFP, anexos, respostas aos esclarecimentos e materiais do workshop.",
+     "Quatro números diferentes de usuários; impacto direto no preço e no escopo contratual.", "Alta", "Pricing / Jurídico"),
+    ("PE-02", "Apresentação do workshop (slides 4 e 5)",
+     "A apresentação menciona (a) migração de 24 meses de logs históricos do SIEM legado, (b) meta de 10% de falsos positivos no primeiro trimestre e (c) visão unificada de riscos para a diretoria. Esses itens fazem parte do escopo obrigatório e/ou de SLAs contratuais? Se a migração estiver no escopo, pedimos informar o volume (TB), o formato e o produto do SIEM legado e se o fornecedor atual cooperará com a extração.",
+     "Escopo não formalizado com custo relevante.", "Alta", "Pricing / Pré-vendas"),
+    ("PE-03", "RFP 3.1; Apresentação do workshop (slide 3)",
+     "Qual a data prevista de assinatura do contrato? Considerando que o SIEM legado se encerra em 31/01/2027 sem possibilidade de prorrogação e que o início dos serviços está previsto para 01/02/2027, há plano de contingência caso a assinatura ocorra com antecedência insuficiente para a transição?",
+     "Go-live sem folga.", "Alta", "Pré-vendas / Jurídico"),
+    ("PE-04", "RFP 3.2; Anexo I 4.1, 4.2 e 6.2",
+     "O RFP (item 3.2) fixa o prazo de transição em 30 dias corridos e o Anexo I (item 4.1) em 60 dias corridos, ambos a contar da assinatura. Qual prazo prevalece? Os prazos de transição serão suspensos enquanto estiverem pendentes as obrigações do Contratante (documentação técnica em até 10 dias, acesso VPN)? Qual a duração esperada da operação em paralelo (item 4.2)?",
+     "Conflito direto entre documentos.", "Alta", "Pré-vendas / Jurídico"),
+    ("PE-05", "RFP 4.3; numeração dos anexos",
+     "Pedimos disponibilizar o Anexo IV — Planilha de Preços, que não consta entre os documentos recebidos, e informar se existe Anexo II (ex.: minuta de contrato) e onde pode ser obtido. Haverá minuta contratual com cláusulas de proteção de dados (LGPD) e de devolução de dados ao término do contrato?",
+     "Documentos ausentes impedem o pricing e a análise jurídica.", "Alta", "Pricing / Jurídico"),
+    ("PE-06", "Anexo I 1.2; Anexo III; RFP 1.2; QT-04",
+     "O Anexo I (item 1.2) permite SIEM em nuvem pública em 'região de livre escolha do proponente', enquanto o Anexo III exige que todos os dados, inclusive logs, sejam armazenados e processados exclusivamente em território nacional. Confirmam que prevalece o Anexo III, ou seja, que a região de nuvem (inclusive DR e backup) deverá estar no Brasil?",
+     "Conflito com risco de inabilitação.", "Alta", "Jurídico / Pré-vendas"),
+    ("PE-07", "RFP 6.1, 6.2 e 6.3",
+     "O item 6.2 indica Nota Técnica máxima de 60 pontos, mas os critérios listados somam 65 pontos. Qual o valor correto e, consequentemente, a nota mínima do item 6.3? Pedimos também a fórmula de cálculo da Nota de Preço e os subcritérios/rubrica de cada critério técnico.",
+     "Inconsistência aritmética; impacta a nota de corte.", "Alta", "Bid"),
+    ("PE-08", "Questionário Técnico; RFP 6",
+     "O Questionário Técnico contém pesos por requisito e regra de redução de 2 pontos na Nota Técnica para requisitos não obrigatórios respondidos como 'Não atende'. Pedimos confirmar se essa regra se aplica, como os pesos são utilizados na Nota Técnica e qual o tratamento de respostas 'Parcial'.",
+     "Critério de pontuação não divulgado no RFP. (Atenção: avaliar com o jurídico/comercial a conveniência de revelar que a aba oculta foi vista.)", "Média", "Bid / Jurídico"),
+    ("PE-09", "Anexo I 1.3 e 1.6; QT-03",
+     "O item 1.3 exige retenção de logs por no mínimo 12 meses e o item 1.6 por 5 anos para auditoria. Entendemos que 12 meses correspondem à retenção online (pesquisável) e 5 anos à retenção em arquivo. Está correto? Os 5 anos contam durante a vigência ou após o término? Qual o tempo de recuperação esperado dos logs arquivados e qual a destinação dos logs ao final do contrato?",
+     "Conflito interno com grande impacto no armazenamento.", "Alta", "Pricing / Jurídico"),
+    ("PE-10", "Anexo I 1.4; Q&A #3",
+     "Considerando que a volumetria (EPS) só será informada ao vencedor (Q&A #3), pedimos ao menos uma faixa estimada de EPS e GB/dia, e a definição de 'ativos relevantes' (quantidade e tipos de fontes: servidores, estações, rede, nuvem, aplicações). Será aceita proposta com faixa de volumetria contratada e preço unitário por excedente?",
+     "Sem volumetria, não dá para precificar o SIEM com segurança.", "Alta", "Pricing"),
+    ("PE-11", "Anexo I 1.5 e 3; RFP 2.1",
+     "(a) A resposta a incidentes inclui atuação presencial e/ou análise forense? Há limite de horas ou incidentes? (b) Os serviços de IAM incluem o fornecimento de ferramentas (IGA, MFA, PAM) ou apenas a operação sobre a infraestrutura do Banco (Active Directory)? (c) Qual o número de contas privilegiadas e de sistemas-alvo do ciclo de vida? (d) Qual evento dispara a contagem das 24 horas para revogação de acessos?",
+     "Limites de escopo do IR e do IAM.", "Alta", "Pré-vendas / Pricing"),
+    ("PE-12", "Anexo I 2.1 a 2.4",
+     "Pedimos disponibilizar a matriz de classificação de criticidade do Contratante (item 2.4) e definir o marco inicial do SLA de 15 minutos. Haverá janelas de manutenção programada excluídas do cálculo de disponibilidade de 99,9%?",
+     "O Contratante controla o volume de SLAs e de multas.", "Média", "Pré-vendas / Jurídico"),
+    ("PE-13", "Questionário (aba Instruções); RFP 4.4",
+     "A aba de Instruções do questionário informa que 'o preenchimento de todas as abas é obrigatório'. Confirmam que apenas a aba 'Questionário Técnico' deve ser preenchida pelo proponente?",
+     "Evitar desclassificação por formalidade.", "Média", "Bid"),
+    ("PE-14", "RFP 3.1; Q&A #1",
+     "Confirmam que o portal de fornecedores e o cronograma oficial já refletem a nova data de entrega (27/11/2026, até as 18h)? Será publicada versão revisada do RFP?",
+     "Alinhamento formal da prorrogação.", "Baixa", "Bid"),
+    ("PE-15", "RFP 5.1b e 5.2",
+     "Para fins do item 5.1b, atestados de serviços prestados a seguradoras, cooperativas de crédito e instituições de pagamento serão aceitos como 'instituições financeiras'? Quais certificações e quantidades mínimas atendem ao item 5.2 ('equipe devidamente certificada')?",
+     "Critérios de habilitação subjetivos.", "Média", "Bid"),
+    ("PE-16", "RFP 7.3 a 7.6; Q&A #4",
+     "Sem prejuízo da resposta ao Q&A #4, pedimos reconsiderar: (a) teto global para multas de SLA e gradação conforme a gravidade; (b) limitação da responsabilidade do item 7.5 aos danos diretos causados por culpa comprovada da Contratada, até um múltiplo do valor anual; (c) valor mínimo da apólice de seguro cyber do item 7.6; (d) prazo e critério do aceite da nota fiscal (item 7.3).",
+     "Riscos contratuais críticos (possível no-go).", "Alta", "Jurídico"),
+    ("PE-17", "RFP 7.7; Anexo I 1.2",
+     "A contratação de provedor de nuvem pública (IaaS/SaaS), licenças e suporte de fabricantes de software e feeds de threat intelligence configura subcontratação vedada pelo item 7.7?",
+     "Conflito prático com o próprio Anexo I.", "Alta", "Jurídico"),
+]
+
+CRONO = [
+    ("15/10/2026", "Publicação do RFP v1.0", "RFP 3.1", "Realizado"),
+    ("18/10/2026", "Data desta análise", "—", "Hoje"),
+    ("22/10/2026", "Workshop de apresentação do ambiente", "RFP 3.1; PPTX", "Levar as perguntas"),
+    ("05/11/2026", "Prazo final para envio de perguntas", "RFP 3.1", "CRÍTICO: enviar PE-01 a PE-17"),
+    ("12/11/2026", "Divulgação das respostas (data do Q&A Rodada 1 recebido)", "RFP 3.1; Q&A", "Ver observação sobre a data do Q&A"),
+    ("20/11/2026", "Entrega das propostas (data ORIGINAL; substituída)", "RFP 3.1", "Substituída pelo Q&A #1"),
+    ("27/11/2026 18h", "Entrega das propostas (PRORROGADA)", "Q&A #1", "Data vigente"),
+    ("31/01/2027", "Fim do contrato do SIEM legado (sem prorrogação)", "PPTX slide 3", "Limite físico para migração de logs e paralelo"),
+    ("01/02/2027", "Início previsto dos serviços", "RFP 3.1", "Go-live"),
+    ("Assinatura + 10 dias", "Contratante entrega documentação técnica", "Anexo I 6.2", "Obrigação do banco"),
+    ("Assinatura + 30 dias", "Fim da transição (RFP)", "RFP 3.2", "Conflito"),
+    ("Assinatura + 60 dias", "Fim da transição (Anexo I)", "Anexo I 4.1", "Conflito"),
+    ("Assinatura até 02/01/2027", "Data-limite de assinatura para 30 dias de transição até 01/02/2027", "Derivado", "Calculado"),
+    ("Assinatura até 03/12/2026", "Data-limite de assinatura para 60 dias de transição até 01/02/2027", "Derivado", "Calculado: só 6 dias após a entrega das propostas"),
+]
+
+TOP_RISCOS = [
+    ("CT-05", "Responsabilidade integral e ilimitada por QUALQUER incidente no ambiente do banco (7.5): candidato a no-go se não for negociada."),
+    ("CT-04", "Multa de 10% do valor mensal por ocorrência de SLA, sem teto (o Q&A #4 recusou alterar). Junto com a criticidade definida pelo banco (Anexo I 2.4)."),
+    ("TS-04", "A volumetria (EPS) só será informada ao vencedor (Q&A #3) e o escopo de 'ativos relevantes' está aberto. O preço fixo carrega risco ilimitado."),
+    ("DM-01", "Quatro números de usuários (4.500 / 5.000 / 6.200 / ~7.100 com subsidiárias). O Q&A manda considerar 5.000."),
+    ("TS-02", "O Anexo I permite SIEM em nuvem em 'região livre', mas o Anexo III (eliminatório) exige dados e logs só no Brasil."),
+    ("CR-04/05", "Transição de 30 dias (RFP) x 60 dias (Anexo I), com o SIEM legado terminando em 31/01/2027 sem prorrogação: go-live sem folga."),
+    ("TS-03", "Retenção de logs de 12 meses (1.3) x 5 anos (1.6), sem volumetria. Some-se a migração de 24 meses de histórico (só no workshop)."),
+    ("AV-05", "Aba OCULTA 'Pesos' no questionário: -2 pts por não obrigatório 'Não atende' (SOAR e threat intel). Critério ausente no RFP."),
+    ("AV-02", "Os critérios técnicos somam 65, mas o máximo declarado é 60. A nota de corte de 70% fica indefinida (42 ou 45,5)."),
+    ("PR-03/04", "O Anexo IV (Planilha de Preços) não foi recebido e o Anexo II não é citado nem foi enviado: pricing final bloqueado."),
+]
+
+PROBLEMAS_INSUMOS = [
+    "Arquivos recebidos fora da ordem lógica (Q&A primeiro, RFP por último). A análise foi reordenada pela hierarquia documental, e o Q&A foi aplicado por cima do RFP e do Anexo I.",
+    "A página 6 do PDF (Anexo III — Declaração de Localização de Dados) é uma imagem escaneada, sem camada de texto. O conteúdo foi transcrito por leitura visual, sem OCR: conferir com o original antes de citar literalmente.",
+    "A planilha do Q&A tem uma aba OCULTA ('Pesos') com pesos do questionário e uma regra de penalidade que não aparece no RFP.",
+    "O Anexo IV (Planilha de Preços), referenciado no RFP 4.3, não foi recebido. O Anexo II não é referenciado nem foi recebido. Não há minuta de contrato.",
+    "Informações relevantes de escopo (subsidiárias com ~900 usuários) estão só nas NOTAS DO APRESENTADOR do slide 5 do PPTX, não no slide visível.",
+    "Datas: o Q&A Rodada 1 está datado de 12/11/2026, que é posterior à data desta análise (18/10/2026) e ao prazo de perguntas (05/11/2026). Confirmar a origem e a versão do arquivo de Q&A. Se for legítimo e já estiver publicado, os prazos para novas perguntas podem já estar encerrados.",
+]
