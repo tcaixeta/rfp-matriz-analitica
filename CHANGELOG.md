@@ -7,7 +7,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-10-20
+## [1.0.0] - 2026-10-20 — Matriz Analítica de Concorrência (RFP)
 
 ### Adicionado
 - **Persona Analista de RFP (`persona-analista-rfp.md`)**: Prompt monolítico de sistema portátil compatível com qualquer LLM (Claude, ChatGPT, Gemini, Copilot e modelos locais).
